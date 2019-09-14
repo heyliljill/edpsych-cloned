@@ -1,0 +1,78 @@
+DATASET NAME pro.
+DATASET COPY  proCopy1 WINDOW=FRONT.
+DATASET ACTIVATE proCopy1.
+recode pmim1chk pmim2chk pmim3chk pmii1chk pmii2chk pmii3chk pmbm1chk pmbm2chk pmbm3chk pmbi1chk pmbi2chk pmbi3chk (1=1) (else = 0).
+COMPUTE pmchk = pmim1chk + pmim2chk + pmim3chk + pmii1chk + pmii2chk + pmii3chk + pmbm1chk + pmbm2chk + pmbm3chk + pmbi1chk + pmbi2chk + pmbi3chk.
+VARIABLE LABELS  pmchk '# of check types from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmchk
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy1.
+
+DATASET NAME pro.
+DATASET COPY  proCopy2 WINDOW=FRONT.
+DATASET ACTIVATE proCopy2.
+recode pmim1chk pmim2chk pmim3chk pmii1chk pmii2chk pmii3chk pmbm1chk pmbm2chk pmbm3chk pmbi1chk pmbi2chk pmbi3chk (2=1) (else = 0).
+COMPUTE pmchk = pmim1chk + pmim2chk + pmim3chk + pmii1chk + pmii2chk + pmii3chk + pmbm1chk + pmbm2chk + pmbm3chk + pmbi1chk + pmbi2chk + pmbi3chk.
+VARIABLE LABELS  pmchk '# of check types from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmchk
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy2.
+
+DATASET NAME pro.
+DATASET COPY  proCopy3 WINDOW=FRONT.
+DATASET ACTIVATE proCopy3.
+recode pmim1chk pmim2chk pmim3chk pmii1chk pmii2chk pmii3chk pmbm1chk pmbm2chk pmbm3chk pmbi1chk pmbi2chk pmbi3chk (3=1) (else = 0).
+COMPUTE pmchk = pmim1chk + pmim2chk + pmim3chk + pmii1chk + pmii2chk + pmii3chk + pmbm1chk + pmbm2chk + pmbm3chk + pmbi1chk + pmbi2chk + pmbi3chk.
+VARIABLE LABELS  pmchk '# of check types from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmchk
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy3.
+
+DATASET NAME pro.
+DATASET COPY  proCopy4 WINDOW=FRONT.
+DATASET ACTIVATE proCopy4.
+recode pmim1chk pmim2chk pmim3chk pmii1chk pmii2chk pmii3chk pmbm1chk pmbm2chk pmbm3chk pmbi1chk pmbi2chk pmbi3chk (4=1) (else = 0).
+COMPUTE pmchk = pmim1chk + pmim2chk + pmim3chk + pmii1chk + pmii2chk + pmii3chk + pmbm1chk + pmbm2chk + pmbm3chk + pmbi1chk + pmbi2chk + pmbi3chk.
+VARIABLE LABELS  pmchk '# of check types from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmchk
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy4.
+
+DATASET NAME pro.
+DATASET COPY  proCopy5 WINDOW=FRONT.
+DATASET ACTIVATE proCopy5.
+recode pmim1chk pmim2chk pmim3chk pmii1chk pmii2chk pmii3chk pmbm1chk pmbm2chk pmbm3chk pmbi1chk pmbi2chk pmbi3chk (5=1) (else = 0).
+COMPUTE pmchk = pmim1chk + pmim2chk + pmim3chk + pmii1chk + pmii2chk + pmii3chk + pmbm1chk + pmbm2chk + pmbm3chk + pmbi1chk + pmbi2chk + pmbi3chk.
+VARIABLE LABELS  pmchk '# of check types from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmchk
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy5.
+
+DATASET NAME pro.
+DATASET COPY  proCopy6 WINDOW=FRONT.
+DATASET ACTIVATE proCopy6.
+recode pmim1chk pmim2chk pmim3chk pmii1chk pmii2chk pmii3chk pmbm1chk pmbm2chk pmbm3chk pmbi1chk pmbi2chk pmbi3chk (6=1) (else = 0).
+COMPUTE pmchk = pmim1chk + pmim2chk + pmim3chk + pmii1chk + pmii2chk + pmii3chk + pmbm1chk + pmbm2chk + pmbm3chk + pmbi1chk + pmbi2chk + pmbi3chk.
+VARIABLE LABELS  pmchk '# of check types from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmchk
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy6.
+

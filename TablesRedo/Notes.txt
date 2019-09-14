@@ -1,0 +1,113 @@
+8/13/14
+Working on old tables. total sample n = 259. 259 = # of kids in main study (no protocol) which fall into study = 3 ("111 vs. 355")
+Printing out cheat sheet for ann to do coding. cheat sheet includes ID, name, gender, math teacher, reading teacher of kids in main study who were not interviewed or in protocol
+
+8/15/15
+in main.sav -changed 38 and 58 pro -> 1
+
+When inputting data for MAININT MATH question #3:
+add 6 columns of variables:
+InterestEasy, InterestHard, NotinterestEasy, NotinterestHard, NeutralEasy, NeutralHard
+
+each represents how many problems of each category were listed as easy or hard
+
+ex.
+if coding sheet says:
+Easy: 1, 3, 4, 6, 2
+Hard: 5
+
+Interest ones are: 3,4,6
+Noninterest ones are: 2,5
+Neural is 1
+
+InterestEasy = 3
+InterestHard = 0
+NotinterestEasy = 1
+NotinterestHard = 1
+NeutralEasy = 1
+NeutralHard = 0
+
+Game Plan: Game plan: Finish coding for runs on reading tables. (Accuracy, Content Form, Distortions, Gists, Paragraphs). Then work on coding for math tables (Checks, Corrections, Errors, Mistakes). 
+
+12/22
+finished working on reading tables except for distortions which is in 2 separate variables. ask about how to code this
+
+12/23 Meeting
+Ann talked about getting me a job :D
+Then we discussed issues with individual files. Gotta work on getting runs done on all of main study, then all of pro study with main included
+Then, set up that info in tables. Look out for 3 way interactions
+Finally, go on to do interview stuff
+
+12/27
+APA format
+Also still need to do correlations
+
+1/2
+Game plan:
+
+Have all tables assembled by Feb. Break (Feb. 16) 
+
+Main descriptive:1
+Main correlation:1
+Pro descriptive:1
+Pro correlation: 1
+Main math: 3
+Main reading: 5
+Pro math: 3
+Pro reading: 4
+Pro (main) math: 3
+Pro (main) reading: 5
+
+Total: 27
+
+6 weeks
+
+
+Tasks:
+
+Finish coding protocol runs - 1 week (PTTS week) (Jan 28th)
+Code correlations - 2 days (PTTS week)
+Put runs into tables - rest of the time
+
+
+
+Runs done:
+
+Main math: 3
+Main reading: 5
+Pro (main) math: 3
+Pro (main) reading: 5
+Total: 16 (4-5 each week)
+
+Runs that need to be done:
+
+Main descriptive:1
+Main correlation:1
+Pro descriptive:1
+Pro correlation: 1
+Pro math: 3
+Pro reading: 4
+Total: 11 (5-6 each week)
+
+Tables that need to be done:
+all
+
+
+1/8
+Set up tables for Main Reading. They are saved in dropbox under Ed Psych Research/MainPro Tables Redo
+
+** need to add coding for contentform table (paragraphs). do something where cases of 4 and 5 => 0, then add 1s,2s,3s
+
+1/9
+Feedback from Ann - need degrees of freedom and number of participants (?)
+
+5/3
+Reflecting on past coding. Seems that most advanced code is in RContentForm because there is code for how to close windows. This is helpful. Still want to abstract this code...
+
+5/31
+Main reading and math tables are done, essentially. Reading has:contentform, gists, accuracy, distortions, paragraphs. Math has: mistakes
+Next to do - break into high and low (and middle) interest groups and rerun for all tables
+Also to do - Protocol only reading and math tables.
+    Reading: Distortions (adw, del, exc, ext, inc, skl, skp, skw, stu, sub, ver, tsv), concurrent verbalizations, correspondence between described diff and encountered, correspondence between decribed strat and encountered
+    Math: number of checks, number of corrections, errors in math comprehension, mistakes, checks
+    

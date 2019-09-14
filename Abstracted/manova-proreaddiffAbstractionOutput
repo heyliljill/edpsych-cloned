@@ -1,0 +1,121 @@
+f = open('manova-proreaddiff.txt','w+')
+
+def makeRecodeLine(proquestions,promain,mathread,stratdiff,nameListi):
+  recodevars = ""
+  if mathread == "m":
+    for i in range(len(proquestions)):
+      recodevars = recodevars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+  else:
+    for i in range(len(proquestions)):
+      recodevars = recodevars+promain+mathread+proquestions[i]+nameListi+" "
+  recodeline = "recode "+recodevars+"(1=1) (2=1) (else = 0).\n"
+  return recodeline
+  
+def makeComputeLines(proquestions,promain,mathread,stratdiff,nameListi,labelListi):
+  computeIMVars = makeComputeLine('im',0,3,proquestions,promain,mathread,stratdiff,nameListi)
+  computeIIVars = makeComputeLine('ii',3,6,proquestions,promain,mathread,stratdiff,nameListi)
+  computeNMVars = makeComputeLine('nm',6,9,proquestions,promain,mathread,stratdiff,nameListi)
+  computeNIVars = makeComputeLine('ni',9,12,proquestions,promain,mathread,stratdiff,nameListi)
+
+  computeIMLine = "compute "+labelListi+"im"+"="+computeIMVars+".\n"
+  computeIILine = "compute "+labelListi+"ii"+"="+computeIIVars+".\n"
+  computeNMLine = "compute "+labelListi+"nm"+"="+computeNMVars+".\n"
+  computeNILine = "compute "+labelListi+"ni"+"="+computeNIVars+".\n"
+  return computeIMLine + computeIILine + computeNMLine + computeNILine
+  
+def makeComputeLine(suffix,rangeL,rangeU,proquestions,promain,mathread,stratdiff,nameListi):
+  computeVars = ""
+  if mathread =="m":
+    for i in range(rangeL,rangeU):
+      computeVars = computeVars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+      if (i!=rangeU-1):
+        computeVars = computeVars+ "+ "
+  else:
+    for i in range(rangeL,rangeU):
+      computeVars = computeVars+promain+mathread+proquestions[i]+nameListi+" "
+      if (i!=rangeU-1):
+        computeVars = computeVars+ "+ "
+  return computeVars
+  
+def makeGLMtext():
+  text = """
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  """
+  return text
+  
+def printCompute(varlist,string,suffix,GLMtext, file):
+  text = ""
+  for suff in suffix:
+    text = text + "compute " + string + suff + " = ("
+    for i in range(len(varlist)):
+      text = text + varlist[i] + suff
+      if i < (len(varlist)-1):
+        text = text + " + "
+    text = text + ")/" + str(len(varlist)) + ".\n"
+  file.write(text)
+  GLMlinevars = ""
+  for suff in suffix:
+    GLMlinevars = GLMlinevars + string + suff + ' '
+  GLMline = "GLM " + GLMlinevars + "BY sex"
+  file.write(GLMline)
+  file.write(GLMtext)
+  file.write('\n')
+
+def main():
+  
+  
+  # (MANOVA?) GLM general linear model with within subject comparisons of interest, gender, diff
+  
+  # VARIABLES
+  nameList = ['voc', 'gen','acc','sep', 'prp', 'nkt', 'nkc','det', 'tor','par','all','yea','bum', 'ner','huh','int','ncv','tge','dis','nod']
+  labelList= ['vocab','generalcomp','factuncertainty','seperating','confuseprevious','lacktopicknow','lackcontentknow','toodetailed','cantverbalize','forgetparagraph','forgetall','positiveaffect','negativeaffect','nervous','noconcentrate','interviewerprocedure','notalki', 'toogeneral','distractor','nodifficulties']
+  proquestions = ['1d1','1d2','1d3', '2d1', '2d2', '2d3', '3d1', '3d2', '3d3', '4d1','4d2','4d3']
+  suffix = ['im','ii','nm','ni']
+ 
+  stratdiff = "d"
+  promain= "p"
+  mathread = "r"
+  GLMtext = makeGLMtext()  
+  
+  for i in range(len(nameList)):
+  
+    #RECODE AND COMPUTE
+    nameListi = nameList[i]
+    labelListi = labelList[i]    
+    recodeline = makeRecodeLine(proquestions,promain,mathread,stratdiff,nameListi)
+    computelines = makeComputeLines(proquestions,promain,mathread,stratdiff,nameListi,labelListi)
+
+    s = recodeline+computelines
+  
+    f.write(s)
+  
+    # GLM
+    text = "GLM " + labelListi+"im "+ labelListi+"ii "+ labelListi+"nm "+ labelListi+"ni "+"BY sex"
+    f.write(text)
+    f.write(GLMtext)
+    f.write('\n')
+
+  
+  # GROUPED
+  
+  readdiff1 = ["vocab", "generalcomp", "lackcontentknow"]
+  readdiff2 = ["toodetailed", "forgetall"]
+  readdiff3 = ["negativeaffect", "toogeneral"]
+  
+  printCompute(readdiff1,"readdiff1",suffix,GLMtext,f)
+  printCompute(readdiff2,"readdiff2",suffix,GLMtext,f)
+  printCompute(readdiff3,"readdiff3",suffix,GLMtext,f)
+
+main()
+  

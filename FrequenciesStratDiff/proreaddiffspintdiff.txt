@@ -1,0 +1,636 @@
+USE ALL. 
+COMPUTE filter_$=(readspint=1). 
+VARIABLE LABELS filter_$ 'readspint=1(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+Temporary.
+recode pr1d1voc pr1d2voc pr1d3voc pr2d1voc pr2d2voc pr2d3voc pr3d1voc pr3d2voc pr3d3voc pr4d1voc pr4d2voc pr4d3voc (1=1) (2=1) (else = 0).
+compute vocabmastery=pr1d1voc + pr1d2voc + pr1d3voc +pr3d1voc + pr3d2voc + pr3d3voc .
+compute vocabinstructional=pr2d1voc + pr2d2voc + pr2d3voc +pr4d1voc + pr4d2voc + pr4d3voc .
+FREQUENCIES variables = vocabmastery vocabinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1gen pr1d2gen pr1d3gen pr2d1gen pr2d2gen pr2d3gen pr3d1gen pr3d2gen pr3d3gen pr4d1gen pr4d2gen pr4d3gen (1=1) (2=1) (else = 0).
+compute generalcompmastery=pr1d1gen + pr1d2gen + pr1d3gen +pr3d1gen + pr3d2gen + pr3d3gen .
+compute generalcompinstructional=pr2d1gen + pr2d2gen + pr2d3gen +pr4d1gen + pr4d2gen + pr4d3gen .
+FREQUENCIES variables = generalcompmastery generalcompinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1acc pr1d2acc pr1d3acc pr2d1acc pr2d2acc pr2d3acc pr3d1acc pr3d2acc pr3d3acc pr4d1acc pr4d2acc pr4d3acc (1=1) (2=1) (else = 0).
+compute factuncertaintymastery=pr1d1acc + pr1d2acc + pr1d3acc +pr3d1acc + pr3d2acc + pr3d3acc .
+compute factuncertaintyinstructional=pr2d1acc + pr2d2acc + pr2d3acc +pr4d1acc + pr4d2acc + pr4d3acc .
+FREQUENCIES variables = factuncertaintymastery factuncertaintyinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1sep pr1d2sep pr1d3sep pr2d1sep pr2d2sep pr2d3sep pr3d1sep pr3d2sep pr3d3sep pr4d1sep pr4d2sep pr4d3sep (1=1) (2=1) (else = 0).
+compute seperatingmastery=pr1d1sep + pr1d2sep + pr1d3sep +pr3d1sep + pr3d2sep + pr3d3sep .
+compute seperatinginstructional=pr2d1sep + pr2d2sep + pr2d3sep +pr4d1sep + pr4d2sep + pr4d3sep .
+FREQUENCIES variables = seperatingmastery seperatinginstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1prp pr1d2prp pr1d3prp pr2d1prp pr2d2prp pr2d3prp pr3d1prp pr3d2prp pr3d3prp pr4d1prp pr4d2prp pr4d3prp (1=1) (2=1) (else = 0).
+compute confusepreviousmastery=pr1d1prp + pr1d2prp + pr1d3prp +pr3d1prp + pr3d2prp + pr3d3prp .
+compute confusepreviousinstructional=pr2d1prp + pr2d2prp + pr2d3prp +pr4d1prp + pr4d2prp + pr4d3prp .
+FREQUENCIES variables = confusepreviousmastery confusepreviousinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1nkt pr1d2nkt pr1d3nkt pr2d1nkt pr2d2nkt pr2d3nkt pr3d1nkt pr3d2nkt pr3d3nkt pr4d1nkt pr4d2nkt pr4d3nkt (1=1) (2=1) (else = 0).
+compute lacktopicknowmastery=pr1d1nkt + pr1d2nkt + pr1d3nkt +pr3d1nkt + pr3d2nkt + pr3d3nkt .
+compute lacktopicknowinstructional=pr2d1nkt + pr2d2nkt + pr2d3nkt +pr4d1nkt + pr4d2nkt + pr4d3nkt .
+FREQUENCIES variables = lacktopicknowmastery lacktopicknowinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1nkc pr1d2nkc pr1d3nkc pr2d1nkc pr2d2nkc pr2d3nkc pr3d1nkc pr3d2nkc pr3d3nkc pr4d1nkc pr4d2nkc pr4d3nkc (1=1) (2=1) (else = 0).
+compute lackcontentknowmastery=pr1d1nkc + pr1d2nkc + pr1d3nkc +pr3d1nkc + pr3d2nkc + pr3d3nkc .
+compute lackcontentknowinstructional=pr2d1nkc + pr2d2nkc + pr2d3nkc +pr4d1nkc + pr4d2nkc + pr4d3nkc .
+FREQUENCIES variables = lackcontentknowmastery lackcontentknowinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1det pr1d2det pr1d3det pr2d1det pr2d2det pr2d3det pr3d1det pr3d2det pr3d3det pr4d1det pr4d2det pr4d3det (1=1) (2=1) (else = 0).
+compute toodetailedmastery=pr1d1det + pr1d2det + pr1d3det +pr3d1det + pr3d2det + pr3d3det .
+compute toodetailedinstructional=pr2d1det + pr2d2det + pr2d3det +pr4d1det + pr4d2det + pr4d3det .
+FREQUENCIES variables = toodetailedmastery toodetailedinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1tor pr1d2tor pr1d3tor pr2d1tor pr2d2tor pr2d3tor pr3d1tor pr3d2tor pr3d3tor pr4d1tor pr4d2tor pr4d3tor (1=1) (2=1) (else = 0).
+compute cantverbalizemastery=pr1d1tor + pr1d2tor + pr1d3tor +pr3d1tor + pr3d2tor + pr3d3tor .
+compute cantverbalizeinstructional=pr2d1tor + pr2d2tor + pr2d3tor +pr4d1tor + pr4d2tor + pr4d3tor .
+FREQUENCIES variables = cantverbalizemastery cantverbalizeinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1par pr1d2par pr1d3par pr2d1par pr2d2par pr2d3par pr3d1par pr3d2par pr3d3par pr4d1par pr4d2par pr4d3par (1=1) (2=1) (else = 0).
+compute forgetparagraphmastery=pr1d1par + pr1d2par + pr1d3par +pr3d1par + pr3d2par + pr3d3par .
+compute forgetparagraphinstructional=pr2d1par + pr2d2par + pr2d3par +pr4d1par + pr4d2par + pr4d3par .
+FREQUENCIES variables = forgetparagraphmastery forgetparagraphinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1all pr1d2all pr1d3all pr2d1all pr2d2all pr2d3all pr3d1all pr3d2all pr3d3all pr4d1all pr4d2all pr4d3all (1=1) (2=1) (else = 0).
+compute forgetallmastery=pr1d1all + pr1d2all + pr1d3all +pr3d1all + pr3d2all + pr3d3all .
+compute forgetallinstructional=pr2d1all + pr2d2all + pr2d3all +pr4d1all + pr4d2all + pr4d3all .
+FREQUENCIES variables = forgetallmastery forgetallinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1yea pr1d2yea pr1d3yea pr2d1yea pr2d2yea pr2d3yea pr3d1yea pr3d2yea pr3d3yea pr4d1yea pr4d2yea pr4d3yea (1=1) (2=1) (else = 0).
+compute positiveaffectmastery=pr1d1yea + pr1d2yea + pr1d3yea +pr3d1yea + pr3d2yea + pr3d3yea .
+compute positiveaffectinstructional=pr2d1yea + pr2d2yea + pr2d3yea +pr4d1yea + pr4d2yea + pr4d3yea .
+FREQUENCIES variables = positiveaffectmastery positiveaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1bum pr1d2bum pr1d3bum pr2d1bum pr2d2bum pr2d3bum pr3d1bum pr3d2bum pr3d3bum pr4d1bum pr4d2bum pr4d3bum (1=1) (2=1) (else = 0).
+compute negativeaffectmastery=pr1d1bum + pr1d2bum + pr1d3bum +pr3d1bum + pr3d2bum + pr3d3bum .
+compute negativeaffectinstructional=pr2d1bum + pr2d2bum + pr2d3bum +pr4d1bum + pr4d2bum + pr4d3bum .
+FREQUENCIES variables = negativeaffectmastery negativeaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1ner pr1d2ner pr1d3ner pr2d1ner pr2d2ner pr2d3ner pr3d1ner pr3d2ner pr3d3ner pr4d1ner pr4d2ner pr4d3ner (1=1) (2=1) (else = 0).
+compute nervousmastery=pr1d1ner + pr1d2ner + pr1d3ner +pr3d1ner + pr3d2ner + pr3d3ner .
+compute nervousinstructional=pr2d1ner + pr2d2ner + pr2d3ner +pr4d1ner + pr4d2ner + pr4d3ner .
+FREQUENCIES variables = nervousmastery nervousinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1huh pr1d2huh pr1d3huh pr2d1huh pr2d2huh pr2d3huh pr3d1huh pr3d2huh pr3d3huh pr4d1huh pr4d2huh pr4d3huh (1=1) (2=1) (else = 0).
+compute noconcentratemastery=pr1d1huh + pr1d2huh + pr1d3huh +pr3d1huh + pr3d2huh + pr3d3huh .
+compute noconcentrateinstructional=pr2d1huh + pr2d2huh + pr2d3huh +pr4d1huh + pr4d2huh + pr4d3huh .
+FREQUENCIES variables = noconcentratemastery noconcentrateinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1int pr1d2int pr1d3int pr2d1int pr2d2int pr2d3int pr3d1int pr3d2int pr3d3int pr4d1int pr4d2int pr4d3int (1=1) (2=1) (else = 0).
+compute interviewerproceduremastery=pr1d1int + pr1d2int + pr1d3int +pr3d1int + pr3d2int + pr3d3int .
+compute interviewerprocedureinstructional=pr2d1int + pr2d2int + pr2d3int +pr4d1int + pr4d2int + pr4d3int .
+FREQUENCIES variables = interviewerproceduremastery interviewerprocedureinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1ncv pr1d2ncv pr1d3ncv pr2d1ncv pr2d2ncv pr2d3ncv pr3d1ncv pr3d2ncv pr3d3ncv pr4d1ncv pr4d2ncv pr4d3ncv (1=1) (2=1) (else = 0).
+compute notalkimastery=pr1d1ncv + pr1d2ncv + pr1d3ncv +pr3d1ncv + pr3d2ncv + pr3d3ncv .
+compute notalkiinstructional=pr2d1ncv + pr2d2ncv + pr2d3ncv +pr4d1ncv + pr4d2ncv + pr4d3ncv .
+FREQUENCIES variables = notalkimastery notalkiinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1tge pr1d2tge pr1d3tge pr2d1tge pr2d2tge pr2d3tge pr3d1tge pr3d2tge pr3d3tge pr4d1tge pr4d2tge pr4d3tge (1=1) (2=1) (else = 0).
+compute toogeneralmastery=pr1d1tge + pr1d2tge + pr1d3tge +pr3d1tge + pr3d2tge + pr3d3tge .
+compute toogeneralinstructional=pr2d1tge + pr2d2tge + pr2d3tge +pr4d1tge + pr4d2tge + pr4d3tge .
+FREQUENCIES variables = toogeneralmastery toogeneralinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1dis pr1d2dis pr1d3dis pr2d1dis pr2d2dis pr2d3dis pr3d1dis pr3d2dis pr3d3dis pr4d1dis pr4d2dis pr4d3dis (1=1) (2=1) (else = 0).
+compute distractormastery=pr1d1dis + pr1d2dis + pr1d3dis +pr3d1dis + pr3d2dis + pr3d3dis .
+compute distractorinstructional=pr2d1dis + pr2d2dis + pr2d3dis +pr4d1dis + pr4d2dis + pr4d3dis .
+FREQUENCIES variables = distractormastery distractorinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1nod pr1d2nod pr1d3nod pr2d1nod pr2d2nod pr2d3nod pr3d1nod pr3d2nod pr3d3nod pr4d1nod pr4d2nod pr4d3nod (1=1) (2=1) (else = 0).
+compute nodifficultiesmastery=pr1d1nod + pr1d2nod + pr1d3nod +pr3d1nod + pr3d2nod + pr3d3nod .
+compute nodifficultiesinstructional=pr2d1nod + pr2d2nod + pr2d3nod +pr4d1nod + pr4d2nod + pr4d3nod .
+FREQUENCIES variables = nodifficultiesmastery nodifficultiesinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+FILTER OFF.
+USE ALL.
+EXECUTE.
+
+USE ALL. 
+COMPUTE filter_$=(readspint=2). 
+VARIABLE LABELS filter_$ 'readspint=2(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+Temporary.
+recode pr1d1voc pr1d2voc pr1d3voc pr2d1voc pr2d2voc pr2d3voc pr3d1voc pr3d2voc pr3d3voc pr4d1voc pr4d2voc pr4d3voc (1=1) (2=1) (else = 0).
+compute vocabmastery=pr1d1voc + pr1d2voc + pr1d3voc +pr3d1voc + pr3d2voc + pr3d3voc .
+compute vocabinstructional=pr2d1voc + pr2d2voc + pr2d3voc +pr4d1voc + pr4d2voc + pr4d3voc .
+FREQUENCIES variables = vocabmastery vocabinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1gen pr1d2gen pr1d3gen pr2d1gen pr2d2gen pr2d3gen pr3d1gen pr3d2gen pr3d3gen pr4d1gen pr4d2gen pr4d3gen (1=1) (2=1) (else = 0).
+compute generalcompmastery=pr1d1gen + pr1d2gen + pr1d3gen +pr3d1gen + pr3d2gen + pr3d3gen .
+compute generalcompinstructional=pr2d1gen + pr2d2gen + pr2d3gen +pr4d1gen + pr4d2gen + pr4d3gen .
+FREQUENCIES variables = generalcompmastery generalcompinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1acc pr1d2acc pr1d3acc pr2d1acc pr2d2acc pr2d3acc pr3d1acc pr3d2acc pr3d3acc pr4d1acc pr4d2acc pr4d3acc (1=1) (2=1) (else = 0).
+compute factuncertaintymastery=pr1d1acc + pr1d2acc + pr1d3acc +pr3d1acc + pr3d2acc + pr3d3acc .
+compute factuncertaintyinstructional=pr2d1acc + pr2d2acc + pr2d3acc +pr4d1acc + pr4d2acc + pr4d3acc .
+FREQUENCIES variables = factuncertaintymastery factuncertaintyinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1sep pr1d2sep pr1d3sep pr2d1sep pr2d2sep pr2d3sep pr3d1sep pr3d2sep pr3d3sep pr4d1sep pr4d2sep pr4d3sep (1=1) (2=1) (else = 0).
+compute seperatingmastery=pr1d1sep + pr1d2sep + pr1d3sep +pr3d1sep + pr3d2sep + pr3d3sep .
+compute seperatinginstructional=pr2d1sep + pr2d2sep + pr2d3sep +pr4d1sep + pr4d2sep + pr4d3sep .
+FREQUENCIES variables = seperatingmastery seperatinginstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1prp pr1d2prp pr1d3prp pr2d1prp pr2d2prp pr2d3prp pr3d1prp pr3d2prp pr3d3prp pr4d1prp pr4d2prp pr4d3prp (1=1) (2=1) (else = 0).
+compute confusepreviousmastery=pr1d1prp + pr1d2prp + pr1d3prp +pr3d1prp + pr3d2prp + pr3d3prp .
+compute confusepreviousinstructional=pr2d1prp + pr2d2prp + pr2d3prp +pr4d1prp + pr4d2prp + pr4d3prp .
+FREQUENCIES variables = confusepreviousmastery confusepreviousinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1nkt pr1d2nkt pr1d3nkt pr2d1nkt pr2d2nkt pr2d3nkt pr3d1nkt pr3d2nkt pr3d3nkt pr4d1nkt pr4d2nkt pr4d3nkt (1=1) (2=1) (else = 0).
+compute lacktopicknowmastery=pr1d1nkt + pr1d2nkt + pr1d3nkt +pr3d1nkt + pr3d2nkt + pr3d3nkt .
+compute lacktopicknowinstructional=pr2d1nkt + pr2d2nkt + pr2d3nkt +pr4d1nkt + pr4d2nkt + pr4d3nkt .
+FREQUENCIES variables = lacktopicknowmastery lacktopicknowinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1nkc pr1d2nkc pr1d3nkc pr2d1nkc pr2d2nkc pr2d3nkc pr3d1nkc pr3d2nkc pr3d3nkc pr4d1nkc pr4d2nkc pr4d3nkc (1=1) (2=1) (else = 0).
+compute lackcontentknowmastery=pr1d1nkc + pr1d2nkc + pr1d3nkc +pr3d1nkc + pr3d2nkc + pr3d3nkc .
+compute lackcontentknowinstructional=pr2d1nkc + pr2d2nkc + pr2d3nkc +pr4d1nkc + pr4d2nkc + pr4d3nkc .
+FREQUENCIES variables = lackcontentknowmastery lackcontentknowinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1det pr1d2det pr1d3det pr2d1det pr2d2det pr2d3det pr3d1det pr3d2det pr3d3det pr4d1det pr4d2det pr4d3det (1=1) (2=1) (else = 0).
+compute toodetailedmastery=pr1d1det + pr1d2det + pr1d3det +pr3d1det + pr3d2det + pr3d3det .
+compute toodetailedinstructional=pr2d1det + pr2d2det + pr2d3det +pr4d1det + pr4d2det + pr4d3det .
+FREQUENCIES variables = toodetailedmastery toodetailedinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1tor pr1d2tor pr1d3tor pr2d1tor pr2d2tor pr2d3tor pr3d1tor pr3d2tor pr3d3tor pr4d1tor pr4d2tor pr4d3tor (1=1) (2=1) (else = 0).
+compute cantverbalizemastery=pr1d1tor + pr1d2tor + pr1d3tor +pr3d1tor + pr3d2tor + pr3d3tor .
+compute cantverbalizeinstructional=pr2d1tor + pr2d2tor + pr2d3tor +pr4d1tor + pr4d2tor + pr4d3tor .
+FREQUENCIES variables = cantverbalizemastery cantverbalizeinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1par pr1d2par pr1d3par pr2d1par pr2d2par pr2d3par pr3d1par pr3d2par pr3d3par pr4d1par pr4d2par pr4d3par (1=1) (2=1) (else = 0).
+compute forgetparagraphmastery=pr1d1par + pr1d2par + pr1d3par +pr3d1par + pr3d2par + pr3d3par .
+compute forgetparagraphinstructional=pr2d1par + pr2d2par + pr2d3par +pr4d1par + pr4d2par + pr4d3par .
+FREQUENCIES variables = forgetparagraphmastery forgetparagraphinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1all pr1d2all pr1d3all pr2d1all pr2d2all pr2d3all pr3d1all pr3d2all pr3d3all pr4d1all pr4d2all pr4d3all (1=1) (2=1) (else = 0).
+compute forgetallmastery=pr1d1all + pr1d2all + pr1d3all +pr3d1all + pr3d2all + pr3d3all .
+compute forgetallinstructional=pr2d1all + pr2d2all + pr2d3all +pr4d1all + pr4d2all + pr4d3all .
+FREQUENCIES variables = forgetallmastery forgetallinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1yea pr1d2yea pr1d3yea pr2d1yea pr2d2yea pr2d3yea pr3d1yea pr3d2yea pr3d3yea pr4d1yea pr4d2yea pr4d3yea (1=1) (2=1) (else = 0).
+compute positiveaffectmastery=pr1d1yea + pr1d2yea + pr1d3yea +pr3d1yea + pr3d2yea + pr3d3yea .
+compute positiveaffectinstructional=pr2d1yea + pr2d2yea + pr2d3yea +pr4d1yea + pr4d2yea + pr4d3yea .
+FREQUENCIES variables = positiveaffectmastery positiveaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1bum pr1d2bum pr1d3bum pr2d1bum pr2d2bum pr2d3bum pr3d1bum pr3d2bum pr3d3bum pr4d1bum pr4d2bum pr4d3bum (1=1) (2=1) (else = 0).
+compute negativeaffectmastery=pr1d1bum + pr1d2bum + pr1d3bum +pr3d1bum + pr3d2bum + pr3d3bum .
+compute negativeaffectinstructional=pr2d1bum + pr2d2bum + pr2d3bum +pr4d1bum + pr4d2bum + pr4d3bum .
+FREQUENCIES variables = negativeaffectmastery negativeaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1ner pr1d2ner pr1d3ner pr2d1ner pr2d2ner pr2d3ner pr3d1ner pr3d2ner pr3d3ner pr4d1ner pr4d2ner pr4d3ner (1=1) (2=1) (else = 0).
+compute nervousmastery=pr1d1ner + pr1d2ner + pr1d3ner +pr3d1ner + pr3d2ner + pr3d3ner .
+compute nervousinstructional=pr2d1ner + pr2d2ner + pr2d3ner +pr4d1ner + pr4d2ner + pr4d3ner .
+FREQUENCIES variables = nervousmastery nervousinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1huh pr1d2huh pr1d3huh pr2d1huh pr2d2huh pr2d3huh pr3d1huh pr3d2huh pr3d3huh pr4d1huh pr4d2huh pr4d3huh (1=1) (2=1) (else = 0).
+compute noconcentratemastery=pr1d1huh + pr1d2huh + pr1d3huh +pr3d1huh + pr3d2huh + pr3d3huh .
+compute noconcentrateinstructional=pr2d1huh + pr2d2huh + pr2d3huh +pr4d1huh + pr4d2huh + pr4d3huh .
+FREQUENCIES variables = noconcentratemastery noconcentrateinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1int pr1d2int pr1d3int pr2d1int pr2d2int pr2d3int pr3d1int pr3d2int pr3d3int pr4d1int pr4d2int pr4d3int (1=1) (2=1) (else = 0).
+compute interviewerproceduremastery=pr1d1int + pr1d2int + pr1d3int +pr3d1int + pr3d2int + pr3d3int .
+compute interviewerprocedureinstructional=pr2d1int + pr2d2int + pr2d3int +pr4d1int + pr4d2int + pr4d3int .
+FREQUENCIES variables = interviewerproceduremastery interviewerprocedureinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1ncv pr1d2ncv pr1d3ncv pr2d1ncv pr2d2ncv pr2d3ncv pr3d1ncv pr3d2ncv pr3d3ncv pr4d1ncv pr4d2ncv pr4d3ncv (1=1) (2=1) (else = 0).
+compute notalkimastery=pr1d1ncv + pr1d2ncv + pr1d3ncv +pr3d1ncv + pr3d2ncv + pr3d3ncv .
+compute notalkiinstructional=pr2d1ncv + pr2d2ncv + pr2d3ncv +pr4d1ncv + pr4d2ncv + pr4d3ncv .
+FREQUENCIES variables = notalkimastery notalkiinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1tge pr1d2tge pr1d3tge pr2d1tge pr2d2tge pr2d3tge pr3d1tge pr3d2tge pr3d3tge pr4d1tge pr4d2tge pr4d3tge (1=1) (2=1) (else = 0).
+compute toogeneralmastery=pr1d1tge + pr1d2tge + pr1d3tge +pr3d1tge + pr3d2tge + pr3d3tge .
+compute toogeneralinstructional=pr2d1tge + pr2d2tge + pr2d3tge +pr4d1tge + pr4d2tge + pr4d3tge .
+FREQUENCIES variables = toogeneralmastery toogeneralinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1dis pr1d2dis pr1d3dis pr2d1dis pr2d2dis pr2d3dis pr3d1dis pr3d2dis pr3d3dis pr4d1dis pr4d2dis pr4d3dis (1=1) (2=1) (else = 0).
+compute distractormastery=pr1d1dis + pr1d2dis + pr1d3dis +pr3d1dis + pr3d2dis + pr3d3dis .
+compute distractorinstructional=pr2d1dis + pr2d2dis + pr2d3dis +pr4d1dis + pr4d2dis + pr4d3dis .
+FREQUENCIES variables = distractormastery distractorinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1nod pr1d2nod pr1d3nod pr2d1nod pr2d2nod pr2d3nod pr3d1nod pr3d2nod pr3d3nod pr4d1nod pr4d2nod pr4d3nod (1=1) (2=1) (else = 0).
+compute nodifficultiesmastery=pr1d1nod + pr1d2nod + pr1d3nod +pr3d1nod + pr3d2nod + pr3d3nod .
+compute nodifficultiesinstructional=pr2d1nod + pr2d2nod + pr2d3nod +pr4d1nod + pr4d2nod + pr4d3nod .
+FREQUENCIES variables = nodifficultiesmastery nodifficultiesinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+FILTER OFF.
+USE ALL.
+EXECUTE.
+
+USE ALL. 
+COMPUTE filter_$=(readspint=3). 
+VARIABLE LABELS filter_$ 'readspint=3(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+Temporary.
+recode pr1d1voc pr1d2voc pr1d3voc pr2d1voc pr2d2voc pr2d3voc pr3d1voc pr3d2voc pr3d3voc pr4d1voc pr4d2voc pr4d3voc (1=1) (2=1) (else = 0).
+compute vocabmastery=pr1d1voc + pr1d2voc + pr1d3voc +pr3d1voc + pr3d2voc + pr3d3voc .
+compute vocabinstructional=pr2d1voc + pr2d2voc + pr2d3voc +pr4d1voc + pr4d2voc + pr4d3voc .
+FREQUENCIES variables = vocabmastery vocabinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1gen pr1d2gen pr1d3gen pr2d1gen pr2d2gen pr2d3gen pr3d1gen pr3d2gen pr3d3gen pr4d1gen pr4d2gen pr4d3gen (1=1) (2=1) (else = 0).
+compute generalcompmastery=pr1d1gen + pr1d2gen + pr1d3gen +pr3d1gen + pr3d2gen + pr3d3gen .
+compute generalcompinstructional=pr2d1gen + pr2d2gen + pr2d3gen +pr4d1gen + pr4d2gen + pr4d3gen .
+FREQUENCIES variables = generalcompmastery generalcompinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1acc pr1d2acc pr1d3acc pr2d1acc pr2d2acc pr2d3acc pr3d1acc pr3d2acc pr3d3acc pr4d1acc pr4d2acc pr4d3acc (1=1) (2=1) (else = 0).
+compute factuncertaintymastery=pr1d1acc + pr1d2acc + pr1d3acc +pr3d1acc + pr3d2acc + pr3d3acc .
+compute factuncertaintyinstructional=pr2d1acc + pr2d2acc + pr2d3acc +pr4d1acc + pr4d2acc + pr4d3acc .
+FREQUENCIES variables = factuncertaintymastery factuncertaintyinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1sep pr1d2sep pr1d3sep pr2d1sep pr2d2sep pr2d3sep pr3d1sep pr3d2sep pr3d3sep pr4d1sep pr4d2sep pr4d3sep (1=1) (2=1) (else = 0).
+compute seperatingmastery=pr1d1sep + pr1d2sep + pr1d3sep +pr3d1sep + pr3d2sep + pr3d3sep .
+compute seperatinginstructional=pr2d1sep + pr2d2sep + pr2d3sep +pr4d1sep + pr4d2sep + pr4d3sep .
+FREQUENCIES variables = seperatingmastery seperatinginstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1prp pr1d2prp pr1d3prp pr2d1prp pr2d2prp pr2d3prp pr3d1prp pr3d2prp pr3d3prp pr4d1prp pr4d2prp pr4d3prp (1=1) (2=1) (else = 0).
+compute confusepreviousmastery=pr1d1prp + pr1d2prp + pr1d3prp +pr3d1prp + pr3d2prp + pr3d3prp .
+compute confusepreviousinstructional=pr2d1prp + pr2d2prp + pr2d3prp +pr4d1prp + pr4d2prp + pr4d3prp .
+FREQUENCIES variables = confusepreviousmastery confusepreviousinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1nkt pr1d2nkt pr1d3nkt pr2d1nkt pr2d2nkt pr2d3nkt pr3d1nkt pr3d2nkt pr3d3nkt pr4d1nkt pr4d2nkt pr4d3nkt (1=1) (2=1) (else = 0).
+compute lacktopicknowmastery=pr1d1nkt + pr1d2nkt + pr1d3nkt +pr3d1nkt + pr3d2nkt + pr3d3nkt .
+compute lacktopicknowinstructional=pr2d1nkt + pr2d2nkt + pr2d3nkt +pr4d1nkt + pr4d2nkt + pr4d3nkt .
+FREQUENCIES variables = lacktopicknowmastery lacktopicknowinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1nkc pr1d2nkc pr1d3nkc pr2d1nkc pr2d2nkc pr2d3nkc pr3d1nkc pr3d2nkc pr3d3nkc pr4d1nkc pr4d2nkc pr4d3nkc (1=1) (2=1) (else = 0).
+compute lackcontentknowmastery=pr1d1nkc + pr1d2nkc + pr1d3nkc +pr3d1nkc + pr3d2nkc + pr3d3nkc .
+compute lackcontentknowinstructional=pr2d1nkc + pr2d2nkc + pr2d3nkc +pr4d1nkc + pr4d2nkc + pr4d3nkc .
+FREQUENCIES variables = lackcontentknowmastery lackcontentknowinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1det pr1d2det pr1d3det pr2d1det pr2d2det pr2d3det pr3d1det pr3d2det pr3d3det pr4d1det pr4d2det pr4d3det (1=1) (2=1) (else = 0).
+compute toodetailedmastery=pr1d1det + pr1d2det + pr1d3det +pr3d1det + pr3d2det + pr3d3det .
+compute toodetailedinstructional=pr2d1det + pr2d2det + pr2d3det +pr4d1det + pr4d2det + pr4d3det .
+FREQUENCIES variables = toodetailedmastery toodetailedinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1tor pr1d2tor pr1d3tor pr2d1tor pr2d2tor pr2d3tor pr3d1tor pr3d2tor pr3d3tor pr4d1tor pr4d2tor pr4d3tor (1=1) (2=1) (else = 0).
+compute cantverbalizemastery=pr1d1tor + pr1d2tor + pr1d3tor +pr3d1tor + pr3d2tor + pr3d3tor .
+compute cantverbalizeinstructional=pr2d1tor + pr2d2tor + pr2d3tor +pr4d1tor + pr4d2tor + pr4d3tor .
+FREQUENCIES variables = cantverbalizemastery cantverbalizeinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1par pr1d2par pr1d3par pr2d1par pr2d2par pr2d3par pr3d1par pr3d2par pr3d3par pr4d1par pr4d2par pr4d3par (1=1) (2=1) (else = 0).
+compute forgetparagraphmastery=pr1d1par + pr1d2par + pr1d3par +pr3d1par + pr3d2par + pr3d3par .
+compute forgetparagraphinstructional=pr2d1par + pr2d2par + pr2d3par +pr4d1par + pr4d2par + pr4d3par .
+FREQUENCIES variables = forgetparagraphmastery forgetparagraphinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1all pr1d2all pr1d3all pr2d1all pr2d2all pr2d3all pr3d1all pr3d2all pr3d3all pr4d1all pr4d2all pr4d3all (1=1) (2=1) (else = 0).
+compute forgetallmastery=pr1d1all + pr1d2all + pr1d3all +pr3d1all + pr3d2all + pr3d3all .
+compute forgetallinstructional=pr2d1all + pr2d2all + pr2d3all +pr4d1all + pr4d2all + pr4d3all .
+FREQUENCIES variables = forgetallmastery forgetallinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1yea pr1d2yea pr1d3yea pr2d1yea pr2d2yea pr2d3yea pr3d1yea pr3d2yea pr3d3yea pr4d1yea pr4d2yea pr4d3yea (1=1) (2=1) (else = 0).
+compute positiveaffectmastery=pr1d1yea + pr1d2yea + pr1d3yea +pr3d1yea + pr3d2yea + pr3d3yea .
+compute positiveaffectinstructional=pr2d1yea + pr2d2yea + pr2d3yea +pr4d1yea + pr4d2yea + pr4d3yea .
+FREQUENCIES variables = positiveaffectmastery positiveaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1bum pr1d2bum pr1d3bum pr2d1bum pr2d2bum pr2d3bum pr3d1bum pr3d2bum pr3d3bum pr4d1bum pr4d2bum pr4d3bum (1=1) (2=1) (else = 0).
+compute negativeaffectmastery=pr1d1bum + pr1d2bum + pr1d3bum +pr3d1bum + pr3d2bum + pr3d3bum .
+compute negativeaffectinstructional=pr2d1bum + pr2d2bum + pr2d3bum +pr4d1bum + pr4d2bum + pr4d3bum .
+FREQUENCIES variables = negativeaffectmastery negativeaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1ner pr1d2ner pr1d3ner pr2d1ner pr2d2ner pr2d3ner pr3d1ner pr3d2ner pr3d3ner pr4d1ner pr4d2ner pr4d3ner (1=1) (2=1) (else = 0).
+compute nervousmastery=pr1d1ner + pr1d2ner + pr1d3ner +pr3d1ner + pr3d2ner + pr3d3ner .
+compute nervousinstructional=pr2d1ner + pr2d2ner + pr2d3ner +pr4d1ner + pr4d2ner + pr4d3ner .
+FREQUENCIES variables = nervousmastery nervousinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1huh pr1d2huh pr1d3huh pr2d1huh pr2d2huh pr2d3huh pr3d1huh pr3d2huh pr3d3huh pr4d1huh pr4d2huh pr4d3huh (1=1) (2=1) (else = 0).
+compute noconcentratemastery=pr1d1huh + pr1d2huh + pr1d3huh +pr3d1huh + pr3d2huh + pr3d3huh .
+compute noconcentrateinstructional=pr2d1huh + pr2d2huh + pr2d3huh +pr4d1huh + pr4d2huh + pr4d3huh .
+FREQUENCIES variables = noconcentratemastery noconcentrateinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1int pr1d2int pr1d3int pr2d1int pr2d2int pr2d3int pr3d1int pr3d2int pr3d3int pr4d1int pr4d2int pr4d3int (1=1) (2=1) (else = 0).
+compute interviewerproceduremastery=pr1d1int + pr1d2int + pr1d3int +pr3d1int + pr3d2int + pr3d3int .
+compute interviewerprocedureinstructional=pr2d1int + pr2d2int + pr2d3int +pr4d1int + pr4d2int + pr4d3int .
+FREQUENCIES variables = interviewerproceduremastery interviewerprocedureinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1ncv pr1d2ncv pr1d3ncv pr2d1ncv pr2d2ncv pr2d3ncv pr3d1ncv pr3d2ncv pr3d3ncv pr4d1ncv pr4d2ncv pr4d3ncv (1=1) (2=1) (else = 0).
+compute notalkimastery=pr1d1ncv + pr1d2ncv + pr1d3ncv +pr3d1ncv + pr3d2ncv + pr3d3ncv .
+compute notalkiinstructional=pr2d1ncv + pr2d2ncv + pr2d3ncv +pr4d1ncv + pr4d2ncv + pr4d3ncv .
+FREQUENCIES variables = notalkimastery notalkiinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1tge pr1d2tge pr1d3tge pr2d1tge pr2d2tge pr2d3tge pr3d1tge pr3d2tge pr3d3tge pr4d1tge pr4d2tge pr4d3tge (1=1) (2=1) (else = 0).
+compute toogeneralmastery=pr1d1tge + pr1d2tge + pr1d3tge +pr3d1tge + pr3d2tge + pr3d3tge .
+compute toogeneralinstructional=pr2d1tge + pr2d2tge + pr2d3tge +pr4d1tge + pr4d2tge + pr4d3tge .
+FREQUENCIES variables = toogeneralmastery toogeneralinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1dis pr1d2dis pr1d3dis pr2d1dis pr2d2dis pr2d3dis pr3d1dis pr3d2dis pr3d3dis pr4d1dis pr4d2dis pr4d3dis (1=1) (2=1) (else = 0).
+compute distractormastery=pr1d1dis + pr1d2dis + pr1d3dis +pr3d1dis + pr3d2dis + pr3d3dis .
+compute distractorinstructional=pr2d1dis + pr2d2dis + pr2d3dis +pr4d1dis + pr4d2dis + pr4d3dis .
+FREQUENCIES variables = distractormastery distractorinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pr1d1nod pr1d2nod pr1d3nod pr2d1nod pr2d2nod pr2d3nod pr3d1nod pr3d2nod pr3d3nod pr4d1nod pr4d2nod pr4d3nod (1=1) (2=1) (else = 0).
+compute nodifficultiesmastery=pr1d1nod + pr1d2nod + pr1d3nod +pr3d1nod + pr3d2nod + pr3d3nod .
+compute nodifficultiesinstructional=pr2d1nod + pr2d2nod + pr2d3nod +pr4d1nod + pr4d2nod + pr4d3nod .
+FREQUENCIES variables = nodifficultiesmastery nodifficultiesinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+FILTER OFF.
+USE ALL.
+EXECUTE.
+

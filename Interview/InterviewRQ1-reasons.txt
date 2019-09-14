@@ -1,0 +1,5 @@
+FREQUENCIES VARIABLES= rimvoc rimlen rimlit rimlot rimwrit rimstruc rimcomp rimint rimvis rimket rimkec rimlket rimlkec rimpat rimpac rimnat rimnac riivoc riilen riilit riilot riiwrit riistruc riicomp riiint riivis riiket riikec riilket riilkec riipat riipac riinat riinac rbmvoc rbmlen rbmlit rbmlot rbmwrit rbmstruc rbmcomp rbmint rbmvis rbmket rbmkec rbmlket rbmlkec rbmpat rbmpac rbmnat rbmnac rbivoc rbilen rbilit rbilot rbiwrit rbistruc rbicomp rbiint rbivis rbiket rbikec rbilket rbilkec rbipat rbipac rbinat rbinac
+  /ORDER=ANALYSIS.
+      
+FREQUENCIES VARIABLES=rimease riiease rbmease rbiease 
+  /ORDER=ANALYSIS.

@@ -1,0 +1,141 @@
+DATASET NAME main.
+USE ALL. 
+COMPUTE filter_$=(group = 1  & int = 0). 
+VARIABLE LABELS filter_$ 'group = 1  & int = 0 (FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+COMPUTE mrimp  = mrim1p  + mrim2p  + mrim3p .
+VARIABLE LABELS  mrimp  '# of p  represented in im level reading'. 
+EXECUTE.
+COMPUTE mriip  = mrii1p  + mrii2p  + mrii3p .
+VARIABLE LABELS  mriip  '# of p  represented in ii level reading'. 
+EXECUTE.
+COMPUTE mrbmp  = mrbm1p  + mrbm2p  + mrbm3p .
+VARIABLE LABELS  mrbmp  '# of p  represented in bm level reading'. 
+EXECUTE.
+COMPUTE mrbip  = mrbi1p  + mrbi2p  + mrbi3p .
+VARIABLE LABELS  mrbip  '# of p  represented in bi level reading'. 
+EXECUTE.
+GLM mrimp mriip mrbmp mrbip  BY readspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(readspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(readspint*sex) 
+/EMMEANS=TABLES(readspint*interest) 
+/EMMEANS=TABLES(readspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(readspint*sex*interest) 
+/EMMEANS=TABLES(readspint*sex*difficulty) 
+/EMMEANS=TABLES(readspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(readspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=readspint sex readspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+COMPUTE mrimg  = mrim1g  + mrim2g  + mrim3g .
+VARIABLE LABELS  mrimg  '# of g  represented in im level reading'. 
+EXECUTE.
+COMPUTE mriig  = mrii1g  + mrii2g  + mrii3g .
+VARIABLE LABELS  mriig  '# of g  represented in ii level reading'. 
+EXECUTE.
+COMPUTE mrbmg  = mrbm1g  + mrbm2g  + mrbm3g .
+VARIABLE LABELS  mrbmg  '# of g  represented in bm level reading'. 
+EXECUTE.
+COMPUTE mrbig  = mrbi1g  + mrbi2g  + mrbi3g .
+VARIABLE LABELS  mrbig  '# of g  represented in bi level reading'. 
+EXECUTE.
+GLM mrimg mriig mrbmg mrbig  BY readspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(readspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(readspint*sex) 
+/EMMEANS=TABLES(readspint*interest) 
+/EMMEANS=TABLES(readspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(readspint*sex*interest) 
+/EMMEANS=TABLES(readspint*sex*difficulty) 
+/EMMEANS=TABLES(readspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(readspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=readspint sex readspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy2.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+GLM mrimsent mriisent mrbmsent mrbisent  BY readspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(readspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(readspint*sex) 
+/EMMEANS=TABLES(readspint*interest) 
+/EMMEANS=TABLES(readspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(readspint*sex*interest) 
+/EMMEANS=TABLES(readspint*sex*difficulty) 
+/EMMEANS=TABLES(readspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(readspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=readspint sex readspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy3.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+recode mrimpara mriipara mrbmpara mrbipara (1=1) (2=2) (3=3) (else = 0).
+GLM mrimpara mriipara mrbmpara mrbipara  BY readspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(readspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(readspint*sex) 
+/EMMEANS=TABLES(readspint*interest) 
+/EMMEANS=TABLES(readspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(readspint*sex*interest) 
+/EMMEANS=TABLES(readspint*sex*difficulty) 
+/EMMEANS=TABLES(readspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(readspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=readspint sex readspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy4.

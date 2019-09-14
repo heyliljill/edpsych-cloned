@@ -1,0 +1,88 @@
+Select high math interest
+
+USE ALL. 
+COMPUTE filter_$=(mathspint = 1). 
+VARIABLE LABELS filter_$ 'mathspint = 1 (FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+
+
+Select low math interest
+
+USE ALL. 
+COMPUTE filter_$=(mathspint = 2). 
+VARIABLE LABELS filter_$ 'mathspint = 2 (FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+
+
+Select high reading interest
+
+USE ALL. 
+COMPUTE filter_$=(readspint = 1). 
+VARIABLE LABELS filter_$ 'readspint = 1 (FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+
+
+Select low reading interest
+
+USE ALL. 
+COMPUTE filter_$=(readspint = 2). 
+VARIABLE LABELS filter_$ 'readspint = 2 (FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+
+
+Select protocol
+
+USE ALL. 
+COMPUTE filter_$=(pro = 1). 
+VARIABLE LABELS filter_$ 'pro = 1 (FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+
+Select main
+
+USE ALL. 
+COMPUTE filter_$=(pro = 0). 
+VARIABLE LABELS filter_$ 'pro = 0 (FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+
+Turn off filters
+
+FILTER OFF. 
+USE ALL. 
+EXECUTE.
+
+
+Combine filters with & 
+
+example:
+
+USE ALL.
+COMPUTE filter_$=(mathspint = 2 & pro = 1).
+VARIABLE LABELS filter_$ 'mathspint = 2 & pro = 1 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.

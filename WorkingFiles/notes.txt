@@ -1,0 +1,2 @@
+SPINT2 = special interest + middle group vs. low group
+SPINT = special interest vs. low group. no middle group included

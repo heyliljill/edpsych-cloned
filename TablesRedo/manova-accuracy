@@ -1,0 +1,81 @@
+DATASET NAME main.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+
+
+recode mrimacc mriiacc mrbmacc mrbiacc (1=1) (else = 0).
+GLM mrimacc mriiacc mrbmacc mrbiacc BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+
+
+recode mrimacc mriiacc mrbmacc mrbiacc (2=1) (else = 0).
+GLM mrimacc mriiacc mrbmacc mrbiacc BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+
+
+recode mrimacc mriiacc mrbmacc mrbiacc (3=1) (else = 0).
+GLM mrimacc mriiacc mrbmacc mrbiacc BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+
+
+recode mrimacc mriiacc mrbmacc mrbiacc (4=1) (else = 0).
+GLM mrimacc mriiacc mrbmacc mrbiacc BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  

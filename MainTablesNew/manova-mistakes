@@ -1,0 +1,248 @@
+DATASET NAME main.
+USE ALL. 
+COMPUTE filter_$=(group = 1  & int = 0). 
+VARIABLE LABELS filter_$ 'group = 1  & int = 0 (FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+recode mmim1mis mmim2mis mmim3mis mmii1mis mmii2mis mmii3mis mmbm1mis mmbm2mis mmbm3mis mmbi1mis mmbi2mis mmbi3mis (1=1) (else = 0).
+COMPUTE mmimmis  = mmim1mis  + mmim2mis  + mmim3mis .
+VARIABLE LABELS  mmimmis  '# of mistakes of this type made in im level math'. 
+EXECUTE.
+COMPUTE mmiimis  = mmii1mis  + mmii2mis  + mmii3mis .
+VARIABLE LABELS  mmiimis  '# of mistakes of this type made in ii level math'. 
+EXECUTE.
+COMPUTE mmbmmis  = mmbm1mis  + mmbm2mis  + mmbm3mis .
+VARIABLE LABELS  mmbmmis  '# of mistakes of this type made in bm level math'. 
+EXECUTE.
+COMPUTE mmbimis  = mmbi1mis  + mmbi2mis  + mmbi3mis .
+VARIABLE LABELS  mmbimis  '# of mistakes of this type made in bi level math'. 
+EXECUTE.
+GLM mmimmis mmiimis mmbmmis mmbimis  BY mathspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(mathspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(mathspint*sex) 
+/EMMEANS=TABLES(mathspint*interest) 
+/EMMEANS=TABLES(mathspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest) 
+/EMMEANS=TABLES(mathspint*sex*difficulty) 
+/EMMEANS=TABLES(mathspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=mathspint sex mathspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+recode mmim1mis mmim2mis mmim3mis mmii1mis mmii2mis mmii3mis mmbm1mis mmbm2mis mmbm3mis mmbi1mis mmbi2mis mmbi3mis (2=1) (else = 0).
+COMPUTE mmimmis  = mmim1mis  + mmim2mis  + mmim3mis .
+VARIABLE LABELS  mmimmis  '# of mistakes of this type made in im level math'. 
+EXECUTE.
+COMPUTE mmiimis  = mmii1mis  + mmii2mis  + mmii3mis .
+VARIABLE LABELS  mmiimis  '# of mistakes of this type made in ii level math'. 
+EXECUTE.
+COMPUTE mmbmmis  = mmbm1mis  + mmbm2mis  + mmbm3mis .
+VARIABLE LABELS  mmbmmis  '# of mistakes of this type made in bm level math'. 
+EXECUTE.
+COMPUTE mmbimis  = mmbi1mis  + mmbi2mis  + mmbi3mis .
+VARIABLE LABELS  mmbimis  '# of mistakes of this type made in bi level math'. 
+EXECUTE.
+GLM mmimmis mmiimis mmbmmis mmbimis  BY mathspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(mathspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(mathspint*sex) 
+/EMMEANS=TABLES(mathspint*interest) 
+/EMMEANS=TABLES(mathspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest) 
+/EMMEANS=TABLES(mathspint*sex*difficulty) 
+/EMMEANS=TABLES(mathspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=mathspint sex mathspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy2.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+recode mmim1mis mmim2mis mmim3mis mmii1mis mmii2mis mmii3mis mmbm1mis mmbm2mis mmbm3mis mmbi1mis mmbi2mis mmbi3mis (3=1) (else = 0).
+COMPUTE mmimmis  = mmim1mis  + mmim2mis  + mmim3mis .
+VARIABLE LABELS  mmimmis  '# of mistakes of this type made in im level math'. 
+EXECUTE.
+COMPUTE mmiimis  = mmii1mis  + mmii2mis  + mmii3mis .
+VARIABLE LABELS  mmiimis  '# of mistakes of this type made in ii level math'. 
+EXECUTE.
+COMPUTE mmbmmis  = mmbm1mis  + mmbm2mis  + mmbm3mis .
+VARIABLE LABELS  mmbmmis  '# of mistakes of this type made in bm level math'. 
+EXECUTE.
+COMPUTE mmbimis  = mmbi1mis  + mmbi2mis  + mmbi3mis .
+VARIABLE LABELS  mmbimis  '# of mistakes of this type made in bi level math'. 
+EXECUTE.
+GLM mmimmis mmiimis mmbmmis mmbimis  BY mathspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(mathspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(mathspint*sex) 
+/EMMEANS=TABLES(mathspint*interest) 
+/EMMEANS=TABLES(mathspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest) 
+/EMMEANS=TABLES(mathspint*sex*difficulty) 
+/EMMEANS=TABLES(mathspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=mathspint sex mathspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy3.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+recode mmim1mis mmim2mis mmim3mis mmii1mis mmii2mis mmii3mis mmbm1mis mmbm2mis mmbm3mis mmbi1mis mmbi2mis mmbi3mis (4=1) (else = 0).
+COMPUTE mmimmis  = mmim1mis  + mmim2mis  + mmim3mis .
+VARIABLE LABELS  mmimmis  '# of mistakes of this type made in im level math'. 
+EXECUTE.
+COMPUTE mmiimis  = mmii1mis  + mmii2mis  + mmii3mis .
+VARIABLE LABELS  mmiimis  '# of mistakes of this type made in ii level math'. 
+EXECUTE.
+COMPUTE mmbmmis  = mmbm1mis  + mmbm2mis  + mmbm3mis .
+VARIABLE LABELS  mmbmmis  '# of mistakes of this type made in bm level math'. 
+EXECUTE.
+COMPUTE mmbimis  = mmbi1mis  + mmbi2mis  + mmbi3mis .
+VARIABLE LABELS  mmbimis  '# of mistakes of this type made in bi level math'. 
+EXECUTE.
+GLM mmimmis mmiimis mmbmmis mmbimis  BY mathspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(mathspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(mathspint*sex) 
+/EMMEANS=TABLES(mathspint*interest) 
+/EMMEANS=TABLES(mathspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest) 
+/EMMEANS=TABLES(mathspint*sex*difficulty) 
+/EMMEANS=TABLES(mathspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=mathspint sex mathspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy4.
+DATASET COPY  mainCopy5 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy5.
+recode mmim1mis mmim2mis mmim3mis mmii1mis mmii2mis mmii3mis mmbm1mis mmbm2mis mmbm3mis mmbi1mis mmbi2mis mmbi3mis (5=1) (else = 0).
+COMPUTE mmimmis  = mmim1mis  + mmim2mis  + mmim3mis .
+VARIABLE LABELS  mmimmis  '# of mistakes of this type made in im level math'. 
+EXECUTE.
+COMPUTE mmiimis  = mmii1mis  + mmii2mis  + mmii3mis .
+VARIABLE LABELS  mmiimis  '# of mistakes of this type made in ii level math'. 
+EXECUTE.
+COMPUTE mmbmmis  = mmbm1mis  + mmbm2mis  + mmbm3mis .
+VARIABLE LABELS  mmbmmis  '# of mistakes of this type made in bm level math'. 
+EXECUTE.
+COMPUTE mmbimis  = mmbi1mis  + mmbi2mis  + mmbi3mis .
+VARIABLE LABELS  mmbimis  '# of mistakes of this type made in bi level math'. 
+EXECUTE.
+GLM mmimmis mmiimis mmbmmis mmbimis  BY mathspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(mathspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(mathspint*sex) 
+/EMMEANS=TABLES(mathspint*interest) 
+/EMMEANS=TABLES(mathspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest) 
+/EMMEANS=TABLES(mathspint*sex*difficulty) 
+/EMMEANS=TABLES(mathspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=mathspint sex mathspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy5.
+DATASET COPY  mainCopy6 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy6.
+recode mmim1mis mmim2mis mmim3mis mmii1mis mmii2mis mmii3mis mmbm1mis mmbm2mis mmbm3mis mmbi1mis mmbi2mis mmbi3mis (6=1) (else = 0).
+COMPUTE mmimmis  = mmim1mis  + mmim2mis  + mmim3mis .
+VARIABLE LABELS  mmimmis  '# of mistakes of this type made in im level math'. 
+EXECUTE.
+COMPUTE mmiimis  = mmii1mis  + mmii2mis  + mmii3mis .
+VARIABLE LABELS  mmiimis  '# of mistakes of this type made in ii level math'. 
+EXECUTE.
+COMPUTE mmbmmis  = mmbm1mis  + mmbm2mis  + mmbm3mis .
+VARIABLE LABELS  mmbmmis  '# of mistakes of this type made in bm level math'. 
+EXECUTE.
+COMPUTE mmbimis  = mmbi1mis  + mmbi2mis  + mmbi3mis .
+VARIABLE LABELS  mmbimis  '# of mistakes of this type made in bi level math'. 
+EXECUTE.
+GLM mmimmis mmiimis mmbmmis mmbimis  BY mathspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(mathspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(mathspint*sex) 
+/EMMEANS=TABLES(mathspint*interest) 
+/EMMEANS=TABLES(mathspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest) 
+/EMMEANS=TABLES(mathspint*sex*difficulty) 
+/EMMEANS=TABLES(mathspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=mathspint sex mathspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy6.

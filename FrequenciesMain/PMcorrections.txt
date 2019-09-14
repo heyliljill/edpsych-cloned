@@ -1,0 +1,60 @@
+DATASET NAME pro.
+DATASET COPY  proCopy0 WINDOW=FRONT.
+DATASET ACTIVATE proCopy0.
+COMPUTE pmano = pmim1ano + pmim2ano + pmim3ano + pmii1ano + pmii2ano + pmii3ano + pmbm1ano + pmbm2ano + pmbm3ano + pmbi1ano + pmbi2ano + pmbi3ano.
+VARIABLE LABELS  pmano '# of corrections from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmano
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy0.
+
+DATASET NAME pro.
+DATASET COPY  proCopy1 WINDOW=FRONT.
+DATASET ACTIVATE proCopy1.
+COMPUTE pmcom = pmim1com + pmim2com + pmim3com + pmii1com + pmii2com + pmii3com + pmbm1com + pmbm2com + pmbm3com + pmbi1com + pmbi2com + pmbi3com.
+VARIABLE LABELS  pmcom '# of corrections from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmcom
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy1.
+
+DATASET NAME pro.
+DATASET COPY  proCopy2 WINDOW=FRONT.
+DATASET ACTIVATE proCopy2.
+COMPUTE pmcop = pmim1cop + pmim2cop + pmim3cop + pmii1cop + pmii2cop + pmii3cop + pmbm1cop + pmbm2cop + pmbm3cop + pmbi1cop + pmbi2cop + pmbi3cop.
+VARIABLE LABELS  pmcop '# of corrections from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmcop
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy2.
+
+DATASET NAME pro.
+DATASET COPY  proCopy3 WINDOW=FRONT.
+DATASET ACTIVATE proCopy3.
+COMPUTE pmopk = pmim1opk + pmim2opk + pmim3opk + pmii1opk + pmii2opk + pmii3opk + pmbm1opk + pmbm2opk + pmbm3opk + pmbi1opk + pmbi2opk + pmbi3opk.
+VARIABLE LABELS  pmopk '# of corrections from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmopk
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy3.
+
+DATASET NAME pro.
+DATASET COPY  proCopy4 WINDOW=FRONT.
+DATASET ACTIVATE proCopy4.
+COMPUTE pmopc = pmim1opc + pmim2opc + pmim3opc + pmii1opc + pmii2opc + pmii3opc + pmbm1opc + pmbm2opc + pmbm3opc + pmbi1opc + pmbi2opc + pmbi3opc.
+VARIABLE LABELS  pmopc '# of corrections from all problems'.
+EXECUTE.
+FREQUENCIES variables = pmopc
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE pro.
+DATASET CLOSE proCopy4.
+

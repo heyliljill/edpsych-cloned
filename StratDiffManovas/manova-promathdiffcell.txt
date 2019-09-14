@@ -1,0 +1,1072 @@
+DATASET COPY  proCopy WINDOW=FRONT.
+DATASET ACTIVATE proCopy.
+USE ALL. 
+COMPUTE filter_$=(cell = 1| cell = 4). 
+VARIABLE LABELS filter_$ 'cell = 1 | 4(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+recode pmdim1su pmdii2su pmdbm3su (1=1) (2=1) (else = 0).
+compute setupim=pmdim1su + pmdim2su + pmdim3su.
+compute setupii=pmdii1su + pmdii2su + pmdii3su.
+compute setupbm=pmdbm1su + pmdbm2su + pmdbm3su.
+compute setupbi=pmdbi1su + pmdbi2su + pmdbi3su.
+GLM setupim setupii setupbm setupbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1sp pmdii2sp pmdbm3sp (1=1) (2=1) (else = 0).
+compute partialsetupim=pmdim1sp + pmdim2sp + pmdim3sp.
+compute partialsetupii=pmdii1sp + pmdii2sp + pmdii3sp.
+compute partialsetupbm=pmdbm1sp + pmdbm2sp + pmdbm3sp.
+compute partialsetupbi=pmdbi1sp + pmdbi2sp + pmdbi3sp.
+GLM partialsetupim partialsetupii partialsetupbm partialsetupbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1cd pmdii2cd pmdbm3cd (1=1) (2=1) (else = 0).
+compute comprehensionim=pmdim1cd + pmdim2cd + pmdim3cd.
+compute comprehensionii=pmdii1cd + pmdii2cd + pmdii3cd.
+compute comprehensionbm=pmdbm1cd + pmdbm2cd + pmdbm3cd.
+compute comprehensionbi=pmdbi1cd + pmdbi2cd + pmdbi3cd.
+GLM comprehensionim comprehensionii comprehensionbm comprehensionbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1cp pmdii2cp pmdbm3cp (1=1) (2=1) (else = 0).
+compute comprehensionpartsim=pmdim1cp + pmdim2cp + pmdim3cp.
+compute comprehensionpartsii=pmdii1cp + pmdii2cp + pmdii3cp.
+compute comprehensionpartsbm=pmdbm1cp + pmdbm2cp + pmdbm3cp.
+compute comprehensionpartsbi=pmdbi1cp + pmdbi2cp + pmdbi3cp.
+GLM comprehensionpartsim comprehensionpartsii comprehensionpartsbm comprehensionpartsbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1ck pmdii2ck pmdbm3ck (1=1) (2=1) (else = 0).
+compute keywordcomprehensionim=pmdim1ck + pmdim2ck + pmdim3ck.
+compute keywordcomprehensionii=pmdii1ck + pmdii2ck + pmdii3ck.
+compute keywordcomprehensionbm=pmdbm1ck + pmdbm2ck + pmdbm3ck.
+compute keywordcomprehensionbi=pmdbi1ck + pmdbi2ck + pmdbi3ck.
+GLM keywordcomprehensionim keywordcomprehensionii keywordcomprehensionbm keywordcomprehensionbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1cv pmdii2cv pmdbm3cv (1=1) (2=1) (else = 0).
+compute vocabcomprehensionim=pmdim1cv + pmdim2cv + pmdim3cv.
+compute vocabcomprehensionii=pmdii1cv + pmdii2cv + pmdii3cv.
+compute vocabcomprehensionbm=pmdbm1cv + pmdbm2cv + pmdbm3cv.
+compute vocabcomprehensionbi=pmdbi1cv + pmdbi2cv + pmdbi3cv.
+GLM vocabcomprehensionim vocabcomprehensionii vocabcomprehensionbm vocabcomprehensionbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1ex pmdii2ex pmdbm3ex (1=1) (2=1) (else = 0).
+compute extramissinginfoim=pmdim1ex + pmdim2ex + pmdim3ex.
+compute extramissinginfoii=pmdii1ex + pmdii2ex + pmdii3ex.
+compute extramissinginfobm=pmdbm1ex + pmdbm2ex + pmdbm3ex.
+compute extramissinginfobi=pmdbi1ex + pmdbi2ex + pmdbi3ex.
+GLM extramissinginfoim extramissinginfoii extramissinginfobm extramissinginfobi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1td pmdii2td pmdbm3td (1=1) (2=1) (else = 0).
+compute toodetailedim=pmdim1td + pmdim2td + pmdim3td.
+compute toodetailedii=pmdii1td + pmdii2td + pmdii3td.
+compute toodetailedbm=pmdbm1td + pmdbm2td + pmdbm3td.
+compute toodetailedbi=pmdbi1td + pmdbi2td + pmdbi3td.
+GLM toodetailedim toodetailedii toodetailedbm toodetailedbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1lk pmdii2lk pmdbm3lk (1=1) (2=1) (else = 0).
+compute lackknowledgeim=pmdim1lk + pmdim2lk + pmdim3lk.
+compute lackknowledgeii=pmdii1lk + pmdii2lk + pmdii3lk.
+compute lackknowledgebm=pmdbm1lk + pmdbm2lk + pmdbm3lk.
+compute lackknowledgebi=pmdbi1lk + pmdbi2lk + pmdbi3lk.
+GLM lackknowledgeim lackknowledgeii lackknowledgebm lackknowledgebi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1ua pmdii2ua pmdbm3ua (1=1) (2=1) (else = 0).
+compute unreasonableim=pmdim1ua + pmdim2ua + pmdim3ua.
+compute unreasonableii=pmdii1ua + pmdii2ua + pmdii3ua.
+compute unreasonablebm=pmdbm1ua + pmdbm2ua + pmdbm3ua.
+compute unreasonablebi=pmdbi1ua + pmdbi2ua + pmdbi3ua.
+GLM unreasonableim unreasonableii unreasonablebm unreasonablebi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1qu pmdii2qu pmdbm3qu (1=1) (2=1) (else = 0).
+compute questiondifficultyim=pmdim1qu + pmdim2qu + pmdim3qu.
+compute questiondifficultyii=pmdii1qu + pmdii2qu + pmdii3qu.
+compute questiondifficultybm=pmdbm1qu + pmdbm2qu + pmdbm3qu.
+compute questiondifficultybi=pmdbi1qu + pmdbi2qu + pmdbi3qu.
+GLM questiondifficultyim questiondifficultyii questiondifficultybm questiondifficultybi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1pa pmdii2pa pmdbm3pa (1=1) (2=1) (else = 0).
+compute positiveaffectim=pmdim1pa + pmdim2pa + pmdim3pa.
+compute positiveaffectii=pmdii1pa + pmdii2pa + pmdii3pa.
+compute positiveaffectbm=pmdbm1pa + pmdbm2pa + pmdbm3pa.
+compute positiveaffectbi=pmdbi1pa + pmdbi2pa + pmdbi3pa.
+GLM positiveaffectim positiveaffectii positiveaffectbm positiveaffectbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1na pmdii2na pmdbm3na (1=1) (2=1) (else = 0).
+compute negativeaffectim=pmdim1na + pmdim2na + pmdim3na.
+compute negativeaffectii=pmdii1na + pmdii2na + pmdii3na.
+compute negativeaffectbm=pmdbm1na + pmdbm2na + pmdbm3na.
+compute negativeaffectbi=pmdbi1na + pmdbi2na + pmdbi3na.
+GLM negativeaffectim negativeaffectii negativeaffectbm negativeaffectbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1ct pmdii2ct pmdbm3ct (1=1) (2=1) (else = 0).
+compute concentrationim=pmdim1ct + pmdim2ct + pmdim3ct.
+compute concentrationii=pmdii1ct + pmdii2ct + pmdii3ct.
+compute concentrationbm=pmdbm1ct + pmdbm2ct + pmdbm3ct.
+compute concentrationbi=pmdbi1ct + pmdbi2ct + pmdbi3ct.
+GLM concentrationim concentrationii concentrationbm concentrationbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute mathdiff1im = (setupim + comprehensionim + extramissinginfoim + toodetailedim + partialsetupim + negativeaffectim + questiondifficultyim)/7.
+compute mathdiff1ii = (setupii + comprehensionii + extramissinginfoii + toodetailedii + partialsetupii + negativeaffectii + questiondifficultyii)/7.
+compute mathdiff1bm = (setupbm + comprehensionbm + extramissinginfobm + toodetailedbm + partialsetupbm + negativeaffectbm + questiondifficultybm)/7.
+compute mathdiff1bi = (setupbi + comprehensionbi + extramissinginfobi + toodetailedbi + partialsetupbi + negativeaffectbi + questiondifficultybi)/7.
+GLM mathdiff1im mathdiff1ii mathdiff1bm mathdiff1bi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute mathdiff2im = (vocabcomprehensionim + lackknowledgeim + comprehensionpartsim)/3.
+compute mathdiff2ii = (vocabcomprehensionii + lackknowledgeii + comprehensionpartsii)/3.
+compute mathdiff2bm = (vocabcomprehensionbm + lackknowledgebm + comprehensionpartsbm)/3.
+compute mathdiff2bi = (vocabcomprehensionbi + lackknowledgebi + comprehensionpartsbi)/3.
+GLM mathdiff2im mathdiff2ii mathdiff2bm mathdiff2bi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute rehearsalim = (keywordcomprehensionim+vocabcomprehensionim+questiondifficultyim)/3.
+compute rehearsalii = (keywordcomprehensionii+vocabcomprehensionii+questiondifficultyii)/3.
+compute rehearsalbm = (keywordcomprehensionbm+vocabcomprehensionbm+questiondifficultybm)/3.
+compute rehearsalbi = (keywordcomprehensionbi+vocabcomprehensionbi+questiondifficultybi)/3.
+
+
+GLM rehearsalim rehearsalii rehearsalbm rehearsalbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute elaborationim = (comprehensionim+comprehensionpartsim+lackknowledgeim+positiveaffectim+negativeaffectim)/5.
+compute elaborationii = (comprehensionii+comprehensionpartsii+lackknowledgeii+positiveaffectii+negativeaffectii)/5.
+compute elaborationbm = (comprehensionbm+comprehensionpartsbm+lackknowledgebm+positiveaffectbm+negativeaffectbm)/5.
+compute elaborationbi = (comprehensionbi+comprehensionpartsbi+lackknowledgebi+positiveaffectbi+negativeaffectbi)/5.
+
+
+GLM elaborationim elaborationii elaborationbm elaborationbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute organizationalim = (setupim+partialsetupim+toodetailedim)/3.
+compute organizationalii = (setupii+partialsetupii+toodetailedii)/3.
+compute organizationalbm = (setupbm+partialsetupbm+toodetailedbm)/3.
+compute organizationalbi = (setupbi+partialsetupbi+toodetailedbi)/3.
+
+
+GLM organizationalim organizationalii organizationalbm organizationalbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute compmonitor2im = (extramissinginfoim+unreasonableim)/2.
+compute compmonitor2ii = (extramissinginfoii+unreasonableii)/2.
+compute compmonitor2bm = (extramissinginfobm+unreasonablebm)/2.
+compute compmonitor2bi = (extramissinginfobi+unreasonablebi)/2.
+
+
+GLM compmonitor2im compmonitor2ii compmonitor2bm compmonitor2bi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute affectivemotim = (concentrationim)/1.
+compute affectivemotii = (concentrationii)/1.
+compute affectivemotbm = (concentrationbm)/1.
+compute affectivemotbi = (concentrationbi)/1.
+
+
+GLM affectivemotim affectivemotii affectivemotbm affectivemotbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute rehearsalbim = (keywordcomprehensionim+vocabcomprehensionim+questiondifficultyim)/3.
+compute rehearsalbii = (keywordcomprehensionii+vocabcomprehensionii+questiondifficultyii)/3.
+compute rehearsalbbm = (keywordcomprehensionbm+vocabcomprehensionbm+questiondifficultybm)/3.
+compute rehearsalbbi = (keywordcomprehensionbi+vocabcomprehensionbi+questiondifficultybi)/3.
+
+
+GLM rehearsalbim rehearsalbii rehearsalbbm rehearsalbbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute elaborationbim = (lackknowledgeim)/1.
+compute elaborationbii = (lackknowledgeii)/1.
+compute elaborationbbm = (lackknowledgebm)/1.
+compute elaborationbbi = (lackknowledgebi)/1.
+
+
+GLM elaborationbim elaborationbii elaborationbbm elaborationbbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute organizationalbim = (setupim+partialsetupim+toodetailedim)/3.
+compute organizationalbii = (setupii+partialsetupii+toodetailedii)/3.
+compute organizationalbbm = (setupbm+partialsetupbm+toodetailedbm)/3.
+compute organizationalbbi = (setupbi+partialsetupbi+toodetailedbi)/3.
+
+
+GLM organizationalbim organizationalbii organizationalbbm organizationalbbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute rehearsalcim = ()/0.
+compute rehearsalcii = ()/0.
+compute rehearsalcbm = ()/0.
+compute rehearsalcbi = ()/0.
+
+
+GLM rehearsalcim rehearsalcii rehearsalcbm rehearsalcbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute elaborationcim = (comprehensionim+comprehensionpartsim+positiveaffectim+negativeaffectim)/4.
+compute elaborationcii = (comprehensionii+comprehensionpartsii+positiveaffectii+negativeaffectii)/4.
+compute elaborationcbm = (comprehensionbm+comprehensionpartsbm+positiveaffectbm+negativeaffectbm)/4.
+compute elaborationcbi = (comprehensionbi+comprehensionpartsbi+positiveaffectbi+negativeaffectbi)/4.
+
+
+GLM elaborationcim elaborationcii elaborationcbm elaborationcbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute organizationalcim = ()/0.
+compute organizationalcii = ()/0.
+compute organizationalcbm = ()/0.
+compute organizationalcbi = ()/0.
+
+
+GLM organizationalcim organizationalcii organizationalcbm organizationalcbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+FILTER OFF.
+USE ALL.
+EXECUTE.
+
+DATASET COPY  proCopy WINDOW=FRONT.
+DATASET ACTIVATE proCopy.
+USE ALL. 
+COMPUTE filter_$=(cell = 2| cell = 5). 
+VARIABLE LABELS filter_$ 'cell = 2 | 5(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+recode pmdim1su pmdii2su pmdbm3su (1=1) (2=1) (else = 0).
+compute setupim=pmdim1su + pmdim2su + pmdim3su.
+compute setupii=pmdii1su + pmdii2su + pmdii3su.
+compute setupbm=pmdbm1su + pmdbm2su + pmdbm3su.
+compute setupbi=pmdbi1su + pmdbi2su + pmdbi3su.
+GLM setupim setupii setupbm setupbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1sp pmdii2sp pmdbm3sp (1=1) (2=1) (else = 0).
+compute partialsetupim=pmdim1sp + pmdim2sp + pmdim3sp.
+compute partialsetupii=pmdii1sp + pmdii2sp + pmdii3sp.
+compute partialsetupbm=pmdbm1sp + pmdbm2sp + pmdbm3sp.
+compute partialsetupbi=pmdbi1sp + pmdbi2sp + pmdbi3sp.
+GLM partialsetupim partialsetupii partialsetupbm partialsetupbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1cd pmdii2cd pmdbm3cd (1=1) (2=1) (else = 0).
+compute comprehensionim=pmdim1cd + pmdim2cd + pmdim3cd.
+compute comprehensionii=pmdii1cd + pmdii2cd + pmdii3cd.
+compute comprehensionbm=pmdbm1cd + pmdbm2cd + pmdbm3cd.
+compute comprehensionbi=pmdbi1cd + pmdbi2cd + pmdbi3cd.
+GLM comprehensionim comprehensionii comprehensionbm comprehensionbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1cp pmdii2cp pmdbm3cp (1=1) (2=1) (else = 0).
+compute comprehensionpartsim=pmdim1cp + pmdim2cp + pmdim3cp.
+compute comprehensionpartsii=pmdii1cp + pmdii2cp + pmdii3cp.
+compute comprehensionpartsbm=pmdbm1cp + pmdbm2cp + pmdbm3cp.
+compute comprehensionpartsbi=pmdbi1cp + pmdbi2cp + pmdbi3cp.
+GLM comprehensionpartsim comprehensionpartsii comprehensionpartsbm comprehensionpartsbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1ck pmdii2ck pmdbm3ck (1=1) (2=1) (else = 0).
+compute keywordcomprehensionim=pmdim1ck + pmdim2ck + pmdim3ck.
+compute keywordcomprehensionii=pmdii1ck + pmdii2ck + pmdii3ck.
+compute keywordcomprehensionbm=pmdbm1ck + pmdbm2ck + pmdbm3ck.
+compute keywordcomprehensionbi=pmdbi1ck + pmdbi2ck + pmdbi3ck.
+GLM keywordcomprehensionim keywordcomprehensionii keywordcomprehensionbm keywordcomprehensionbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1cv pmdii2cv pmdbm3cv (1=1) (2=1) (else = 0).
+compute vocabcomprehensionim=pmdim1cv + pmdim2cv + pmdim3cv.
+compute vocabcomprehensionii=pmdii1cv + pmdii2cv + pmdii3cv.
+compute vocabcomprehensionbm=pmdbm1cv + pmdbm2cv + pmdbm3cv.
+compute vocabcomprehensionbi=pmdbi1cv + pmdbi2cv + pmdbi3cv.
+GLM vocabcomprehensionim vocabcomprehensionii vocabcomprehensionbm vocabcomprehensionbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1ex pmdii2ex pmdbm3ex (1=1) (2=1) (else = 0).
+compute extramissinginfoim=pmdim1ex + pmdim2ex + pmdim3ex.
+compute extramissinginfoii=pmdii1ex + pmdii2ex + pmdii3ex.
+compute extramissinginfobm=pmdbm1ex + pmdbm2ex + pmdbm3ex.
+compute extramissinginfobi=pmdbi1ex + pmdbi2ex + pmdbi3ex.
+GLM extramissinginfoim extramissinginfoii extramissinginfobm extramissinginfobi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1td pmdii2td pmdbm3td (1=1) (2=1) (else = 0).
+compute toodetailedim=pmdim1td + pmdim2td + pmdim3td.
+compute toodetailedii=pmdii1td + pmdii2td + pmdii3td.
+compute toodetailedbm=pmdbm1td + pmdbm2td + pmdbm3td.
+compute toodetailedbi=pmdbi1td + pmdbi2td + pmdbi3td.
+GLM toodetailedim toodetailedii toodetailedbm toodetailedbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1lk pmdii2lk pmdbm3lk (1=1) (2=1) (else = 0).
+compute lackknowledgeim=pmdim1lk + pmdim2lk + pmdim3lk.
+compute lackknowledgeii=pmdii1lk + pmdii2lk + pmdii3lk.
+compute lackknowledgebm=pmdbm1lk + pmdbm2lk + pmdbm3lk.
+compute lackknowledgebi=pmdbi1lk + pmdbi2lk + pmdbi3lk.
+GLM lackknowledgeim lackknowledgeii lackknowledgebm lackknowledgebi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1ua pmdii2ua pmdbm3ua (1=1) (2=1) (else = 0).
+compute unreasonableim=pmdim1ua + pmdim2ua + pmdim3ua.
+compute unreasonableii=pmdii1ua + pmdii2ua + pmdii3ua.
+compute unreasonablebm=pmdbm1ua + pmdbm2ua + pmdbm3ua.
+compute unreasonablebi=pmdbi1ua + pmdbi2ua + pmdbi3ua.
+GLM unreasonableim unreasonableii unreasonablebm unreasonablebi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1qu pmdii2qu pmdbm3qu (1=1) (2=1) (else = 0).
+compute questiondifficultyim=pmdim1qu + pmdim2qu + pmdim3qu.
+compute questiondifficultyii=pmdii1qu + pmdii2qu + pmdii3qu.
+compute questiondifficultybm=pmdbm1qu + pmdbm2qu + pmdbm3qu.
+compute questiondifficultybi=pmdbi1qu + pmdbi2qu + pmdbi3qu.
+GLM questiondifficultyim questiondifficultyii questiondifficultybm questiondifficultybi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1pa pmdii2pa pmdbm3pa (1=1) (2=1) (else = 0).
+compute positiveaffectim=pmdim1pa + pmdim2pa + pmdim3pa.
+compute positiveaffectii=pmdii1pa + pmdii2pa + pmdii3pa.
+compute positiveaffectbm=pmdbm1pa + pmdbm2pa + pmdbm3pa.
+compute positiveaffectbi=pmdbi1pa + pmdbi2pa + pmdbi3pa.
+GLM positiveaffectim positiveaffectii positiveaffectbm positiveaffectbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1na pmdii2na pmdbm3na (1=1) (2=1) (else = 0).
+compute negativeaffectim=pmdim1na + pmdim2na + pmdim3na.
+compute negativeaffectii=pmdii1na + pmdii2na + pmdii3na.
+compute negativeaffectbm=pmdbm1na + pmdbm2na + pmdbm3na.
+compute negativeaffectbi=pmdbi1na + pmdbi2na + pmdbi3na.
+GLM negativeaffectim negativeaffectii negativeaffectbm negativeaffectbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+recode pmdim1ct pmdii2ct pmdbm3ct (1=1) (2=1) (else = 0).
+compute concentrationim=pmdim1ct + pmdim2ct + pmdim3ct.
+compute concentrationii=pmdii1ct + pmdii2ct + pmdii3ct.
+compute concentrationbm=pmdbm1ct + pmdbm2ct + pmdbm3ct.
+compute concentrationbi=pmdbi1ct + pmdbi2ct + pmdbi3ct.
+GLM concentrationim concentrationii concentrationbm concentrationbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute mathdiff1im = (setupim + comprehensionim + extramissinginfoim + toodetailedim + partialsetupim + negativeaffectim + questiondifficultyim)/7.
+compute mathdiff1ii = (setupii + comprehensionii + extramissinginfoii + toodetailedii + partialsetupii + negativeaffectii + questiondifficultyii)/7.
+compute mathdiff1bm = (setupbm + comprehensionbm + extramissinginfobm + toodetailedbm + partialsetupbm + negativeaffectbm + questiondifficultybm)/7.
+compute mathdiff1bi = (setupbi + comprehensionbi + extramissinginfobi + toodetailedbi + partialsetupbi + negativeaffectbi + questiondifficultybi)/7.
+GLM mathdiff1im mathdiff1ii mathdiff1bm mathdiff1bi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute mathdiff2im = (vocabcomprehensionim + lackknowledgeim + comprehensionpartsim)/3.
+compute mathdiff2ii = (vocabcomprehensionii + lackknowledgeii + comprehensionpartsii)/3.
+compute mathdiff2bm = (vocabcomprehensionbm + lackknowledgebm + comprehensionpartsbm)/3.
+compute mathdiff2bi = (vocabcomprehensionbi + lackknowledgebi + comprehensionpartsbi)/3.
+GLM mathdiff2im mathdiff2ii mathdiff2bm mathdiff2bi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute rehearsalim = (keywordcomprehensionim+vocabcomprehensionim+questiondifficultyim)/3.
+compute rehearsalii = (keywordcomprehensionii+vocabcomprehensionii+questiondifficultyii)/3.
+compute rehearsalbm = (keywordcomprehensionbm+vocabcomprehensionbm+questiondifficultybm)/3.
+compute rehearsalbi = (keywordcomprehensionbi+vocabcomprehensionbi+questiondifficultybi)/3.
+
+
+GLM rehearsalim rehearsalii rehearsalbm rehearsalbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute elaborationim = (comprehensionim+comprehensionpartsim+lackknowledgeim+positiveaffectim+negativeaffectim)/5.
+compute elaborationii = (comprehensionii+comprehensionpartsii+lackknowledgeii+positiveaffectii+negativeaffectii)/5.
+compute elaborationbm = (comprehensionbm+comprehensionpartsbm+lackknowledgebm+positiveaffectbm+negativeaffectbm)/5.
+compute elaborationbi = (comprehensionbi+comprehensionpartsbi+lackknowledgebi+positiveaffectbi+negativeaffectbi)/5.
+
+
+GLM elaborationim elaborationii elaborationbm elaborationbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute organizationalim = (setupim+partialsetupim+toodetailedim)/3.
+compute organizationalii = (setupii+partialsetupii+toodetailedii)/3.
+compute organizationalbm = (setupbm+partialsetupbm+toodetailedbm)/3.
+compute organizationalbi = (setupbi+partialsetupbi+toodetailedbi)/3.
+
+
+GLM organizationalim organizationalii organizationalbm organizationalbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute compmonitor2im = (extramissinginfoim+unreasonableim)/2.
+compute compmonitor2ii = (extramissinginfoii+unreasonableii)/2.
+compute compmonitor2bm = (extramissinginfobm+unreasonablebm)/2.
+compute compmonitor2bi = (extramissinginfobi+unreasonablebi)/2.
+
+
+GLM compmonitor2im compmonitor2ii compmonitor2bm compmonitor2bi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute affectivemotim = (concentrationim)/1.
+compute affectivemotii = (concentrationii)/1.
+compute affectivemotbm = (concentrationbm)/1.
+compute affectivemotbi = (concentrationbi)/1.
+
+
+GLM affectivemotim affectivemotii affectivemotbm affectivemotbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute rehearsalbim = (keywordcomprehensionim+vocabcomprehensionim+questiondifficultyim)/3.
+compute rehearsalbii = (keywordcomprehensionii+vocabcomprehensionii+questiondifficultyii)/3.
+compute rehearsalbbm = (keywordcomprehensionbm+vocabcomprehensionbm+questiondifficultybm)/3.
+compute rehearsalbbi = (keywordcomprehensionbi+vocabcomprehensionbi+questiondifficultybi)/3.
+
+
+GLM rehearsalbim rehearsalbii rehearsalbbm rehearsalbbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute elaborationbim = (lackknowledgeim)/1.
+compute elaborationbii = (lackknowledgeii)/1.
+compute elaborationbbm = (lackknowledgebm)/1.
+compute elaborationbbi = (lackknowledgebi)/1.
+
+
+GLM elaborationbim elaborationbii elaborationbbm elaborationbbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute organizationalbim = (setupim+partialsetupim+toodetailedim)/3.
+compute organizationalbii = (setupii+partialsetupii+toodetailedii)/3.
+compute organizationalbbm = (setupbm+partialsetupbm+toodetailedbm)/3.
+compute organizationalbbi = (setupbi+partialsetupbi+toodetailedbi)/3.
+
+
+GLM organizationalbim organizationalbii organizationalbbm organizationalbbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute rehearsalcim = ()/0.
+compute rehearsalcii = ()/0.
+compute rehearsalcbm = ()/0.
+compute rehearsalcbi = ()/0.
+
+
+GLM rehearsalcim rehearsalcii rehearsalcbm rehearsalcbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute elaborationcim = (comprehensionim+comprehensionpartsim+positiveaffectim+negativeaffectim)/4.
+compute elaborationcii = (comprehensionii+comprehensionpartsii+positiveaffectii+negativeaffectii)/4.
+compute elaborationcbm = (comprehensionbm+comprehensionpartsbm+positiveaffectbm+negativeaffectbm)/4.
+compute elaborationcbi = (comprehensionbi+comprehensionpartsbi+positiveaffectbi+negativeaffectbi)/4.
+
+
+GLM elaborationcim elaborationcii elaborationcbm elaborationcbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+compute organizationalcim = ()/0.
+compute organizationalcii = ()/0.
+compute organizationalcbm = ()/0.
+compute organizationalcbi = ()/0.
+
+
+GLM organizationalcim organizationalcii organizationalcbm organizationalcbi BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  
+FILTER OFF.
+USE ALL.
+EXECUTE.
+

@@ -1,0 +1,22 @@
+GLM mmim1rw mmii1rw mmbm1rw mmbi1rw BY readspint sex 
+  /WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(OVERALL) 
+  /EMMEANS=TABLES(readspint) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(readspint*sex) 
+  /EMMEANS=TABLES(readspint*interest) 
+  /EMMEANS=TABLES(readspint*difficulty) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*difficulty) 
+  /EMMEANS=TABLES(interest*difficulty) 
+  /EMMEANS=TABLES(readspint*sex*interest) 
+  /EMMEANS=TABLES(readspint*sex*difficulty) 
+  /EMMEANS=TABLES(readspint*interest*difficulty) 
+  /EMMEANS=TABLES(sex*interest*difficulty) 
+  /EMMEANS=TABLES(readspint*sex*interest*difficulty) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest difficulty interest*difficulty 
+  /DESIGN=readspint sex readspint*sex.

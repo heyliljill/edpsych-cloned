@@ -1,0 +1,558 @@
+USE ALL. 
+COMPUTE filter_$=(readspint~=2). 
+VARIABLE LABELS filter_$ 'readspint~=2(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+DATASET NAME main.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+
+    
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (1=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (1=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (2=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (2=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy2.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (3=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (3=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy3.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (4=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (4=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy4.
+DATASET COPY  mainCopy5 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy5.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (5=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (5=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy5.
+DATASET COPY  mainCopy6 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy6.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (6=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (6=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy6.
+DATASET COPY  mainCopy7 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy7.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (7=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (7=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy7.
+DATASET COPY  mainCopy8 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy8.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (8=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (8=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy8.
+DATASET COPY  mainCopy10 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy10.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (10=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (10=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy10.
+DATASET COPY  mainCopy11 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy11.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (11=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (11=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy11.
+USE ALL. 
+COMPUTE filter_$=(readspint=2). 
+VARIABLE LABELS filter_$ 'readspint=2(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+DATASET NAME main.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+
+    
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (1=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (1=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (2=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (2=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy2.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (3=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (3=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy3.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (4=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (4=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy4.
+DATASET COPY  mainCopy5 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy5.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (5=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (5=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy5.
+DATASET COPY  mainCopy6 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy6.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (6=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (6=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy6.
+DATASET COPY  mainCopy7 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy7.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (7=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (7=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy7.
+DATASET COPY  mainCopy8 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy8.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (8=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (8=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy8.
+DATASET COPY  mainCopy10 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy10.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (10=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (10=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy10.
+DATASET COPY  mainCopy11 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy11.
+
+  
+  recode mrimsub1 mriisub1 mrbmsub1 mrbisub1 (11=1) (else = 0).
+  recode mrimsub2 mriisub2 mrbmsub2 mrbisub2 (11=1) (else = 0).
+compute mrimsub = mrimsub1 + mrimsub2.
+  compute mriisub = mriisub1 + mriisub2.
+  compute mrbmsub = mrbmsub1 + mrbmsub2.
+  compute mrbisub = mrbisub1 + mrbisub2.
+  
+  GLM mrimsub mriisub mrbmsub mrbisub BY sex
+    /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+    /METHOD=SSTYPE(3) 
+    /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+    /EMMEANS=TABLES(sex*interest) 
+    /EMMEANS=TABLES(sex*diff) 
+    /EMMEANS=TABLES(interest*diff) 
+    /EMMEANS=TABLES(sex*interest*diff) 
+    /CRITERIA=ALPHA(.05) 
+    /WSDESIGN=interest diff interest*diff 
+    /DESIGN=sex.
+  
+    DATASET ACTIVATE main.
+DATASET CLOSE mainCopy11.

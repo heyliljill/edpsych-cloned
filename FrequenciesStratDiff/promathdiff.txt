@@ -1,0 +1,672 @@
+Temporary.
+recode pm1dset pm2dset pm3dset pm4dset pm5dset pm6dset pm7dset pm8dset pm9dset pmadset pmbdset pmcdset (0=1) (else = 0).
+SELECT IF (pm1dset or pm2dset or pm3dset or pm4dset or pm5dset or pm6dset or pm7dset or pm8dset or pm9dset or pmadset or pmbdset or pmcdset  = 1 ).
+
+compute setup=pm1dset + pm2dset + pm3dset + pm4dset + pm5dset + pm6dset + pm7dset + pm8dset + pm9dset + pmadset + pmbdset + pmcdset .
+
+FREQUENCIES variables = setup
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dsetp pm2dsetp pm3dsetp pm4dsetp pm5dsetp pm6dsetp pm7dsetp pm8dsetp pm9dsetp pmadsetp pmbdsetp pmcdsetp (0=1) (else = 0).
+SELECT IF (pm1dsetp or pm2dsetp or pm3dsetp or pm4dsetp or pm5dsetp or pm6dsetp or pm7dsetp or pm8dsetp or pm9dsetp or pmadsetp or pmbdsetp or pmcdsetp  = 1 ).
+
+compute partialsetup=pm1dsetp + pm2dsetp + pm3dsetp + pm4dsetp + pm5dsetp + pm6dsetp + pm7dsetp + pm8dsetp + pm9dsetp + pmadsetp + pmbdsetp + pmcdsetp .
+
+FREQUENCIES variables = partialsetup
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcom pm2dcom pm3dcom pm4dcom pm5dcom pm6dcom pm7dcom pm8dcom pm9dcom pmadcom pmbdcom pmcdcom (0=1) (else = 0).
+SELECT IF (pm1dcom or pm2dcom or pm3dcom or pm4dcom or pm5dcom or pm6dcom or pm7dcom or pm8dcom or pm9dcom or pmadcom or pmbdcom or pmcdcom  = 1 ).
+
+compute comprehension=pm1dcom + pm2dcom + pm3dcom + pm4dcom + pm5dcom + pm6dcom + pm7dcom + pm8dcom + pm9dcom + pmadcom + pmbdcom + pmcdcom .
+
+FREQUENCIES variables = comprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomp pm2dcomp pm3dcomp pm4dcomp pm5dcomp pm6dcomp pm7dcomp pm8dcomp pm9dcomp pmadcomp pmbdcomp pmcdcomp (0=1) (else = 0).
+SELECT IF (pm1dcomp or pm2dcomp or pm3dcomp or pm4dcomp or pm5dcomp or pm6dcomp or pm7dcomp or pm8dcomp or pm9dcomp or pmadcomp or pmbdcomp or pmcdcomp  = 1 ).
+
+compute comprehensionparts=pm1dcomp + pm2dcomp + pm3dcomp + pm4dcomp + pm5dcomp + pm6dcomp + pm7dcomp + pm8dcomp + pm9dcomp + pmadcomp + pmbdcomp + pmcdcomp .
+
+FREQUENCIES variables = comprehensionparts
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomk pm2dcomk pm3dcomk pm4dcomk pm5dcomk pm6dcomk pm7dcomk pm8dcomk pm9dcomk pmadcomk pmbdcomk pmcdcomk (0=1) (else = 0).
+SELECT IF (pm1dcomk or pm2dcomk or pm3dcomk or pm4dcomk or pm5dcomk or pm6dcomk or pm7dcomk or pm8dcomk or pm9dcomk or pmadcomk or pmbdcomk or pmcdcomk  = 1 ).
+
+compute keywordcomprehension=pm1dcomk + pm2dcomk + pm3dcomk + pm4dcomk + pm5dcomk + pm6dcomk + pm7dcomk + pm8dcomk + pm9dcomk + pmadcomk + pmbdcomk + pmcdcomk .
+
+FREQUENCIES variables = keywordcomprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomv pm2dcomv pm3dcomv pm4dcomv pm5dcomv pm6dcomv pm7dcomv pm8dcomv pm9dcomv pmadcomv pmbdcomv pmcdcomv (0=1) (else = 0).
+SELECT IF (pm1dcomv or pm2dcomv or pm3dcomv or pm4dcomv or pm5dcomv or pm6dcomv or pm7dcomv or pm8dcomv or pm9dcomv or pmadcomv or pmbdcomv or pmcdcomv  = 1 ).
+
+compute vocabcomprehension=pm1dcomv + pm2dcomv + pm3dcomv + pm4dcomv + pm5dcomv + pm6dcomv + pm7dcomv + pm8dcomv + pm9dcomv + pmadcomv + pmbdcomv + pmcdcomv .
+
+FREQUENCIES variables = vocabcomprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dext pm2dext pm3dext pm4dext pm5dext pm6dext pm7dext pm8dext pm9dext pmadext pmbdext pmcdext (0=1) (else = 0).
+SELECT IF (pm1dext or pm2dext or pm3dext or pm4dext or pm5dext or pm6dext or pm7dext or pm8dext or pm9dext or pmadext or pmbdext or pmcdext  = 1 ).
+
+compute extramissinginfo=pm1dext + pm2dext + pm3dext + pm4dext + pm5dext + pm6dext + pm7dext + pm8dext + pm9dext + pmadext + pmbdext + pmcdext .
+
+FREQUENCIES variables = extramissinginfo
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dtoo pm2dtoo pm3dtoo pm4dtoo pm5dtoo pm6dtoo pm7dtoo pm8dtoo pm9dtoo pmadtoo pmbdtoo pmcdtoo (0=1) (else = 0).
+SELECT IF (pm1dtoo or pm2dtoo or pm3dtoo or pm4dtoo or pm5dtoo or pm6dtoo or pm7dtoo or pm8dtoo or pm9dtoo or pmadtoo or pmbdtoo or pmcdtoo  = 1 ).
+
+compute toodetailed=pm1dtoo + pm2dtoo + pm3dtoo + pm4dtoo + pm5dtoo + pm6dtoo + pm7dtoo + pm8dtoo + pm9dtoo + pmadtoo + pmbdtoo + pmcdtoo .
+
+FREQUENCIES variables = toodetailed
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dlack pm2dlack pm3dlack pm4dlack pm5dlack pm6dlack pm7dlack pm8dlack pm9dlack pmadlack pmbdlack pmcdlack (0=1) (else = 0).
+SELECT IF (pm1dlack or pm2dlack or pm3dlack or pm4dlack or pm5dlack or pm6dlack or pm7dlack or pm8dlack or pm9dlack or pmadlack or pmbdlack or pmcdlack  = 1 ).
+
+compute lackknowledge=pm1dlack + pm2dlack + pm3dlack + pm4dlack + pm5dlack + pm6dlack + pm7dlack + pm8dlack + pm9dlack + pmadlack + pmbdlack + pmcdlack .
+
+FREQUENCIES variables = lackknowledge
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dunr pm2dunr pm3dunr pm4dunr pm5dunr pm6dunr pm7dunr pm8dunr pm9dunr pmadunr pmbdunr pmcdunr (0=1) (else = 0).
+SELECT IF (pm1dunr or pm2dunr or pm3dunr or pm4dunr or pm5dunr or pm6dunr or pm7dunr or pm8dunr or pm9dunr or pmadunr or pmbdunr or pmcdunr  = 1 ).
+
+compute unreasonable=pm1dunr + pm2dunr + pm3dunr + pm4dunr + pm5dunr + pm6dunr + pm7dunr + pm8dunr + pm9dunr + pmadunr + pmbdunr + pmcdunr .
+
+FREQUENCIES variables = unreasonable
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dque pm2dque pm3dque pm4dque pm5dque pm6dque pm7dque pm8dque pm9dque pmadque pmbdque pmcdque (0=1) (else = 0).
+SELECT IF (pm1dque or pm2dque or pm3dque or pm4dque or pm5dque or pm6dque or pm7dque or pm8dque or pm9dque or pmadque or pmbdque or pmcdque  = 1 ).
+
+compute questiondifficulty=pm1dque + pm2dque + pm3dque + pm4dque + pm5dque + pm6dque + pm7dque + pm8dque + pm9dque + pmadque + pmbdque + pmcdque .
+
+FREQUENCIES variables = questiondifficulty
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dpos pm2dpos pm3dpos pm4dpos pm5dpos pm6dpos pm7dpos pm8dpos pm9dpos pmadpos pmbdpos pmcdpos (0=1) (else = 0).
+SELECT IF (pm1dpos or pm2dpos or pm3dpos or pm4dpos or pm5dpos or pm6dpos or pm7dpos or pm8dpos or pm9dpos or pmadpos or pmbdpos or pmcdpos  = 1 ).
+
+compute positiveaffect=pm1dpos + pm2dpos + pm3dpos + pm4dpos + pm5dpos + pm6dpos + pm7dpos + pm8dpos + pm9dpos + pmadpos + pmbdpos + pmcdpos .
+
+FREQUENCIES variables = positiveaffect
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dneg pm2dneg pm3dneg pm4dneg pm5dneg pm6dneg pm7dneg pm8dneg pm9dneg pmadneg pmbdneg pmcdneg (0=1) (else = 0).
+SELECT IF (pm1dneg or pm2dneg or pm3dneg or pm4dneg or pm5dneg or pm6dneg or pm7dneg or pm8dneg or pm9dneg or pmadneg or pmbdneg or pmcdneg  = 1 ).
+
+compute negativeaffect=pm1dneg + pm2dneg + pm3dneg + pm4dneg + pm5dneg + pm6dneg + pm7dneg + pm8dneg + pm9dneg + pmadneg + pmbdneg + pmcdneg .
+
+FREQUENCIES variables = negativeaffect
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcon pm2dcon pm3dcon pm4dcon pm5dcon pm6dcon pm7dcon pm8dcon pm9dcon pmadcon pmbdcon pmcdcon (0=1) (else = 0).
+SELECT IF (pm1dcon or pm2dcon or pm3dcon or pm4dcon or pm5dcon or pm6dcon or pm7dcon or pm8dcon or pm9dcon or pmadcon or pmbdcon or pmcdcon  = 1 ).
+
+compute concentration=pm1dcon + pm2dcon + pm3dcon + pm4dcon + pm5dcon + pm6dcon + pm7dcon + pm8dcon + pm9dcon + pmadcon + pmbdcon + pmcdcon .
+
+FREQUENCIES variables = concentration
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dset pm2dset pm3dset pm4dset pm5dset pm6dset pm7dset pm8dset pm9dset pmadset pmbdset pmcdset (1=1) (else = 0).
+SELECT IF (pm1dset or pm2dset or pm3dset or pm4dset or pm5dset or pm6dset or pm7dset or pm8dset or pm9dset or pmadset or pmbdset or pmcdset  = 1 ).
+
+compute setup=pm1dset + pm2dset + pm3dset + pm4dset + pm5dset + pm6dset + pm7dset + pm8dset + pm9dset + pmadset + pmbdset + pmcdset .
+
+FREQUENCIES variables = setup
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dsetp pm2dsetp pm3dsetp pm4dsetp pm5dsetp pm6dsetp pm7dsetp pm8dsetp pm9dsetp pmadsetp pmbdsetp pmcdsetp (1=1) (else = 0).
+SELECT IF (pm1dsetp or pm2dsetp or pm3dsetp or pm4dsetp or pm5dsetp or pm6dsetp or pm7dsetp or pm8dsetp or pm9dsetp or pmadsetp or pmbdsetp or pmcdsetp  = 1 ).
+
+compute partialsetup=pm1dsetp + pm2dsetp + pm3dsetp + pm4dsetp + pm5dsetp + pm6dsetp + pm7dsetp + pm8dsetp + pm9dsetp + pmadsetp + pmbdsetp + pmcdsetp .
+
+FREQUENCIES variables = partialsetup
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcom pm2dcom pm3dcom pm4dcom pm5dcom pm6dcom pm7dcom pm8dcom pm9dcom pmadcom pmbdcom pmcdcom (1=1) (else = 0).
+SELECT IF (pm1dcom or pm2dcom or pm3dcom or pm4dcom or pm5dcom or pm6dcom or pm7dcom or pm8dcom or pm9dcom or pmadcom or pmbdcom or pmcdcom  = 1 ).
+
+compute comprehension=pm1dcom + pm2dcom + pm3dcom + pm4dcom + pm5dcom + pm6dcom + pm7dcom + pm8dcom + pm9dcom + pmadcom + pmbdcom + pmcdcom .
+
+FREQUENCIES variables = comprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomp pm2dcomp pm3dcomp pm4dcomp pm5dcomp pm6dcomp pm7dcomp pm8dcomp pm9dcomp pmadcomp pmbdcomp pmcdcomp (1=1) (else = 0).
+SELECT IF (pm1dcomp or pm2dcomp or pm3dcomp or pm4dcomp or pm5dcomp or pm6dcomp or pm7dcomp or pm8dcomp or pm9dcomp or pmadcomp or pmbdcomp or pmcdcomp  = 1 ).
+
+compute comprehensionparts=pm1dcomp + pm2dcomp + pm3dcomp + pm4dcomp + pm5dcomp + pm6dcomp + pm7dcomp + pm8dcomp + pm9dcomp + pmadcomp + pmbdcomp + pmcdcomp .
+
+FREQUENCIES variables = comprehensionparts
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomk pm2dcomk pm3dcomk pm4dcomk pm5dcomk pm6dcomk pm7dcomk pm8dcomk pm9dcomk pmadcomk pmbdcomk pmcdcomk (1=1) (else = 0).
+SELECT IF (pm1dcomk or pm2dcomk or pm3dcomk or pm4dcomk or pm5dcomk or pm6dcomk or pm7dcomk or pm8dcomk or pm9dcomk or pmadcomk or pmbdcomk or pmcdcomk  = 1 ).
+
+compute keywordcomprehension=pm1dcomk + pm2dcomk + pm3dcomk + pm4dcomk + pm5dcomk + pm6dcomk + pm7dcomk + pm8dcomk + pm9dcomk + pmadcomk + pmbdcomk + pmcdcomk .
+
+FREQUENCIES variables = keywordcomprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomv pm2dcomv pm3dcomv pm4dcomv pm5dcomv pm6dcomv pm7dcomv pm8dcomv pm9dcomv pmadcomv pmbdcomv pmcdcomv (1=1) (else = 0).
+SELECT IF (pm1dcomv or pm2dcomv or pm3dcomv or pm4dcomv or pm5dcomv or pm6dcomv or pm7dcomv or pm8dcomv or pm9dcomv or pmadcomv or pmbdcomv or pmcdcomv  = 1 ).
+
+compute vocabcomprehension=pm1dcomv + pm2dcomv + pm3dcomv + pm4dcomv + pm5dcomv + pm6dcomv + pm7dcomv + pm8dcomv + pm9dcomv + pmadcomv + pmbdcomv + pmcdcomv .
+
+FREQUENCIES variables = vocabcomprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dext pm2dext pm3dext pm4dext pm5dext pm6dext pm7dext pm8dext pm9dext pmadext pmbdext pmcdext (1=1) (else = 0).
+SELECT IF (pm1dext or pm2dext or pm3dext or pm4dext or pm5dext or pm6dext or pm7dext or pm8dext or pm9dext or pmadext or pmbdext or pmcdext  = 1 ).
+
+compute extramissinginfo=pm1dext + pm2dext + pm3dext + pm4dext + pm5dext + pm6dext + pm7dext + pm8dext + pm9dext + pmadext + pmbdext + pmcdext .
+
+FREQUENCIES variables = extramissinginfo
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dtoo pm2dtoo pm3dtoo pm4dtoo pm5dtoo pm6dtoo pm7dtoo pm8dtoo pm9dtoo pmadtoo pmbdtoo pmcdtoo (1=1) (else = 0).
+SELECT IF (pm1dtoo or pm2dtoo or pm3dtoo or pm4dtoo or pm5dtoo or pm6dtoo or pm7dtoo or pm8dtoo or pm9dtoo or pmadtoo or pmbdtoo or pmcdtoo  = 1 ).
+
+compute toodetailed=pm1dtoo + pm2dtoo + pm3dtoo + pm4dtoo + pm5dtoo + pm6dtoo + pm7dtoo + pm8dtoo + pm9dtoo + pmadtoo + pmbdtoo + pmcdtoo .
+
+FREQUENCIES variables = toodetailed
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dlack pm2dlack pm3dlack pm4dlack pm5dlack pm6dlack pm7dlack pm8dlack pm9dlack pmadlack pmbdlack pmcdlack (1=1) (else = 0).
+SELECT IF (pm1dlack or pm2dlack or pm3dlack or pm4dlack or pm5dlack or pm6dlack or pm7dlack or pm8dlack or pm9dlack or pmadlack or pmbdlack or pmcdlack  = 1 ).
+
+compute lackknowledge=pm1dlack + pm2dlack + pm3dlack + pm4dlack + pm5dlack + pm6dlack + pm7dlack + pm8dlack + pm9dlack + pmadlack + pmbdlack + pmcdlack .
+
+FREQUENCIES variables = lackknowledge
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dunr pm2dunr pm3dunr pm4dunr pm5dunr pm6dunr pm7dunr pm8dunr pm9dunr pmadunr pmbdunr pmcdunr (1=1) (else = 0).
+SELECT IF (pm1dunr or pm2dunr or pm3dunr or pm4dunr or pm5dunr or pm6dunr or pm7dunr or pm8dunr or pm9dunr or pmadunr or pmbdunr or pmcdunr  = 1 ).
+
+compute unreasonable=pm1dunr + pm2dunr + pm3dunr + pm4dunr + pm5dunr + pm6dunr + pm7dunr + pm8dunr + pm9dunr + pmadunr + pmbdunr + pmcdunr .
+
+FREQUENCIES variables = unreasonable
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dque pm2dque pm3dque pm4dque pm5dque pm6dque pm7dque pm8dque pm9dque pmadque pmbdque pmcdque (1=1) (else = 0).
+SELECT IF (pm1dque or pm2dque or pm3dque or pm4dque or pm5dque or pm6dque or pm7dque or pm8dque or pm9dque or pmadque or pmbdque or pmcdque  = 1 ).
+
+compute questiondifficulty=pm1dque + pm2dque + pm3dque + pm4dque + pm5dque + pm6dque + pm7dque + pm8dque + pm9dque + pmadque + pmbdque + pmcdque .
+
+FREQUENCIES variables = questiondifficulty
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dpos pm2dpos pm3dpos pm4dpos pm5dpos pm6dpos pm7dpos pm8dpos pm9dpos pmadpos pmbdpos pmcdpos (1=1) (else = 0).
+SELECT IF (pm1dpos or pm2dpos or pm3dpos or pm4dpos or pm5dpos or pm6dpos or pm7dpos or pm8dpos or pm9dpos or pmadpos or pmbdpos or pmcdpos  = 1 ).
+
+compute positiveaffect=pm1dpos + pm2dpos + pm3dpos + pm4dpos + pm5dpos + pm6dpos + pm7dpos + pm8dpos + pm9dpos + pmadpos + pmbdpos + pmcdpos .
+
+FREQUENCIES variables = positiveaffect
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dneg pm2dneg pm3dneg pm4dneg pm5dneg pm6dneg pm7dneg pm8dneg pm9dneg pmadneg pmbdneg pmcdneg (1=1) (else = 0).
+SELECT IF (pm1dneg or pm2dneg or pm3dneg or pm4dneg or pm5dneg or pm6dneg or pm7dneg or pm8dneg or pm9dneg or pmadneg or pmbdneg or pmcdneg  = 1 ).
+
+compute negativeaffect=pm1dneg + pm2dneg + pm3dneg + pm4dneg + pm5dneg + pm6dneg + pm7dneg + pm8dneg + pm9dneg + pmadneg + pmbdneg + pmcdneg .
+
+FREQUENCIES variables = negativeaffect
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcon pm2dcon pm3dcon pm4dcon pm5dcon pm6dcon pm7dcon pm8dcon pm9dcon pmadcon pmbdcon pmcdcon (1=1) (else = 0).
+SELECT IF (pm1dcon or pm2dcon or pm3dcon or pm4dcon or pm5dcon or pm6dcon or pm7dcon or pm8dcon or pm9dcon or pmadcon or pmbdcon or pmcdcon  = 1 ).
+
+compute concentration=pm1dcon + pm2dcon + pm3dcon + pm4dcon + pm5dcon + pm6dcon + pm7dcon + pm8dcon + pm9dcon + pmadcon + pmbdcon + pmcdcon .
+
+FREQUENCIES variables = concentration
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dset pm2dset pm3dset pm4dset pm5dset pm6dset pm7dset pm8dset pm9dset pmadset pmbdset pmcdset (2=1) (else = 0).
+SELECT IF (pm1dset or pm2dset or pm3dset or pm4dset or pm5dset or pm6dset or pm7dset or pm8dset or pm9dset or pmadset or pmbdset or pmcdset  = 1 ).
+
+compute setup=pm1dset + pm2dset + pm3dset + pm4dset + pm5dset + pm6dset + pm7dset + pm8dset + pm9dset + pmadset + pmbdset + pmcdset .
+
+FREQUENCIES variables = setup
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dsetp pm2dsetp pm3dsetp pm4dsetp pm5dsetp pm6dsetp pm7dsetp pm8dsetp pm9dsetp pmadsetp pmbdsetp pmcdsetp (2=1) (else = 0).
+SELECT IF (pm1dsetp or pm2dsetp or pm3dsetp or pm4dsetp or pm5dsetp or pm6dsetp or pm7dsetp or pm8dsetp or pm9dsetp or pmadsetp or pmbdsetp or pmcdsetp  = 1 ).
+
+compute partialsetup=pm1dsetp + pm2dsetp + pm3dsetp + pm4dsetp + pm5dsetp + pm6dsetp + pm7dsetp + pm8dsetp + pm9dsetp + pmadsetp + pmbdsetp + pmcdsetp .
+
+FREQUENCIES variables = partialsetup
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcom pm2dcom pm3dcom pm4dcom pm5dcom pm6dcom pm7dcom pm8dcom pm9dcom pmadcom pmbdcom pmcdcom (2=1) (else = 0).
+SELECT IF (pm1dcom or pm2dcom or pm3dcom or pm4dcom or pm5dcom or pm6dcom or pm7dcom or pm8dcom or pm9dcom or pmadcom or pmbdcom or pmcdcom  = 1 ).
+
+compute comprehension=pm1dcom + pm2dcom + pm3dcom + pm4dcom + pm5dcom + pm6dcom + pm7dcom + pm8dcom + pm9dcom + pmadcom + pmbdcom + pmcdcom .
+
+FREQUENCIES variables = comprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomp pm2dcomp pm3dcomp pm4dcomp pm5dcomp pm6dcomp pm7dcomp pm8dcomp pm9dcomp pmadcomp pmbdcomp pmcdcomp (2=1) (else = 0).
+SELECT IF (pm1dcomp or pm2dcomp or pm3dcomp or pm4dcomp or pm5dcomp or pm6dcomp or pm7dcomp or pm8dcomp or pm9dcomp or pmadcomp or pmbdcomp or pmcdcomp  = 1 ).
+
+compute comprehensionparts=pm1dcomp + pm2dcomp + pm3dcomp + pm4dcomp + pm5dcomp + pm6dcomp + pm7dcomp + pm8dcomp + pm9dcomp + pmadcomp + pmbdcomp + pmcdcomp .
+
+FREQUENCIES variables = comprehensionparts
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomk pm2dcomk pm3dcomk pm4dcomk pm5dcomk pm6dcomk pm7dcomk pm8dcomk pm9dcomk pmadcomk pmbdcomk pmcdcomk (2=1) (else = 0).
+SELECT IF (pm1dcomk or pm2dcomk or pm3dcomk or pm4dcomk or pm5dcomk or pm6dcomk or pm7dcomk or pm8dcomk or pm9dcomk or pmadcomk or pmbdcomk or pmcdcomk  = 1 ).
+
+compute keywordcomprehension=pm1dcomk + pm2dcomk + pm3dcomk + pm4dcomk + pm5dcomk + pm6dcomk + pm7dcomk + pm8dcomk + pm9dcomk + pmadcomk + pmbdcomk + pmcdcomk .
+
+FREQUENCIES variables = keywordcomprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomv pm2dcomv pm3dcomv pm4dcomv pm5dcomv pm6dcomv pm7dcomv pm8dcomv pm9dcomv pmadcomv pmbdcomv pmcdcomv (2=1) (else = 0).
+SELECT IF (pm1dcomv or pm2dcomv or pm3dcomv or pm4dcomv or pm5dcomv or pm6dcomv or pm7dcomv or pm8dcomv or pm9dcomv or pmadcomv or pmbdcomv or pmcdcomv  = 1 ).
+
+compute vocabcomprehension=pm1dcomv + pm2dcomv + pm3dcomv + pm4dcomv + pm5dcomv + pm6dcomv + pm7dcomv + pm8dcomv + pm9dcomv + pmadcomv + pmbdcomv + pmcdcomv .
+
+FREQUENCIES variables = vocabcomprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dext pm2dext pm3dext pm4dext pm5dext pm6dext pm7dext pm8dext pm9dext pmadext pmbdext pmcdext (2=1) (else = 0).
+SELECT IF (pm1dext or pm2dext or pm3dext or pm4dext or pm5dext or pm6dext or pm7dext or pm8dext or pm9dext or pmadext or pmbdext or pmcdext  = 1 ).
+
+compute extramissinginfo=pm1dext + pm2dext + pm3dext + pm4dext + pm5dext + pm6dext + pm7dext + pm8dext + pm9dext + pmadext + pmbdext + pmcdext .
+
+FREQUENCIES variables = extramissinginfo
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dtoo pm2dtoo pm3dtoo pm4dtoo pm5dtoo pm6dtoo pm7dtoo pm8dtoo pm9dtoo pmadtoo pmbdtoo pmcdtoo (2=1) (else = 0).
+SELECT IF (pm1dtoo or pm2dtoo or pm3dtoo or pm4dtoo or pm5dtoo or pm6dtoo or pm7dtoo or pm8dtoo or pm9dtoo or pmadtoo or pmbdtoo or pmcdtoo  = 1 ).
+
+compute toodetailed=pm1dtoo + pm2dtoo + pm3dtoo + pm4dtoo + pm5dtoo + pm6dtoo + pm7dtoo + pm8dtoo + pm9dtoo + pmadtoo + pmbdtoo + pmcdtoo .
+
+FREQUENCIES variables = toodetailed
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dlack pm2dlack pm3dlack pm4dlack pm5dlack pm6dlack pm7dlack pm8dlack pm9dlack pmadlack pmbdlack pmcdlack (2=1) (else = 0).
+SELECT IF (pm1dlack or pm2dlack or pm3dlack or pm4dlack or pm5dlack or pm6dlack or pm7dlack or pm8dlack or pm9dlack or pmadlack or pmbdlack or pmcdlack  = 1 ).
+
+compute lackknowledge=pm1dlack + pm2dlack + pm3dlack + pm4dlack + pm5dlack + pm6dlack + pm7dlack + pm8dlack + pm9dlack + pmadlack + pmbdlack + pmcdlack .
+
+FREQUENCIES variables = lackknowledge
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dunr pm2dunr pm3dunr pm4dunr pm5dunr pm6dunr pm7dunr pm8dunr pm9dunr pmadunr pmbdunr pmcdunr (2=1) (else = 0).
+SELECT IF (pm1dunr or pm2dunr or pm3dunr or pm4dunr or pm5dunr or pm6dunr or pm7dunr or pm8dunr or pm9dunr or pmadunr or pmbdunr or pmcdunr  = 1 ).
+
+compute unreasonable=pm1dunr + pm2dunr + pm3dunr + pm4dunr + pm5dunr + pm6dunr + pm7dunr + pm8dunr + pm9dunr + pmadunr + pmbdunr + pmcdunr .
+
+FREQUENCIES variables = unreasonable
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dque pm2dque pm3dque pm4dque pm5dque pm6dque pm7dque pm8dque pm9dque pmadque pmbdque pmcdque (2=1) (else = 0).
+SELECT IF (pm1dque or pm2dque or pm3dque or pm4dque or pm5dque or pm6dque or pm7dque or pm8dque or pm9dque or pmadque or pmbdque or pmcdque  = 1 ).
+
+compute questiondifficulty=pm1dque + pm2dque + pm3dque + pm4dque + pm5dque + pm6dque + pm7dque + pm8dque + pm9dque + pmadque + pmbdque + pmcdque .
+
+FREQUENCIES variables = questiondifficulty
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dpos pm2dpos pm3dpos pm4dpos pm5dpos pm6dpos pm7dpos pm8dpos pm9dpos pmadpos pmbdpos pmcdpos (2=1) (else = 0).
+SELECT IF (pm1dpos or pm2dpos or pm3dpos or pm4dpos or pm5dpos or pm6dpos or pm7dpos or pm8dpos or pm9dpos or pmadpos or pmbdpos or pmcdpos  = 1 ).
+
+compute positiveaffect=pm1dpos + pm2dpos + pm3dpos + pm4dpos + pm5dpos + pm6dpos + pm7dpos + pm8dpos + pm9dpos + pmadpos + pmbdpos + pmcdpos .
+
+FREQUENCIES variables = positiveaffect
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dneg pm2dneg pm3dneg pm4dneg pm5dneg pm6dneg pm7dneg pm8dneg pm9dneg pmadneg pmbdneg pmcdneg (2=1) (else = 0).
+SELECT IF (pm1dneg or pm2dneg or pm3dneg or pm4dneg or pm5dneg or pm6dneg or pm7dneg or pm8dneg or pm9dneg or pmadneg or pmbdneg or pmcdneg  = 1 ).
+
+compute negativeaffect=pm1dneg + pm2dneg + pm3dneg + pm4dneg + pm5dneg + pm6dneg + pm7dneg + pm8dneg + pm9dneg + pmadneg + pmbdneg + pmcdneg .
+
+FREQUENCIES variables = negativeaffect
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcon pm2dcon pm3dcon pm4dcon pm5dcon pm6dcon pm7dcon pm8dcon pm9dcon pmadcon pmbdcon pmcdcon (2=1) (else = 0).
+SELECT IF (pm1dcon or pm2dcon or pm3dcon or pm4dcon or pm5dcon or pm6dcon or pm7dcon or pm8dcon or pm9dcon or pmadcon or pmbdcon or pmcdcon  = 1 ).
+
+compute concentration=pm1dcon + pm2dcon + pm3dcon + pm4dcon + pm5dcon + pm6dcon + pm7dcon + pm8dcon + pm9dcon + pmadcon + pmbdcon + pmcdcon .
+
+FREQUENCIES variables = concentration
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dset pm2dset pm3dset pm4dset pm5dset pm6dset pm7dset pm8dset pm9dset pmadset pmbdset pmcdset (3=1) (else = 0).
+SELECT IF (pm1dset or pm2dset or pm3dset or pm4dset or pm5dset or pm6dset or pm7dset or pm8dset or pm9dset or pmadset or pmbdset or pmcdset  = 1 ).
+
+compute setup=pm1dset + pm2dset + pm3dset + pm4dset + pm5dset + pm6dset + pm7dset + pm8dset + pm9dset + pmadset + pmbdset + pmcdset .
+
+FREQUENCIES variables = setup
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dsetp pm2dsetp pm3dsetp pm4dsetp pm5dsetp pm6dsetp pm7dsetp pm8dsetp pm9dsetp pmadsetp pmbdsetp pmcdsetp (3=1) (else = 0).
+SELECT IF (pm1dsetp or pm2dsetp or pm3dsetp or pm4dsetp or pm5dsetp or pm6dsetp or pm7dsetp or pm8dsetp or pm9dsetp or pmadsetp or pmbdsetp or pmcdsetp  = 1 ).
+
+compute partialsetup=pm1dsetp + pm2dsetp + pm3dsetp + pm4dsetp + pm5dsetp + pm6dsetp + pm7dsetp + pm8dsetp + pm9dsetp + pmadsetp + pmbdsetp + pmcdsetp .
+
+FREQUENCIES variables = partialsetup
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcom pm2dcom pm3dcom pm4dcom pm5dcom pm6dcom pm7dcom pm8dcom pm9dcom pmadcom pmbdcom pmcdcom (3=1) (else = 0).
+SELECT IF (pm1dcom or pm2dcom or pm3dcom or pm4dcom or pm5dcom or pm6dcom or pm7dcom or pm8dcom or pm9dcom or pmadcom or pmbdcom or pmcdcom  = 1 ).
+
+compute comprehension=pm1dcom + pm2dcom + pm3dcom + pm4dcom + pm5dcom + pm6dcom + pm7dcom + pm8dcom + pm9dcom + pmadcom + pmbdcom + pmcdcom .
+
+FREQUENCIES variables = comprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomp pm2dcomp pm3dcomp pm4dcomp pm5dcomp pm6dcomp pm7dcomp pm8dcomp pm9dcomp pmadcomp pmbdcomp pmcdcomp (3=1) (else = 0).
+SELECT IF (pm1dcomp or pm2dcomp or pm3dcomp or pm4dcomp or pm5dcomp or pm6dcomp or pm7dcomp or pm8dcomp or pm9dcomp or pmadcomp or pmbdcomp or pmcdcomp  = 1 ).
+
+compute comprehensionparts=pm1dcomp + pm2dcomp + pm3dcomp + pm4dcomp + pm5dcomp + pm6dcomp + pm7dcomp + pm8dcomp + pm9dcomp + pmadcomp + pmbdcomp + pmcdcomp .
+
+FREQUENCIES variables = comprehensionparts
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomk pm2dcomk pm3dcomk pm4dcomk pm5dcomk pm6dcomk pm7dcomk pm8dcomk pm9dcomk pmadcomk pmbdcomk pmcdcomk (3=1) (else = 0).
+SELECT IF (pm1dcomk or pm2dcomk or pm3dcomk or pm4dcomk or pm5dcomk or pm6dcomk or pm7dcomk or pm8dcomk or pm9dcomk or pmadcomk or pmbdcomk or pmcdcomk  = 1 ).
+
+compute keywordcomprehension=pm1dcomk + pm2dcomk + pm3dcomk + pm4dcomk + pm5dcomk + pm6dcomk + pm7dcomk + pm8dcomk + pm9dcomk + pmadcomk + pmbdcomk + pmcdcomk .
+
+FREQUENCIES variables = keywordcomprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomv pm2dcomv pm3dcomv pm4dcomv pm5dcomv pm6dcomv pm7dcomv pm8dcomv pm9dcomv pmadcomv pmbdcomv pmcdcomv (3=1) (else = 0).
+SELECT IF (pm1dcomv or pm2dcomv or pm3dcomv or pm4dcomv or pm5dcomv or pm6dcomv or pm7dcomv or pm8dcomv or pm9dcomv or pmadcomv or pmbdcomv or pmcdcomv  = 1 ).
+
+compute vocabcomprehension=pm1dcomv + pm2dcomv + pm3dcomv + pm4dcomv + pm5dcomv + pm6dcomv + pm7dcomv + pm8dcomv + pm9dcomv + pmadcomv + pmbdcomv + pmcdcomv .
+
+FREQUENCIES variables = vocabcomprehension
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dext pm2dext pm3dext pm4dext pm5dext pm6dext pm7dext pm8dext pm9dext pmadext pmbdext pmcdext (3=1) (else = 0).
+SELECT IF (pm1dext or pm2dext or pm3dext or pm4dext or pm5dext or pm6dext or pm7dext or pm8dext or pm9dext or pmadext or pmbdext or pmcdext  = 1 ).
+
+compute extramissinginfo=pm1dext + pm2dext + pm3dext + pm4dext + pm5dext + pm6dext + pm7dext + pm8dext + pm9dext + pmadext + pmbdext + pmcdext .
+
+FREQUENCIES variables = extramissinginfo
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dtoo pm2dtoo pm3dtoo pm4dtoo pm5dtoo pm6dtoo pm7dtoo pm8dtoo pm9dtoo pmadtoo pmbdtoo pmcdtoo (3=1) (else = 0).
+SELECT IF (pm1dtoo or pm2dtoo or pm3dtoo or pm4dtoo or pm5dtoo or pm6dtoo or pm7dtoo or pm8dtoo or pm9dtoo or pmadtoo or pmbdtoo or pmcdtoo  = 1 ).
+
+compute toodetailed=pm1dtoo + pm2dtoo + pm3dtoo + pm4dtoo + pm5dtoo + pm6dtoo + pm7dtoo + pm8dtoo + pm9dtoo + pmadtoo + pmbdtoo + pmcdtoo .
+
+FREQUENCIES variables = toodetailed
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dlack pm2dlack pm3dlack pm4dlack pm5dlack pm6dlack pm7dlack pm8dlack pm9dlack pmadlack pmbdlack pmcdlack (3=1) (else = 0).
+SELECT IF (pm1dlack or pm2dlack or pm3dlack or pm4dlack or pm5dlack or pm6dlack or pm7dlack or pm8dlack or pm9dlack or pmadlack or pmbdlack or pmcdlack  = 1 ).
+
+compute lackknowledge=pm1dlack + pm2dlack + pm3dlack + pm4dlack + pm5dlack + pm6dlack + pm7dlack + pm8dlack + pm9dlack + pmadlack + pmbdlack + pmcdlack .
+
+FREQUENCIES variables = lackknowledge
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dunr pm2dunr pm3dunr pm4dunr pm5dunr pm6dunr pm7dunr pm8dunr pm9dunr pmadunr pmbdunr pmcdunr (3=1) (else = 0).
+SELECT IF (pm1dunr or pm2dunr or pm3dunr or pm4dunr or pm5dunr or pm6dunr or pm7dunr or pm8dunr or pm9dunr or pmadunr or pmbdunr or pmcdunr  = 1 ).
+
+compute unreasonable=pm1dunr + pm2dunr + pm3dunr + pm4dunr + pm5dunr + pm6dunr + pm7dunr + pm8dunr + pm9dunr + pmadunr + pmbdunr + pmcdunr .
+
+FREQUENCIES variables = unreasonable
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dque pm2dque pm3dque pm4dque pm5dque pm6dque pm7dque pm8dque pm9dque pmadque pmbdque pmcdque (3=1) (else = 0).
+SELECT IF (pm1dque or pm2dque or pm3dque or pm4dque or pm5dque or pm6dque or pm7dque or pm8dque or pm9dque or pmadque or pmbdque or pmcdque  = 1 ).
+
+compute questiondifficulty=pm1dque + pm2dque + pm3dque + pm4dque + pm5dque + pm6dque + pm7dque + pm8dque + pm9dque + pmadque + pmbdque + pmcdque .
+
+FREQUENCIES variables = questiondifficulty
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dpos pm2dpos pm3dpos pm4dpos pm5dpos pm6dpos pm7dpos pm8dpos pm9dpos pmadpos pmbdpos pmcdpos (3=1) (else = 0).
+SELECT IF (pm1dpos or pm2dpos or pm3dpos or pm4dpos or pm5dpos or pm6dpos or pm7dpos or pm8dpos or pm9dpos or pmadpos or pmbdpos or pmcdpos  = 1 ).
+
+compute positiveaffect=pm1dpos + pm2dpos + pm3dpos + pm4dpos + pm5dpos + pm6dpos + pm7dpos + pm8dpos + pm9dpos + pmadpos + pmbdpos + pmcdpos .
+
+FREQUENCIES variables = positiveaffect
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dneg pm2dneg pm3dneg pm4dneg pm5dneg pm6dneg pm7dneg pm8dneg pm9dneg pmadneg pmbdneg pmcdneg (3=1) (else = 0).
+SELECT IF (pm1dneg or pm2dneg or pm3dneg or pm4dneg or pm5dneg or pm6dneg or pm7dneg or pm8dneg or pm9dneg or pmadneg or pmbdneg or pmcdneg  = 1 ).
+
+compute negativeaffect=pm1dneg + pm2dneg + pm3dneg + pm4dneg + pm5dneg + pm6dneg + pm7dneg + pm8dneg + pm9dneg + pmadneg + pmbdneg + pmcdneg .
+
+FREQUENCIES variables = negativeaffect
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcon pm2dcon pm3dcon pm4dcon pm5dcon pm6dcon pm7dcon pm8dcon pm9dcon pmadcon pmbdcon pmcdcon (3=1) (else = 0).
+SELECT IF (pm1dcon or pm2dcon or pm3dcon or pm4dcon or pm5dcon or pm6dcon or pm7dcon or pm8dcon or pm9dcon or pmadcon or pmbdcon or pmcdcon  = 1 ).
+
+compute concentration=pm1dcon + pm2dcon + pm3dcon + pm4dcon + pm5dcon + pm6dcon + pm7dcon + pm8dcon + pm9dcon + pmadcon + pmbdcon + pmcdcon .
+
+FREQUENCIES variables = concentration
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+

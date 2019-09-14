@@ -1,0 +1,193 @@
+DATASET NAME main.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+COMPUTE pmimchk = pmim1chk + pmim2chk + pmim3chk. 
+VARIABLE LABELS  pmimchk '# of checks from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE pmiichk = pmii1chk + pmii2chk + pmii3chk. 
+VARIABLE LABELS  pmiichk '# of checks from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE pmbmchk = pmbm1chk + pmbm2chk + pmbm3chk. 
+VARIABLE LABELS  pmbmchk '# of checks from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE pmbichk = pmbi1chk + pmbi2chk + pmbi3chk . 
+VARIABLE LABELS  pmbichk '# of checks from all problems in boring instructional level math'. 
+EXECUTE.
+recode pmimchk pmiichk pmbmchk pmbichk (1=1) (else = 0).
+
+GLM pmimchk pmiichk pmbmchk pmbichk BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+COMPUTE pmimchk = pmim1chk + pmim2chk + pmim3chk. 
+VARIABLE LABELS  pmimchk '# of checks from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE pmiichk = pmii1chk + pmii2chk + pmii3chk. 
+VARIABLE LABELS  pmiichk '# of checks from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE pmbmchk = pmbm1chk + pmbm2chk + pmbm3chk. 
+VARIABLE LABELS  pmbmchk '# of checks from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE pmbichk = pmbi1chk + pmbi2chk + pmbi3chk . 
+VARIABLE LABELS  pmbichk '# of checks from all problems in boring instructional level math'. 
+EXECUTE.
+recode pmimchk pmiichk pmbmchk pmbichk (2=1) (else = 0).
+
+GLM pmimchk pmiichk pmbmchk pmbichk BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy2.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+COMPUTE pmimchk = pmim1chk + pmim2chk + pmim3chk. 
+VARIABLE LABELS  pmimchk '# of checks from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE pmiichk = pmii1chk + pmii2chk + pmii3chk. 
+VARIABLE LABELS  pmiichk '# of checks from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE pmbmchk = pmbm1chk + pmbm2chk + pmbm3chk. 
+VARIABLE LABELS  pmbmchk '# of checks from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE pmbichk = pmbi1chk + pmbi2chk + pmbi3chk . 
+VARIABLE LABELS  pmbichk '# of checks from all problems in boring instructional level math'. 
+EXECUTE.
+recode pmimchk pmiichk pmbmchk pmbichk (3=1) (else = 0).
+
+GLM pmimchk pmiichk pmbmchk pmbichk BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy3.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+COMPUTE pmimchk = pmim1chk + pmim2chk + pmim3chk. 
+VARIABLE LABELS  pmimchk '# of checks from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE pmiichk = pmii1chk + pmii2chk + pmii3chk. 
+VARIABLE LABELS  pmiichk '# of checks from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE pmbmchk = pmbm1chk + pmbm2chk + pmbm3chk. 
+VARIABLE LABELS  pmbmchk '# of checks from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE pmbichk = pmbi1chk + pmbi2chk + pmbi3chk . 
+VARIABLE LABELS  pmbichk '# of checks from all problems in boring instructional level math'. 
+EXECUTE.
+recode pmimchk pmiichk pmbmchk pmbichk (4=1) (else = 0).
+
+GLM pmimchk pmiichk pmbmchk pmbichk BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy4.
+DATASET COPY  mainCopy5 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy5.
+COMPUTE pmimchk = pmim1chk + pmim2chk + pmim3chk. 
+VARIABLE LABELS  pmimchk '# of checks from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE pmiichk = pmii1chk + pmii2chk + pmii3chk. 
+VARIABLE LABELS  pmiichk '# of checks from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE pmbmchk = pmbm1chk + pmbm2chk + pmbm3chk. 
+VARIABLE LABELS  pmbmchk '# of checks from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE pmbichk = pmbi1chk + pmbi2chk + pmbi3chk . 
+VARIABLE LABELS  pmbichk '# of checks from all problems in boring instructional level math'. 
+EXECUTE.
+recode pmimchk pmiichk pmbmchk pmbichk (5=1) (else = 0).
+
+GLM pmimchk pmiichk pmbmchk pmbichk BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy5.
+DATASET COPY  mainCopy6 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy6.
+COMPUTE pmimchk = pmim1chk + pmim2chk + pmim3chk. 
+VARIABLE LABELS  pmimchk '# of checks from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE pmiichk = pmii1chk + pmii2chk + pmii3chk. 
+VARIABLE LABELS  pmiichk '# of checks from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE pmbmchk = pmbm1chk + pmbm2chk + pmbm3chk. 
+VARIABLE LABELS  pmbmchk '# of checks from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE pmbichk = pmbi1chk + pmbi2chk + pmbi3chk . 
+VARIABLE LABELS  pmbichk '# of checks from all problems in boring instructional level math'. 
+EXECUTE.
+recode pmimchk pmiichk pmbmchk pmbichk (6=1) (else = 0).
+
+GLM pmimchk pmiichk pmbmchk pmbichk BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy6.

@@ -1,0 +1,2 @@
+{"ts":1379010887112,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1379010912248,"patch":[[{"diffs":[[1,"USE ALL. \nCOMPUTE filter_$=(mathspint = 1). \nVARIABLE LABELS filter_$ 'mathspint = 1 (FILTER)'. \nVALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. \nFORMATS filter_$ (f1.0). \nFILTER BY filter_$. \nEXECUTE.\n\n\n\nFILTER OFF. \nUSE ALL. \nEXECUTE.\n\n"]],"start1":0,"start2":0,"length1":0,"length2":243}]],"length":243,"saved":false}

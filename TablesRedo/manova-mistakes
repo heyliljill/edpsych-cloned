@@ -1,0 +1,193 @@
+DATASET NAME main.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+recode mmim1mis mmii1mis mmbm1mis mmbi1mis mmim2mis mmii2mis mmbm2mis mmbi2mis mmim3mis mmii3mis mmbm3mis mmbi3mis (1=1) (else = 0).
+COMPUTE mmimmis = mmim1mis + mmim2mis + mmim3mis. 
+VARIABLE LABELS  mmimmis '# of mistakes from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE mmiimis = mmii1mis + mmii2mis + mmii3mis. 
+VARIABLE LABELS  mmiimis '# of mistakes from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE mmbmmis = mmbm1mis + mmbm2mis + mmbm3mis. 
+VARIABLE LABELS  mmbmmis '# of mistakes from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE mmbimis = mmbi1mis + mmbi2mis + mmbi3mis . 
+VARIABLE LABELS  mmbimis '# of mistakes from all problems in boring instructional level math'. 
+EXECUTE.
+
+GLM mmimmis mmiimis mmbmmis mmbimis BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+recode mmim1mis mmii1mis mmbm1mis mmbi1mis mmim2mis mmii2mis mmbm2mis mmbi2mis mmim3mis mmii3mis mmbm3mis mmbi3mis (2=1) (else = 0).
+COMPUTE mmimmis = mmim1mis + mmim2mis + mmim3mis. 
+VARIABLE LABELS  mmimmis '# of mistakes from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE mmiimis = mmii1mis + mmii2mis + mmii3mis. 
+VARIABLE LABELS  mmiimis '# of mistakes from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE mmbmmis = mmbm1mis + mmbm2mis + mmbm3mis. 
+VARIABLE LABELS  mmbmmis '# of mistakes from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE mmbimis = mmbi1mis + mmbi2mis + mmbi3mis . 
+VARIABLE LABELS  mmbimis '# of mistakes from all problems in boring instructional level math'. 
+EXECUTE.
+
+GLM mmimmis mmiimis mmbmmis mmbimis BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy2.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+recode mmim1mis mmii1mis mmbm1mis mmbi1mis mmim2mis mmii2mis mmbm2mis mmbi2mis mmim3mis mmii3mis mmbm3mis mmbi3mis (3=1) (else = 0).
+COMPUTE mmimmis = mmim1mis + mmim2mis + mmim3mis. 
+VARIABLE LABELS  mmimmis '# of mistakes from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE mmiimis = mmii1mis + mmii2mis + mmii3mis. 
+VARIABLE LABELS  mmiimis '# of mistakes from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE mmbmmis = mmbm1mis + mmbm2mis + mmbm3mis. 
+VARIABLE LABELS  mmbmmis '# of mistakes from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE mmbimis = mmbi1mis + mmbi2mis + mmbi3mis . 
+VARIABLE LABELS  mmbimis '# of mistakes from all problems in boring instructional level math'. 
+EXECUTE.
+
+GLM mmimmis mmiimis mmbmmis mmbimis BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy3.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+recode mmim1mis mmii1mis mmbm1mis mmbi1mis mmim2mis mmii2mis mmbm2mis mmbi2mis mmim3mis mmii3mis mmbm3mis mmbi3mis (4=1) (else = 0).
+COMPUTE mmimmis = mmim1mis + mmim2mis + mmim3mis. 
+VARIABLE LABELS  mmimmis '# of mistakes from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE mmiimis = mmii1mis + mmii2mis + mmii3mis. 
+VARIABLE LABELS  mmiimis '# of mistakes from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE mmbmmis = mmbm1mis + mmbm2mis + mmbm3mis. 
+VARIABLE LABELS  mmbmmis '# of mistakes from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE mmbimis = mmbi1mis + mmbi2mis + mmbi3mis . 
+VARIABLE LABELS  mmbimis '# of mistakes from all problems in boring instructional level math'. 
+EXECUTE.
+
+GLM mmimmis mmiimis mmbmmis mmbimis BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy4.
+DATASET COPY  mainCopy5 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy5.
+recode mmim1mis mmii1mis mmbm1mis mmbi1mis mmim2mis mmii2mis mmbm2mis mmbi2mis mmim3mis mmii3mis mmbm3mis mmbi3mis (5=1) (else = 0).
+COMPUTE mmimmis = mmim1mis + mmim2mis + mmim3mis. 
+VARIABLE LABELS  mmimmis '# of mistakes from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE mmiimis = mmii1mis + mmii2mis + mmii3mis. 
+VARIABLE LABELS  mmiimis '# of mistakes from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE mmbmmis = mmbm1mis + mmbm2mis + mmbm3mis. 
+VARIABLE LABELS  mmbmmis '# of mistakes from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE mmbimis = mmbi1mis + mmbi2mis + mmbi3mis . 
+VARIABLE LABELS  mmbimis '# of mistakes from all problems in boring instructional level math'. 
+EXECUTE.
+
+GLM mmimmis mmiimis mmbmmis mmbimis BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy5.
+DATASET COPY  mainCopy6 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy6.
+recode mmim1mis mmii1mis mmbm1mis mmbi1mis mmim2mis mmii2mis mmbm2mis mmbi2mis mmim3mis mmii3mis mmbm3mis mmbi3mis (6=1) (else = 0).
+COMPUTE mmimmis = mmim1mis + mmim2mis + mmim3mis. 
+VARIABLE LABELS  mmimmis '# of mistakes from all problems in interest mastery level math'. 
+EXECUTE.
+COMPUTE mmiimis = mmii1mis + mmii2mis + mmii3mis. 
+VARIABLE LABELS  mmiimis '# of mistakes from all problems in interest instructional level math'. 
+EXECUTE.
+COMPUTE mmbmmis = mmbm1mis + mmbm2mis + mmbm3mis. 
+VARIABLE LABELS  mmbmmis '# of mistakes from all problems in boring mastery level math'. 
+EXECUTE.
+COMPUTE mmbimis = mmbi1mis + mmbi2mis + mmbi3mis . 
+VARIABLE LABELS  mmbimis '# of mistakes from all problems in boring instructional level math'. 
+EXECUTE.
+
+GLM mmimmis mmiimis mmbmmis mmbimis BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy6.

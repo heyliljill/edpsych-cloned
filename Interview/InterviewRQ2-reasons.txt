@@ -1,0 +1,2 @@
+FREQUENCIES VARIABLES= rtwread rtwrrg rtwrrcom rtwrrsf rtwsab rtwusu rtwpara rtwpage rtwvis rtwrits rtwsc rtwcued rtwnotes rtwmain rtwtitle rtwke
+      /ORDER=ANALYSIS.

@@ -1,0 +1,41 @@
+1. For im, ii, bi, bm
+    how many were easy, hard, easiest, hardest?
+    
+
+    FREQUENCIES VARIABLES=mimaease mimbease mimcease miiaease miibease miicease mbmaease mbmbease mbmcease mbiaease mbibease mbicease 
+      /ORDER=ANALYSIS.
+    
+    
+    
+    
+2.  a. rank order strategies
+   
+    b. 
+      interest, non interest
+      
+    c. probed vs. not probed responses
+    
+3.a. math interest vs math non interest on read thoroughly/skim/topic
+  
+  b. what was easy hard (math interest vs reading non interest)
+      - what was easy/hard based on interesting or boring problem
+  
+  c. rank order
+  
+  d. rank order broken by thoroughly/skim/topic'
+  
+  e. rank order broken by reported easy/hard
+  
+  
+  
+4. yes/no freq
+
+
+  FREQUENCIES VARIABLES= m4oper m4oadd m4osub m4omult m4odiv m4num m4nsz m4nwitw m4ntwtr m4step m4cont m4contt m4contc m4key m4word m4int
+
+  /ORDER=ANALYSIS. 
+
+
+
+
+EVERYTHING SHOULD BE ANALYZED BY INTEREST OF DISCIPLINE 

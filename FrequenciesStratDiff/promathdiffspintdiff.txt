@@ -1,0 +1,456 @@
+USE ALL. 
+COMPUTE filter_$=(mathspint=1). 
+VARIABLE LABELS filter_$ 'mathspint=1(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+Temporary.
+recode pm1dset pm2dset pm3dset pm4dset pm5dset pm6dset pm7dset pm8dset pm9dset pmadset pmbdset pmcdset (1=1) (2=1) (else = 0).
+compute setupmastery=pm1dset + pm2dset + pm3dset +pm7dset + pm8dset + pm9dset .
+compute setupinstructional=pm4dset + pm5dset + pm6dset +pmadset + pmbdset + pmcdset .
+FREQUENCIES variables = setupmastery setupinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dsetp pm2dsetp pm3dsetp pm4dsetp pm5dsetp pm6dsetp pm7dsetp pm8dsetp pm9dsetp pmadsetp pmbdsetp pmcdsetp (1=1) (2=1) (else = 0).
+compute partialsetupmastery=pm1dsetp + pm2dsetp + pm3dsetp +pm7dsetp + pm8dsetp + pm9dsetp .
+compute partialsetupinstructional=pm4dsetp + pm5dsetp + pm6dsetp +pmadsetp + pmbdsetp + pmcdsetp .
+FREQUENCIES variables = partialsetupmastery partialsetupinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcom pm2dcom pm3dcom pm4dcom pm5dcom pm6dcom pm7dcom pm8dcom pm9dcom pmadcom pmbdcom pmcdcom (1=1) (2=1) (else = 0).
+compute comprehensionmastery=pm1dcom + pm2dcom + pm3dcom +pm7dcom + pm8dcom + pm9dcom .
+compute comprehensioninstructional=pm4dcom + pm5dcom + pm6dcom +pmadcom + pmbdcom + pmcdcom .
+FREQUENCIES variables = comprehensionmastery comprehensioninstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomp pm2dcomp pm3dcomp pm4dcomp pm5dcomp pm6dcomp pm7dcomp pm8dcomp pm9dcomp pmadcomp pmbdcomp pmcdcomp (1=1) (2=1) (else = 0).
+compute comprehensionpartsmastery=pm1dcomp + pm2dcomp + pm3dcomp +pm7dcomp + pm8dcomp + pm9dcomp .
+compute comprehensionpartsinstructional=pm4dcomp + pm5dcomp + pm6dcomp +pmadcomp + pmbdcomp + pmcdcomp .
+FREQUENCIES variables = comprehensionpartsmastery comprehensionpartsinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomk pm2dcomk pm3dcomk pm4dcomk pm5dcomk pm6dcomk pm7dcomk pm8dcomk pm9dcomk pmadcomk pmbdcomk pmcdcomk (1=1) (2=1) (else = 0).
+compute keywordcomprehensionmastery=pm1dcomk + pm2dcomk + pm3dcomk +pm7dcomk + pm8dcomk + pm9dcomk .
+compute keywordcomprehensioninstructional=pm4dcomk + pm5dcomk + pm6dcomk +pmadcomk + pmbdcomk + pmcdcomk .
+FREQUENCIES variables = keywordcomprehensionmastery keywordcomprehensioninstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomv pm2dcomv pm3dcomv pm4dcomv pm5dcomv pm6dcomv pm7dcomv pm8dcomv pm9dcomv pmadcomv pmbdcomv pmcdcomv (1=1) (2=1) (else = 0).
+compute vocabcomprehensionmastery=pm1dcomv + pm2dcomv + pm3dcomv +pm7dcomv + pm8dcomv + pm9dcomv .
+compute vocabcomprehensioninstructional=pm4dcomv + pm5dcomv + pm6dcomv +pmadcomv + pmbdcomv + pmcdcomv .
+FREQUENCIES variables = vocabcomprehensionmastery vocabcomprehensioninstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dext pm2dext pm3dext pm4dext pm5dext pm6dext pm7dext pm8dext pm9dext pmadext pmbdext pmcdext (1=1) (2=1) (else = 0).
+compute extramissinginfomastery=pm1dext + pm2dext + pm3dext +pm7dext + pm8dext + pm9dext .
+compute extramissinginfoinstructional=pm4dext + pm5dext + pm6dext +pmadext + pmbdext + pmcdext .
+FREQUENCIES variables = extramissinginfomastery extramissinginfoinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dtoo pm2dtoo pm3dtoo pm4dtoo pm5dtoo pm6dtoo pm7dtoo pm8dtoo pm9dtoo pmadtoo pmbdtoo pmcdtoo (1=1) (2=1) (else = 0).
+compute toodetailedmastery=pm1dtoo + pm2dtoo + pm3dtoo +pm7dtoo + pm8dtoo + pm9dtoo .
+compute toodetailedinstructional=pm4dtoo + pm5dtoo + pm6dtoo +pmadtoo + pmbdtoo + pmcdtoo .
+FREQUENCIES variables = toodetailedmastery toodetailedinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dlack pm2dlack pm3dlack pm4dlack pm5dlack pm6dlack pm7dlack pm8dlack pm9dlack pmadlack pmbdlack pmcdlack (1=1) (2=1) (else = 0).
+compute lackknowledgemastery=pm1dlack + pm2dlack + pm3dlack +pm7dlack + pm8dlack + pm9dlack .
+compute lackknowledgeinstructional=pm4dlack + pm5dlack + pm6dlack +pmadlack + pmbdlack + pmcdlack .
+FREQUENCIES variables = lackknowledgemastery lackknowledgeinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dunr pm2dunr pm3dunr pm4dunr pm5dunr pm6dunr pm7dunr pm8dunr pm9dunr pmadunr pmbdunr pmcdunr (1=1) (2=1) (else = 0).
+compute unreasonablemastery=pm1dunr + pm2dunr + pm3dunr +pm7dunr + pm8dunr + pm9dunr .
+compute unreasonableinstructional=pm4dunr + pm5dunr + pm6dunr +pmadunr + pmbdunr + pmcdunr .
+FREQUENCIES variables = unreasonablemastery unreasonableinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dque pm2dque pm3dque pm4dque pm5dque pm6dque pm7dque pm8dque pm9dque pmadque pmbdque pmcdque (1=1) (2=1) (else = 0).
+compute questiondifficultymastery=pm1dque + pm2dque + pm3dque +pm7dque + pm8dque + pm9dque .
+compute questiondifficultyinstructional=pm4dque + pm5dque + pm6dque +pmadque + pmbdque + pmcdque .
+FREQUENCIES variables = questiondifficultymastery questiondifficultyinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dpos pm2dpos pm3dpos pm4dpos pm5dpos pm6dpos pm7dpos pm8dpos pm9dpos pmadpos pmbdpos pmcdpos (1=1) (2=1) (else = 0).
+compute positiveaffectmastery=pm1dpos + pm2dpos + pm3dpos +pm7dpos + pm8dpos + pm9dpos .
+compute positiveaffectinstructional=pm4dpos + pm5dpos + pm6dpos +pmadpos + pmbdpos + pmcdpos .
+FREQUENCIES variables = positiveaffectmastery positiveaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dneg pm2dneg pm3dneg pm4dneg pm5dneg pm6dneg pm7dneg pm8dneg pm9dneg pmadneg pmbdneg pmcdneg (1=1) (2=1) (else = 0).
+compute negativeaffectmastery=pm1dneg + pm2dneg + pm3dneg +pm7dneg + pm8dneg + pm9dneg .
+compute negativeaffectinstructional=pm4dneg + pm5dneg + pm6dneg +pmadneg + pmbdneg + pmcdneg .
+FREQUENCIES variables = negativeaffectmastery negativeaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcon pm2dcon pm3dcon pm4dcon pm5dcon pm6dcon pm7dcon pm8dcon pm9dcon pmadcon pmbdcon pmcdcon (1=1) (2=1) (else = 0).
+compute concentrationmastery=pm1dcon + pm2dcon + pm3dcon +pm7dcon + pm8dcon + pm9dcon .
+compute concentrationinstructional=pm4dcon + pm5dcon + pm6dcon +pmadcon + pmbdcon + pmcdcon .
+FREQUENCIES variables = concentrationmastery concentrationinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+FILTER OFF.
+USE ALL.
+EXECUTE.
+
+USE ALL. 
+COMPUTE filter_$=(mathspint=2). 
+VARIABLE LABELS filter_$ 'mathspint=2(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+Temporary.
+recode pm1dset pm2dset pm3dset pm4dset pm5dset pm6dset pm7dset pm8dset pm9dset pmadset pmbdset pmcdset (1=1) (2=1) (else = 0).
+compute setupmastery=pm1dset + pm2dset + pm3dset +pm7dset + pm8dset + pm9dset .
+compute setupinstructional=pm4dset + pm5dset + pm6dset +pmadset + pmbdset + pmcdset .
+FREQUENCIES variables = setupmastery setupinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dsetp pm2dsetp pm3dsetp pm4dsetp pm5dsetp pm6dsetp pm7dsetp pm8dsetp pm9dsetp pmadsetp pmbdsetp pmcdsetp (1=1) (2=1) (else = 0).
+compute partialsetupmastery=pm1dsetp + pm2dsetp + pm3dsetp +pm7dsetp + pm8dsetp + pm9dsetp .
+compute partialsetupinstructional=pm4dsetp + pm5dsetp + pm6dsetp +pmadsetp + pmbdsetp + pmcdsetp .
+FREQUENCIES variables = partialsetupmastery partialsetupinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcom pm2dcom pm3dcom pm4dcom pm5dcom pm6dcom pm7dcom pm8dcom pm9dcom pmadcom pmbdcom pmcdcom (1=1) (2=1) (else = 0).
+compute comprehensionmastery=pm1dcom + pm2dcom + pm3dcom +pm7dcom + pm8dcom + pm9dcom .
+compute comprehensioninstructional=pm4dcom + pm5dcom + pm6dcom +pmadcom + pmbdcom + pmcdcom .
+FREQUENCIES variables = comprehensionmastery comprehensioninstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomp pm2dcomp pm3dcomp pm4dcomp pm5dcomp pm6dcomp pm7dcomp pm8dcomp pm9dcomp pmadcomp pmbdcomp pmcdcomp (1=1) (2=1) (else = 0).
+compute comprehensionpartsmastery=pm1dcomp + pm2dcomp + pm3dcomp +pm7dcomp + pm8dcomp + pm9dcomp .
+compute comprehensionpartsinstructional=pm4dcomp + pm5dcomp + pm6dcomp +pmadcomp + pmbdcomp + pmcdcomp .
+FREQUENCIES variables = comprehensionpartsmastery comprehensionpartsinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomk pm2dcomk pm3dcomk pm4dcomk pm5dcomk pm6dcomk pm7dcomk pm8dcomk pm9dcomk pmadcomk pmbdcomk pmcdcomk (1=1) (2=1) (else = 0).
+compute keywordcomprehensionmastery=pm1dcomk + pm2dcomk + pm3dcomk +pm7dcomk + pm8dcomk + pm9dcomk .
+compute keywordcomprehensioninstructional=pm4dcomk + pm5dcomk + pm6dcomk +pmadcomk + pmbdcomk + pmcdcomk .
+FREQUENCIES variables = keywordcomprehensionmastery keywordcomprehensioninstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomv pm2dcomv pm3dcomv pm4dcomv pm5dcomv pm6dcomv pm7dcomv pm8dcomv pm9dcomv pmadcomv pmbdcomv pmcdcomv (1=1) (2=1) (else = 0).
+compute vocabcomprehensionmastery=pm1dcomv + pm2dcomv + pm3dcomv +pm7dcomv + pm8dcomv + pm9dcomv .
+compute vocabcomprehensioninstructional=pm4dcomv + pm5dcomv + pm6dcomv +pmadcomv + pmbdcomv + pmcdcomv .
+FREQUENCIES variables = vocabcomprehensionmastery vocabcomprehensioninstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dext pm2dext pm3dext pm4dext pm5dext pm6dext pm7dext pm8dext pm9dext pmadext pmbdext pmcdext (1=1) (2=1) (else = 0).
+compute extramissinginfomastery=pm1dext + pm2dext + pm3dext +pm7dext + pm8dext + pm9dext .
+compute extramissinginfoinstructional=pm4dext + pm5dext + pm6dext +pmadext + pmbdext + pmcdext .
+FREQUENCIES variables = extramissinginfomastery extramissinginfoinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dtoo pm2dtoo pm3dtoo pm4dtoo pm5dtoo pm6dtoo pm7dtoo pm8dtoo pm9dtoo pmadtoo pmbdtoo pmcdtoo (1=1) (2=1) (else = 0).
+compute toodetailedmastery=pm1dtoo + pm2dtoo + pm3dtoo +pm7dtoo + pm8dtoo + pm9dtoo .
+compute toodetailedinstructional=pm4dtoo + pm5dtoo + pm6dtoo +pmadtoo + pmbdtoo + pmcdtoo .
+FREQUENCIES variables = toodetailedmastery toodetailedinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dlack pm2dlack pm3dlack pm4dlack pm5dlack pm6dlack pm7dlack pm8dlack pm9dlack pmadlack pmbdlack pmcdlack (1=1) (2=1) (else = 0).
+compute lackknowledgemastery=pm1dlack + pm2dlack + pm3dlack +pm7dlack + pm8dlack + pm9dlack .
+compute lackknowledgeinstructional=pm4dlack + pm5dlack + pm6dlack +pmadlack + pmbdlack + pmcdlack .
+FREQUENCIES variables = lackknowledgemastery lackknowledgeinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dunr pm2dunr pm3dunr pm4dunr pm5dunr pm6dunr pm7dunr pm8dunr pm9dunr pmadunr pmbdunr pmcdunr (1=1) (2=1) (else = 0).
+compute unreasonablemastery=pm1dunr + pm2dunr + pm3dunr +pm7dunr + pm8dunr + pm9dunr .
+compute unreasonableinstructional=pm4dunr + pm5dunr + pm6dunr +pmadunr + pmbdunr + pmcdunr .
+FREQUENCIES variables = unreasonablemastery unreasonableinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dque pm2dque pm3dque pm4dque pm5dque pm6dque pm7dque pm8dque pm9dque pmadque pmbdque pmcdque (1=1) (2=1) (else = 0).
+compute questiondifficultymastery=pm1dque + pm2dque + pm3dque +pm7dque + pm8dque + pm9dque .
+compute questiondifficultyinstructional=pm4dque + pm5dque + pm6dque +pmadque + pmbdque + pmcdque .
+FREQUENCIES variables = questiondifficultymastery questiondifficultyinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dpos pm2dpos pm3dpos pm4dpos pm5dpos pm6dpos pm7dpos pm8dpos pm9dpos pmadpos pmbdpos pmcdpos (1=1) (2=1) (else = 0).
+compute positiveaffectmastery=pm1dpos + pm2dpos + pm3dpos +pm7dpos + pm8dpos + pm9dpos .
+compute positiveaffectinstructional=pm4dpos + pm5dpos + pm6dpos +pmadpos + pmbdpos + pmcdpos .
+FREQUENCIES variables = positiveaffectmastery positiveaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dneg pm2dneg pm3dneg pm4dneg pm5dneg pm6dneg pm7dneg pm8dneg pm9dneg pmadneg pmbdneg pmcdneg (1=1) (2=1) (else = 0).
+compute negativeaffectmastery=pm1dneg + pm2dneg + pm3dneg +pm7dneg + pm8dneg + pm9dneg .
+compute negativeaffectinstructional=pm4dneg + pm5dneg + pm6dneg +pmadneg + pmbdneg + pmcdneg .
+FREQUENCIES variables = negativeaffectmastery negativeaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcon pm2dcon pm3dcon pm4dcon pm5dcon pm6dcon pm7dcon pm8dcon pm9dcon pmadcon pmbdcon pmcdcon (1=1) (2=1) (else = 0).
+compute concentrationmastery=pm1dcon + pm2dcon + pm3dcon +pm7dcon + pm8dcon + pm9dcon .
+compute concentrationinstructional=pm4dcon + pm5dcon + pm6dcon +pmadcon + pmbdcon + pmcdcon .
+FREQUENCIES variables = concentrationmastery concentrationinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+FILTER OFF.
+USE ALL.
+EXECUTE.
+
+USE ALL. 
+COMPUTE filter_$=(mathspint=3). 
+VARIABLE LABELS filter_$ 'mathspint=3(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+Temporary.
+recode pm1dset pm2dset pm3dset pm4dset pm5dset pm6dset pm7dset pm8dset pm9dset pmadset pmbdset pmcdset (1=1) (2=1) (else = 0).
+compute setupmastery=pm1dset + pm2dset + pm3dset +pm7dset + pm8dset + pm9dset .
+compute setupinstructional=pm4dset + pm5dset + pm6dset +pmadset + pmbdset + pmcdset .
+FREQUENCIES variables = setupmastery setupinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dsetp pm2dsetp pm3dsetp pm4dsetp pm5dsetp pm6dsetp pm7dsetp pm8dsetp pm9dsetp pmadsetp pmbdsetp pmcdsetp (1=1) (2=1) (else = 0).
+compute partialsetupmastery=pm1dsetp + pm2dsetp + pm3dsetp +pm7dsetp + pm8dsetp + pm9dsetp .
+compute partialsetupinstructional=pm4dsetp + pm5dsetp + pm6dsetp +pmadsetp + pmbdsetp + pmcdsetp .
+FREQUENCIES variables = partialsetupmastery partialsetupinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcom pm2dcom pm3dcom pm4dcom pm5dcom pm6dcom pm7dcom pm8dcom pm9dcom pmadcom pmbdcom pmcdcom (1=1) (2=1) (else = 0).
+compute comprehensionmastery=pm1dcom + pm2dcom + pm3dcom +pm7dcom + pm8dcom + pm9dcom .
+compute comprehensioninstructional=pm4dcom + pm5dcom + pm6dcom +pmadcom + pmbdcom + pmcdcom .
+FREQUENCIES variables = comprehensionmastery comprehensioninstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomp pm2dcomp pm3dcomp pm4dcomp pm5dcomp pm6dcomp pm7dcomp pm8dcomp pm9dcomp pmadcomp pmbdcomp pmcdcomp (1=1) (2=1) (else = 0).
+compute comprehensionpartsmastery=pm1dcomp + pm2dcomp + pm3dcomp +pm7dcomp + pm8dcomp + pm9dcomp .
+compute comprehensionpartsinstructional=pm4dcomp + pm5dcomp + pm6dcomp +pmadcomp + pmbdcomp + pmcdcomp .
+FREQUENCIES variables = comprehensionpartsmastery comprehensionpartsinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomk pm2dcomk pm3dcomk pm4dcomk pm5dcomk pm6dcomk pm7dcomk pm8dcomk pm9dcomk pmadcomk pmbdcomk pmcdcomk (1=1) (2=1) (else = 0).
+compute keywordcomprehensionmastery=pm1dcomk + pm2dcomk + pm3dcomk +pm7dcomk + pm8dcomk + pm9dcomk .
+compute keywordcomprehensioninstructional=pm4dcomk + pm5dcomk + pm6dcomk +pmadcomk + pmbdcomk + pmcdcomk .
+FREQUENCIES variables = keywordcomprehensionmastery keywordcomprehensioninstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcomv pm2dcomv pm3dcomv pm4dcomv pm5dcomv pm6dcomv pm7dcomv pm8dcomv pm9dcomv pmadcomv pmbdcomv pmcdcomv (1=1) (2=1) (else = 0).
+compute vocabcomprehensionmastery=pm1dcomv + pm2dcomv + pm3dcomv +pm7dcomv + pm8dcomv + pm9dcomv .
+compute vocabcomprehensioninstructional=pm4dcomv + pm5dcomv + pm6dcomv +pmadcomv + pmbdcomv + pmcdcomv .
+FREQUENCIES variables = vocabcomprehensionmastery vocabcomprehensioninstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dext pm2dext pm3dext pm4dext pm5dext pm6dext pm7dext pm8dext pm9dext pmadext pmbdext pmcdext (1=1) (2=1) (else = 0).
+compute extramissinginfomastery=pm1dext + pm2dext + pm3dext +pm7dext + pm8dext + pm9dext .
+compute extramissinginfoinstructional=pm4dext + pm5dext + pm6dext +pmadext + pmbdext + pmcdext .
+FREQUENCIES variables = extramissinginfomastery extramissinginfoinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dtoo pm2dtoo pm3dtoo pm4dtoo pm5dtoo pm6dtoo pm7dtoo pm8dtoo pm9dtoo pmadtoo pmbdtoo pmcdtoo (1=1) (2=1) (else = 0).
+compute toodetailedmastery=pm1dtoo + pm2dtoo + pm3dtoo +pm7dtoo + pm8dtoo + pm9dtoo .
+compute toodetailedinstructional=pm4dtoo + pm5dtoo + pm6dtoo +pmadtoo + pmbdtoo + pmcdtoo .
+FREQUENCIES variables = toodetailedmastery toodetailedinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dlack pm2dlack pm3dlack pm4dlack pm5dlack pm6dlack pm7dlack pm8dlack pm9dlack pmadlack pmbdlack pmcdlack (1=1) (2=1) (else = 0).
+compute lackknowledgemastery=pm1dlack + pm2dlack + pm3dlack +pm7dlack + pm8dlack + pm9dlack .
+compute lackknowledgeinstructional=pm4dlack + pm5dlack + pm6dlack +pmadlack + pmbdlack + pmcdlack .
+FREQUENCIES variables = lackknowledgemastery lackknowledgeinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dunr pm2dunr pm3dunr pm4dunr pm5dunr pm6dunr pm7dunr pm8dunr pm9dunr pmadunr pmbdunr pmcdunr (1=1) (2=1) (else = 0).
+compute unreasonablemastery=pm1dunr + pm2dunr + pm3dunr +pm7dunr + pm8dunr + pm9dunr .
+compute unreasonableinstructional=pm4dunr + pm5dunr + pm6dunr +pmadunr + pmbdunr + pmcdunr .
+FREQUENCIES variables = unreasonablemastery unreasonableinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dque pm2dque pm3dque pm4dque pm5dque pm6dque pm7dque pm8dque pm9dque pmadque pmbdque pmcdque (1=1) (2=1) (else = 0).
+compute questiondifficultymastery=pm1dque + pm2dque + pm3dque +pm7dque + pm8dque + pm9dque .
+compute questiondifficultyinstructional=pm4dque + pm5dque + pm6dque +pmadque + pmbdque + pmcdque .
+FREQUENCIES variables = questiondifficultymastery questiondifficultyinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dpos pm2dpos pm3dpos pm4dpos pm5dpos pm6dpos pm7dpos pm8dpos pm9dpos pmadpos pmbdpos pmcdpos (1=1) (2=1) (else = 0).
+compute positiveaffectmastery=pm1dpos + pm2dpos + pm3dpos +pm7dpos + pm8dpos + pm9dpos .
+compute positiveaffectinstructional=pm4dpos + pm5dpos + pm6dpos +pmadpos + pmbdpos + pmcdpos .
+FREQUENCIES variables = positiveaffectmastery positiveaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dneg pm2dneg pm3dneg pm4dneg pm5dneg pm6dneg pm7dneg pm8dneg pm9dneg pmadneg pmbdneg pmcdneg (1=1) (2=1) (else = 0).
+compute negativeaffectmastery=pm1dneg + pm2dneg + pm3dneg +pm7dneg + pm8dneg + pm9dneg .
+compute negativeaffectinstructional=pm4dneg + pm5dneg + pm6dneg +pmadneg + pmbdneg + pmcdneg .
+FREQUENCIES variables = negativeaffectmastery negativeaffectinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1dcon pm2dcon pm3dcon pm4dcon pm5dcon pm6dcon pm7dcon pm8dcon pm9dcon pmadcon pmbdcon pmcdcon (1=1) (2=1) (else = 0).
+compute concentrationmastery=pm1dcon + pm2dcon + pm3dcon +pm7dcon + pm8dcon + pm9dcon .
+compute concentrationinstructional=pm4dcon + pm5dcon + pm6dcon +pmadcon + pmbdcon + pmcdcon .
+FREQUENCIES variables = concentrationmastery concentrationinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+FILTER OFF.
+USE ALL.
+EXECUTE.
+

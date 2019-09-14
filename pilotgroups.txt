@@ -1,0 +1,224 @@
+USE ALL.
+COMPUTE filter_$=(pro = 0 & sex = 1).
+VARIABLE LABELS filter_$ 'pro = 0 & sex = 0(FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=mmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(pro = 1 & sex = 1).
+VARIABLE LABELS filter_$ 'pro = 1 & sex = 0(FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=mmast 
+  /ORDER=ANALYSIS.
+
+
+USE ALL.
+COMPUTE filter_$=(mathspint = 1 & pro = 0 & sex = 1).
+VARIABLE LABELS filter_$ 'mathspint = 1 & pro = 0 & sex = 0(FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=mmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(mathspint = 1 & pro = 1 & sex = 1).
+VARIABLE LABELS filter_$ 'mathspint = 1 & pro = 1 & sex = 1 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=mmast 
+  /ORDER=ANALYSIS.
+
+
+USE ALL.
+COMPUTE filter_$=(mathspint = 3 & pro = 0 & sex = 1).
+VARIABLE LABELS filter_$ 'mathspint = 3 & pro = 0 & sex = 1 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=mmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(mathspint = 2 & pro = 0 & sex = 1).
+VARIABLE LABELS filter_$ 'mathspint = 2 & pro = 0 & sex = 1 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=mmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(mathspint = 2 & pro = 1 & sex = 1).
+VARIABLE LABELS filter_$ 'mathspint = 2 & pro = 1 & sex = 1 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=mmast 
+  /ORDER=ANALYSIS.
+
+
+
+
+
+
+USE ALL.
+COMPUTE filter_$=(pro = 0 & sex = 2).
+VARIABLE LABELS filter_$ 'pro = 0 & sex = 2(FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(pro = 1 & sex = 2).
+VARIABLE LABELS filter_$ 'pro = 1 & sex = 2(FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+
+USE ALL.
+COMPUTE filter_$=(readspint = 1 & pro = 0 & sex = 2).
+VARIABLE LABELS filter_$ 'readspint = 1 & pro = 0 & sex = 2(FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(readspint = 1 & pro = 1 & sex = 2).
+VARIABLE LABELS filter_$ 'readspint = 1 & pro = 1 & sex = 2 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+
+USE ALL.
+COMPUTE filter_$=(readspint = 3 & pro = 0 & sex = 2).
+VARIABLE LABELS filter_$ 'readspint = 3 & pro = 0 & sex = 2 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(readspint = 2 & pro = 0 & sex = 2).
+VARIABLE LABELS filter_$ 'readspint = 2 & pro = 0 & sex = 2 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(readspint = 2 & pro = 1 & sex = 2).
+VARIABLE LABELS filter_$ 'readspint = 2 & pro = 1 & sex = 2 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+
+
+
+USE ALL.
+COMPUTE filter_$=(pro = 0).
+VARIABLE LABELS filter_$ 'pro = 0 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(pro = 1 ).
+VARIABLE LABELS filter_$ 'pro = 1 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+
+USE ALL.
+COMPUTE filter_$=(readspint = 1 & pro = 0 ).
+VARIABLE LABELS filter_$ 'readspint = 1 & pro = 0 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(readspint = 1 & pro = 1 ).
+VARIABLE LABELS filter_$ 'readspint = 1 & pro = 1 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+
+USE ALL.
+COMPUTE filter_$=(readspint = 3 & pro = 0 ).
+VARIABLE LABELS filter_$ 'readspint = 3 & pro = 0(FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(readspint = 2 & pro = 0 ).
+VARIABLE LABELS filter_$ 'readspint = 2 & pro = 0 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+
+USE ALL.
+COMPUTE filter_$=(readspint = 2 & pro = 1  ).
+VARIABLE LABELS filter_$ 'readspint = 2 & pro = 1  (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+FREQUENCIES VARIABLES=rmast 
+  /ORDER=ANALYSIS.
+

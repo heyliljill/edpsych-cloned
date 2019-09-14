@@ -1,0 +1,52 @@
+def makeRecodeLine(proquestions,promain,mathread,stratdiff,nameListi):
+  recodevars = ""
+  for i in range(len(proquestions)):
+    recodevars = recodevars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+  recodeline = "recode "+recodevars+"(1=1) (2=1) (else = 0).\n"
+  return recodeline
+  
+def makeComputeLines(proquestions,promain,mathread,stratdiff,nameListi,labelListi):
+  computeIMVars = makeComputeLine('im',0,3,proquestions,promain,mathread,stratdiff,nameListi)
+  computeIIVars = makeComputeLine('ii',3,6,proquestions,promain,mathread,stratdiff,nameListi)
+  computeNMVars = makeComputeLine('nm',6,9,proquestions,promain,mathread,stratdiff,nameListi)
+  computeNIVars = makeComputeLine('ni',9,12,proquestions,promain,mathread,stratdiff,nameListi)
+
+  computeIMLine = "compute "+labelListi+"im"+"="+computeIMVars+".\n"
+  computeIILine = "compute "+labelListi+"ii"+"="+computeIIVars+".\n"
+  computeNMLine = "compute "+labelListi+"nm"+"="+computeNMVars+".\n"
+  computeNILine = "compute "+labelListi+"ni"+"="+computeNIVars+".\n"
+  return computeIMLine + computeIILine + computeNMLine + computeNILine
+  
+def makeComputeLine(suffix,rangeL,rangeU,proquestions,promain,mathread,stratdiff,nameListi):
+  computeVars = ""
+  for i in range(rangeL,rangeU):
+    computeVars = computeVars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+    if (i!=rangeU-1):
+      computeVars = computeVars+ "+ "
+  return computeVars
+  
+
+def main():
+  
+  #VARIABLES 
+  nameList = ['par', 'sen', 'key', 'kc', 'kn', 'num', 'eli', 'use', 'est', 'rea', 'rec', 'ren', 'para', 'vis', 'ske', 'per', 'pri', 're1', 'gue']
+  labelList= ['parts', 'sentence', 'keywords', 'keywordscontext', 'keywordsnumbers', 'numbers', 'eliminatekeys', 'usesallnum', 'estimate', 'reasonable', 'rereadscomp', 'rereadsnum', 'paraphrase', 'visualize', 'sketch', 'personalexp', 'priorknow', 'readthrough1st', 'guess']
+  proquestions = ['1','2','3','4','5','6','7','8','9','a','b','c']
+  
+  suffix = ['im','ii','nm','ni']
+ 
+  stratdiff = "s"
+  promain= "p"
+  mathread = "m"
+ 
+  for i in range(len(nameList)):
+    #RECODE AND COMPUTE
+    nameListi = nameList[i]
+    labelListi = labelList[i]    
+    recodeline = makeRecodeLine(proquestions,promain,mathread,stratdiff,nameListi)
+    computelines = makeComputeLines(proquestions,promain,mathread,stratdiff,nameListi,labelListi)
+
+    s = recodeline+computelines
+  
+    print s
+main()

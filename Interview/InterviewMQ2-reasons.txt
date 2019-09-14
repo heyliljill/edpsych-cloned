@@ -1,0 +1,2 @@
+FREQUENCIES VARIABLES= m2rtf m2rrg m2rrfc m2rrfn m2chop m2docomp m2part m2sent m2ucon m2ke m2vis m2sketch m2pphr m2key m2speech m2est m2uano m2nag m2reasop m2ktchop m2chg m2chcomp m2chreas m2chasu
+      /ORDER=ANALYSIS.

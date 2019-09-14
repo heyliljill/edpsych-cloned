@@ -1,0 +1,63 @@
+USE ALL.
+COMPUTE filter_$=(pro = 1).
+VARIABLE LABELS filter_$ 'pro = 1 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.
+
+DATASET NAME main.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+recode mrimacc mriiacc mrbmacc mrbiacc (1=1) (else = 0).
+COMPUTE mracc = mrimacc + mriiacc + mrbmacc + mrbiacc.
+VARIABLE LABELS  mracc '# of accuracy level types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mracc
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+
+DATASET NAME main.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+recode mrimacc mriiacc mrbmacc mrbiacc (2=1) (else = 0).
+COMPUTE mracc = mrimacc + mriiacc + mrbmacc + mrbiacc.
+VARIABLE LABELS  mracc '# of accuracy level types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mracc
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy2.
+
+DATASET NAME main.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+recode mrimacc mriiacc mrbmacc mrbiacc (3=1) (else = 0).
+COMPUTE mracc = mrimacc + mriiacc + mrbmacc + mrbiacc.
+VARIABLE LABELS  mracc '# of accuracy level types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mracc
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy3.
+
+DATASET NAME main.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+recode mrimacc mriiacc mrbmacc mrbiacc (4=1) (else = 0).
+COMPUTE mracc = mrimacc + mriiacc + mrbmacc + mrbiacc.
+VARIABLE LABELS  mracc '# of accuracy level types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mracc
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy4.
+
+FILTER OFF. 
+USE ALL. 
+EXECUTE.

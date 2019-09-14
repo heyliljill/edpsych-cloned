@@ -1,0 +1,68 @@
+def main():
+  
+  #VARIABLES 
+  nameList = ['par', 'sen', 'key', 'kc', 'kn', 'num', 'eli', 'use', 'est', 'rea', 'rec', 'ren', 'para', 'vis', 'ske', 'per', 'pri', 're1', 'gue']
+  labelList= ['parts', 'sentence', 'keywords', 'keywordscontext', 'keywordsnumbers', 'numbers', 'eliminatekeys', 'usesallnum', 'estimate', 'reasonable', 'rereadscomp', 'rereadsnum', 'paraphrase', 'visualize', 'sketch', 'personalexp', 'priorknow', 'readthrough1st', 'guess']
+  proquestions = ['1','2','3','4','5','6','7','8','9','a','b','c']
+  
+  suffix = ['im','ii','nm','ni']
+  
+  for i in range(len(nameList)):
+  
+    #RECODE AND COMPUTE
+    nameListi = nameList[i]
+    labelListi = labelList[i]
+    stratdiff = "s"
+    promain= "p"
+    mathread = "m"
+  
+    templine = "Temporary.\n"
+  
+    recodevars = ""
+    for i in range(len(proquestions)):
+      recodevars = recodevars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+  
+    recodeline = "recode "+recodevars+"(1=1) (2=1) (else = 0).\n"
+  
+  
+    computeimvars = ""
+  
+    for i in range(0,3):
+      computeimvars = computeimvars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+      if (i!=2):
+        computeimvars = computeimvars+ "+ "
+  
+    computeimline = "compute "+labelListi+"im"+"="+computeimvars+".\n"
+  
+    computeiivars = ""
+  
+    for i in range(3,6):
+      computeiivars = computeiivars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+      if (i!=5):
+        computeiivars = computeiivars+ "+ "
+  
+    computeiiline = "compute "+labelListi+"ii"+"="+computeiivars+".\n"
+  
+    computenmvars = ""
+  
+    for i in range(6,9):
+      computenmvars = computenmvars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+      if (i!=8):
+        computenmvars = computenmvars+ "+ "
+  
+    computenmline = "compute "+labelListi+"nm"+"="+computenmvars+".\n"
+  
+    computenivars = ""
+  
+    for i in range(9,12):
+      computenivars = computenivars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+      if (i!=11):
+        computenivars = computenivars+ "+ "
+  
+    computeniline = "compute "+labelListi+"ni"+"="+computenivars+".\n"
+  
+  
+    s = recodeline+computeimline+computeiiline+computenmline+computeniline
+  
+    print s
+main()

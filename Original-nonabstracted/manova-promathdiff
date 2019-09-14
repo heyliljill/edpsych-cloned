@@ -1,0 +1,127 @@
+# (MANOVA?) GLM general linear model with within subject comparisons of interest, gender, diff
+
+# VARIABLES
+nameList = ['set', 'setp', 'com', 'comp', 'comk', 'comv', 'ext', 'too', 'lack','unr', 'que', 'pos', 'neg', 'con']
+labelList= ['setup', 'partialsetup', 'comprehension', 'comprehensionparts', 'keywordcomprehension', 'vocabcomprehension', 'extramissinginfo', 'toodetailed', 'lackknowledge', 'unreasonable', 'questiondifficulty', 'positiveaffect', 'negativeaffect', 'concentration']
+proquestions = ['1','2','3','4','5','6','7','8','9','a','b','c']
+
+
+for i in range(len(nameList)):
+
+  #RECODE AND COMPUTE
+  nameListi = nameList[i]
+  labelListi = labelList[i]
+  stratdiff = "d"
+  promain= "p"
+  mathread = "m"
+
+  templine = "Temporary.\n"
+
+  recodevars = ""
+  for i in range(len(proquestions)):
+    recodevars = recodevars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+
+  recodeline = "recode "+recodevars+"(1=1) (2=1) (else = 0).\n"
+
+
+  computeimvars = ""
+
+  for i in range(0,3):
+    computeimvars = computeimvars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+    if (i!=2):
+      computeimvars = computeimvars+ "+ "
+
+  computeimline = "compute "+labelListi+"im"+"="+computeimvars+".\n"
+
+  computeiivars = ""
+
+  for i in range(3,6):
+    computeiivars = computeiivars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+    if (i!=5):
+      computeiivars = computeiivars+ "+ "
+
+  computeiiline = "compute "+labelListi+"ii"+"="+computeiivars+".\n"
+
+  computenmvars = ""
+
+  for i in range(6,9):
+    computenmvars = computenmvars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+    if (i!=8):
+      computenmvars = computenmvars+ "+ "
+
+  computenmline = "compute "+labelListi+"nm"+"="+computenmvars+".\n"
+
+  computenivars = ""
+
+  for i in range(9,12):
+    computenivars = computenivars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+    if (i!=11):
+      computenivars = computenivars+ "+ "
+
+  computeniline = "compute "+labelListi+"ni"+"="+computenivars+".\n"
+    print s
+
+  # GLM
+
+  print "GLM " + labelListi+"im "+ labelListi+"ii "+ labelListi+"nm "+ labelListi+"ni "+"BY sex"
+
+  print """/WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  """
+
+
+# GROUPED
+
+print"""
+compute mathdiff1im = (setupim + comprehensionim + extramissinginfoim + toodetailedim + partialsetupim + negativeaffectim + questiondifficultyim)/8.
+compute mathdiff1ii = (setupii + comprehensionii + extramissinginfoii + toodetailedii + partialsetupii + negativeaffectii + questiondifficultyii)/8.
+compute mathdiff1nm = (setupnm + comprehensionnm + extramissinginfonm + toodetailednm + partialsetupnm + negativeaffectnm + questiondifficultynm)/8.
+compute mathdiff1ni = (setupni + comprehensionni + extramissinginfoni + toodetailedni + partialsetupni + negativeaffectni + questiondifficultyni)/8.
+
+GLM mathdiff1im mathdiff1ii mathdiff1nm mathdiff1ni BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+
+
+compute mathdiff2im = (vocabcomprehensionim + lackknowledgeim + comprehensionpartsim)/3.
+compute mathdiff2ii = (vocabcomprehensionii + lackknowledgeii + comprehensionpartsii)/3.
+compute mathdiff2nm = (vocabcomprehensionnm + lackknowledgenm + comprehensionpartsnm)/3.
+compute mathdiff2ni = (vocabcomprehensionni + lackknowledgeni + comprehensionpartsni)/3.
+
+GLM mathdiff2im mathdiff2ii mathdiff2nm mathdiff2ni BY sex
+  /WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+
+
+"""

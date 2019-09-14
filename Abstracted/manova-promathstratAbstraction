@@ -1,0 +1,109 @@
+def makeRecodeLine(proquestions,promain,mathread,stratdiff,nameListi):
+  recodevars = ""
+  for i in range(len(proquestions)):
+    recodevars = recodevars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+  recodeline = "recode "+recodevars+"(1=1) (2=1) (else = 0).\n"
+  return recodeline
+  
+def makeComputeLines(proquestions,promain,mathread,stratdiff,nameListi,labelListi):
+  computeIMVars = makeComputeLine('im',0,3,proquestions,promain,mathread,stratdiff,nameListi)
+  computeIIVars = makeComputeLine('ii',3,6,proquestions,promain,mathread,stratdiff,nameListi)
+  computeNMVars = makeComputeLine('nm',6,9,proquestions,promain,mathread,stratdiff,nameListi)
+  computeNIVars = makeComputeLine('ni',9,12,proquestions,promain,mathread,stratdiff,nameListi)
+
+  computeIMLine = "compute "+labelListi+"im"+"="+computeIMVars+".\n"
+  computeIILine = "compute "+labelListi+"ii"+"="+computeIIVars+".\n"
+  computeNMLine = "compute "+labelListi+"nm"+"="+computeNMVars+".\n"
+  computeNILine = "compute "+labelListi+"ni"+"="+computeNIVars+".\n"
+  return computeIMLine + computeIILine + computeNMLine + computeNILine
+  
+def makeComputeLine(suffix,rangeL,rangeU,proquestions,promain,mathread,stratdiff,nameListi):
+  computeVars = ""
+  for i in range(rangeL,rangeU):
+    computeVars = computeVars+promain+mathread+proquestions[i]+stratdiff+nameListi+" "
+    if (i!=rangeU-1):
+      computeVars = computeVars+ "+ "
+  return computeVars
+  
+def makeGLMtext():
+  text = """/WSFACTOR=interest 2 Polynomial diff 2 Polynomial 
+  /METHOD=SSTYPE(3) 
+  /EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(diff) COMPARE ADJ(LSD) 
+  /EMMEANS=TABLES(sex*interest) 
+  /EMMEANS=TABLES(sex*diff) 
+  /EMMEANS=TABLES(interest*diff) 
+  /EMMEANS=TABLES(sex*interest*diff) 
+  /CRITERIA=ALPHA(.05) 
+  /WSDESIGN=interest diff interest*diff 
+  /DESIGN=sex.
+  """
+  return text
+  
+def printCompute(varlist,string,suffix,GLMtext):
+  text = ""
+  for suff in suffix:
+    text = text + "compute " + string + suff + " = ("
+    for i in range(len(varlist)):
+      text = text + varlist[i] + suff
+      if i < (len(varlist)-1):
+        text = text + " + "
+    text = text + ")/" + str(len(varlist)) + ".\n"
+  print text
+  GLMline = "\n"
+  for suff in suffix:
+    GLMline = GLMline + string + suff
+  GLMline = GLMline + "BY sex"
+  print GLMline
+  print GLMtext
+
+  
+
+def main():
+
+  # (MANOVA?) GLM general linear model with within subject comparisons of interest, gender, diff
+  
+  # VARIABLES
+  nameList = ['par', 'sen', 'key', 'kc', 'kn', 'num', 'eli', 'use', 'est', 'rea', 'rec', 'ren', 'para', 'vis', 'ske', 'per', 'pri', 're1', 'gue']
+  labelList= ['parts', 'sentence', 'keywords', 'keywordscontext', 'keywordsnumbers', 'numbers', 'eliminatekeys', 'usesallnum', 'estimate', 'reasonable', 'rereadscomp', 'rereadsnum', 'paraphrase', 'visualize', 'sketch', 'personalexp', 'priorknow', 'readthrough1st', 'guess']
+  proquestions = ['1','2','3','4','5','6','7','8','9','a','b','c']
+  
+  suffix = ['im','ii','nm','ni']
+ 
+  stratdiff = "s"
+  promain= "p"
+  mathread = "m"
+  GLMtext = makeGLMtext()
+ 
+  for i in range(len(nameList)):
+    #RECODE AND COMPUTE
+    nameListi = nameList[i]
+    labelListi = labelList[i]    
+    recodeline = makeRecodeLine(proquestions,promain,mathread,stratdiff,nameListi)
+    computelines = makeComputeLines(proquestions,promain,mathread,stratdiff,nameListi,labelListi)
+
+    s = recodeline+computelines
+  
+    print s
+  
+    # GLM
+    print "GLM " + labelListi+"im "+ labelListi+"ii "+ labelListi+"nm "+ labelListi+"ni "+"BY sex"
+    print GLMtext
+    
+
+  
+  # GROUPED
+  
+  mathstrat1 = ["sentence", "usesallnum"]
+  mathstrat3 = ["paraphrase", "visualize"]
+  mathstrat5 = ["eliminateskeys", "rereadsnum"]
+  
+  printCompute(mathstrat1,"mathstrat1",suffix,GLMtext)
+  printCompute(mathstrat3,"mathstrat3",suffix,GLMtext)
+  printCompute(mathstrat5,"mathstrat5",suffix,GLMtext)
+
+main()
+  
+  
+

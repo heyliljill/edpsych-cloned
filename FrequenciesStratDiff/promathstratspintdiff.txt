@@ -1,0 +1,606 @@
+USE ALL. 
+COMPUTE filter_$=(mathspint=1). 
+VARIABLE LABELS filter_$ 'mathspint=1(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+Temporary.
+recode pm1spar pm2spar pm3spar pm4spar pm5spar pm6spar pm7spar pm8spar pm9spar pmaspar pmbspar pmcspar (1=1) (2=1) (else = 0).
+compute partsmastery=pm1spar + pm2spar + pm3spar +pm7spar + pm8spar + pm9spar .
+compute partsinstructional=pm4spar + pm5spar + pm6spar +pmaspar + pmbspar + pmcspar .
+FREQUENCIES variables = partsmastery partsinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1ssen pm2ssen pm3ssen pm4ssen pm5ssen pm6ssen pm7ssen pm8ssen pm9ssen pmassen pmbssen pmcssen (1=1) (2=1) (else = 0).
+compute sentencemastery=pm1ssen + pm2ssen + pm3ssen +pm7ssen + pm8ssen + pm9ssen .
+compute sentenceinstructional=pm4ssen + pm5ssen + pm6ssen +pmassen + pmbssen + pmcssen .
+FREQUENCIES variables = sentencemastery sentenceinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1skey pm2skey pm3skey pm4skey pm5skey pm6skey pm7skey pm8skey pm9skey pmaskey pmbskey pmcskey (1=1) (2=1) (else = 0).
+compute keywordsmastery=pm1skey + pm2skey + pm3skey +pm7skey + pm8skey + pm9skey .
+compute keywordsinstructional=pm4skey + pm5skey + pm6skey +pmaskey + pmbskey + pmcskey .
+FREQUENCIES variables = keywordsmastery keywordsinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1skc pm2skc pm3skc pm4skc pm5skc pm6skc pm7skc pm8skc pm9skc pmaskc pmbskc pmcskc (1=1) (2=1) (else = 0).
+compute keywordscontextmastery=pm1skc + pm2skc + pm3skc +pm7skc + pm8skc + pm9skc .
+compute keywordscontextinstructional=pm4skc + pm5skc + pm6skc +pmaskc + pmbskc + pmcskc .
+FREQUENCIES variables = keywordscontextmastery keywordscontextinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1skn pm2skn pm3skn pm4skn pm5skn pm6skn pm7skn pm8skn pm9skn pmaskn pmbskn pmcskn (1=1) (2=1) (else = 0).
+compute keywordsnumbersmastery=pm1skn + pm2skn + pm3skn +pm7skn + pm8skn + pm9skn .
+compute keywordsnumbersinstructional=pm4skn + pm5skn + pm6skn +pmaskn + pmbskn + pmcskn .
+FREQUENCIES variables = keywordsnumbersmastery keywordsnumbersinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1snum pm2snum pm3snum pm4snum pm5snum pm6snum pm7snum pm8snum pm9snum pmasnum pmbsnum pmcsnum (1=1) (2=1) (else = 0).
+compute numbersmastery=pm1snum + pm2snum + pm3snum +pm7snum + pm8snum + pm9snum .
+compute numbersinstructional=pm4snum + pm5snum + pm6snum +pmasnum + pmbsnum + pmcsnum .
+FREQUENCIES variables = numbersmastery numbersinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1seli pm2seli pm3seli pm4seli pm5seli pm6seli pm7seli pm8seli pm9seli pmaseli pmbseli pmcseli (1=1) (2=1) (else = 0).
+compute eliminatekeysmastery=pm1seli + pm2seli + pm3seli +pm7seli + pm8seli + pm9seli .
+compute eliminatekeysinstructional=pm4seli + pm5seli + pm6seli +pmaseli + pmbseli + pmcseli .
+FREQUENCIES variables = eliminatekeysmastery eliminatekeysinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1suse pm2suse pm3suse pm4suse pm5suse pm6suse pm7suse pm8suse pm9suse pmasuse pmbsuse pmcsuse (1=1) (2=1) (else = 0).
+compute usesallnummastery=pm1suse + pm2suse + pm3suse +pm7suse + pm8suse + pm9suse .
+compute usesallnuminstructional=pm4suse + pm5suse + pm6suse +pmasuse + pmbsuse + pmcsuse .
+FREQUENCIES variables = usesallnummastery usesallnuminstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sest pm2sest pm3sest pm4sest pm5sest pm6sest pm7sest pm8sest pm9sest pmasest pmbsest pmcsest (1=1) (2=1) (else = 0).
+compute estimatemastery=pm1sest + pm2sest + pm3sest +pm7sest + pm8sest + pm9sest .
+compute estimateinstructional=pm4sest + pm5sest + pm6sest +pmasest + pmbsest + pmcsest .
+FREQUENCIES variables = estimatemastery estimateinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1srea pm2srea pm3srea pm4srea pm5srea pm6srea pm7srea pm8srea pm9srea pmasrea pmbsrea pmcsrea (1=1) (2=1) (else = 0).
+compute reasonablemastery=pm1srea + pm2srea + pm3srea +pm7srea + pm8srea + pm9srea .
+compute reasonableinstructional=pm4srea + pm5srea + pm6srea +pmasrea + pmbsrea + pmcsrea .
+FREQUENCIES variables = reasonablemastery reasonableinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1srec pm2srec pm3srec pm4srec pm5srec pm6srec pm7srec pm8srec pm9srec pmasrec pmbsrec pmcsrec (1=1) (2=1) (else = 0).
+compute rereadscompmastery=pm1srec + pm2srec + pm3srec +pm7srec + pm8srec + pm9srec .
+compute rereadscompinstructional=pm4srec + pm5srec + pm6srec +pmasrec + pmbsrec + pmcsrec .
+FREQUENCIES variables = rereadscompmastery rereadscompinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sren pm2sren pm3sren pm4sren pm5sren pm6sren pm7sren pm8sren pm9sren pmasren pmbsren pmcsren (1=1) (2=1) (else = 0).
+compute rereadsnummastery=pm1sren + pm2sren + pm3sren +pm7sren + pm8sren + pm9sren .
+compute rereadsnuminstructional=pm4sren + pm5sren + pm6sren +pmasren + pmbsren + pmcsren .
+FREQUENCIES variables = rereadsnummastery rereadsnuminstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1spara pm2spara pm3spara pm4spara pm5spara pm6spara pm7spara pm8spara pm9spara pmaspara pmbspara pmcspara (1=1) (2=1) (else = 0).
+compute paraphrasemastery=pm1spara + pm2spara + pm3spara +pm7spara + pm8spara + pm9spara .
+compute paraphraseinstructional=pm4spara + pm5spara + pm6spara +pmaspara + pmbspara + pmcspara .
+FREQUENCIES variables = paraphrasemastery paraphraseinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1svis pm2svis pm3svis pm4svis pm5svis pm6svis pm7svis pm8svis pm9svis pmasvis pmbsvis pmcsvis (1=1) (2=1) (else = 0).
+compute visualzemastery=pm1svis + pm2svis + pm3svis +pm7svis + pm8svis + pm9svis .
+compute visualzeinstructional=pm4svis + pm5svis + pm6svis +pmasvis + pmbsvis + pmcsvis .
+FREQUENCIES variables = visualzemastery visualzeinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sske pm2sske pm3sske pm4sske pm5sske pm6sske pm7sske pm8sske pm9sske pmasske pmbsske pmcsske (1=1) (2=1) (else = 0).
+compute sketchmastery=pm1sske + pm2sske + pm3sske +pm7sske + pm8sske + pm9sske .
+compute sketchinstructional=pm4sske + pm5sske + pm6sske +pmasske + pmbsske + pmcsske .
+FREQUENCIES variables = sketchmastery sketchinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sper pm2sper pm3sper pm4sper pm5sper pm6sper pm7sper pm8sper pm9sper pmasper pmbsper pmcsper (1=1) (2=1) (else = 0).
+compute personalexpmastery=pm1sper + pm2sper + pm3sper +pm7sper + pm8sper + pm9sper .
+compute personalexpinstructional=pm4sper + pm5sper + pm6sper +pmasper + pmbsper + pmcsper .
+FREQUENCIES variables = personalexpmastery personalexpinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1spri pm2spri pm3spri pm4spri pm5spri pm6spri pm7spri pm8spri pm9spri pmaspri pmbspri pmcspri (1=1) (2=1) (else = 0).
+compute priorknowmastery=pm1spri + pm2spri + pm3spri +pm7spri + pm8spri + pm9spri .
+compute priorknowinstructional=pm4spri + pm5spri + pm6spri +pmaspri + pmbspri + pmcspri .
+FREQUENCIES variables = priorknowmastery priorknowinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sre1 pm2sre1 pm3sre1 pm4sre1 pm5sre1 pm6sre1 pm7sre1 pm8sre1 pm9sre1 pmasre1 pmbsre1 pmcsre1 (1=1) (2=1) (else = 0).
+compute readthrough1stmastery=pm1sre1 + pm2sre1 + pm3sre1 +pm7sre1 + pm8sre1 + pm9sre1 .
+compute readthrough1stinstructional=pm4sre1 + pm5sre1 + pm6sre1 +pmasre1 + pmbsre1 + pmcsre1 .
+FREQUENCIES variables = readthrough1stmastery readthrough1stinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sgue pm2sgue pm3sgue pm4sgue pm5sgue pm6sgue pm7sgue pm8sgue pm9sgue pmasgue pmbsgue pmcsgue (1=1) (2=1) (else = 0).
+compute guessmastery=pm1sgue + pm2sgue + pm3sgue +pm7sgue + pm8sgue + pm9sgue .
+compute guessinstructional=pm4sgue + pm5sgue + pm6sgue +pmasgue + pmbsgue + pmcsgue .
+FREQUENCIES variables = guessmastery guessinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+FILTER OFF.
+USE ALL.
+EXECUTE.
+
+USE ALL. 
+COMPUTE filter_$=(mathspint=2). 
+VARIABLE LABELS filter_$ 'mathspint=2(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+Temporary.
+recode pm1spar pm2spar pm3spar pm4spar pm5spar pm6spar pm7spar pm8spar pm9spar pmaspar pmbspar pmcspar (1=1) (2=1) (else = 0).
+compute partsmastery=pm1spar + pm2spar + pm3spar +pm7spar + pm8spar + pm9spar .
+compute partsinstructional=pm4spar + pm5spar + pm6spar +pmaspar + pmbspar + pmcspar .
+FREQUENCIES variables = partsmastery partsinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1ssen pm2ssen pm3ssen pm4ssen pm5ssen pm6ssen pm7ssen pm8ssen pm9ssen pmassen pmbssen pmcssen (1=1) (2=1) (else = 0).
+compute sentencemastery=pm1ssen + pm2ssen + pm3ssen +pm7ssen + pm8ssen + pm9ssen .
+compute sentenceinstructional=pm4ssen + pm5ssen + pm6ssen +pmassen + pmbssen + pmcssen .
+FREQUENCIES variables = sentencemastery sentenceinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1skey pm2skey pm3skey pm4skey pm5skey pm6skey pm7skey pm8skey pm9skey pmaskey pmbskey pmcskey (1=1) (2=1) (else = 0).
+compute keywordsmastery=pm1skey + pm2skey + pm3skey +pm7skey + pm8skey + pm9skey .
+compute keywordsinstructional=pm4skey + pm5skey + pm6skey +pmaskey + pmbskey + pmcskey .
+FREQUENCIES variables = keywordsmastery keywordsinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1skc pm2skc pm3skc pm4skc pm5skc pm6skc pm7skc pm8skc pm9skc pmaskc pmbskc pmcskc (1=1) (2=1) (else = 0).
+compute keywordscontextmastery=pm1skc + pm2skc + pm3skc +pm7skc + pm8skc + pm9skc .
+compute keywordscontextinstructional=pm4skc + pm5skc + pm6skc +pmaskc + pmbskc + pmcskc .
+FREQUENCIES variables = keywordscontextmastery keywordscontextinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1skn pm2skn pm3skn pm4skn pm5skn pm6skn pm7skn pm8skn pm9skn pmaskn pmbskn pmcskn (1=1) (2=1) (else = 0).
+compute keywordsnumbersmastery=pm1skn + pm2skn + pm3skn +pm7skn + pm8skn + pm9skn .
+compute keywordsnumbersinstructional=pm4skn + pm5skn + pm6skn +pmaskn + pmbskn + pmcskn .
+FREQUENCIES variables = keywordsnumbersmastery keywordsnumbersinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1snum pm2snum pm3snum pm4snum pm5snum pm6snum pm7snum pm8snum pm9snum pmasnum pmbsnum pmcsnum (1=1) (2=1) (else = 0).
+compute numbersmastery=pm1snum + pm2snum + pm3snum +pm7snum + pm8snum + pm9snum .
+compute numbersinstructional=pm4snum + pm5snum + pm6snum +pmasnum + pmbsnum + pmcsnum .
+FREQUENCIES variables = numbersmastery numbersinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1seli pm2seli pm3seli pm4seli pm5seli pm6seli pm7seli pm8seli pm9seli pmaseli pmbseli pmcseli (1=1) (2=1) (else = 0).
+compute eliminatekeysmastery=pm1seli + pm2seli + pm3seli +pm7seli + pm8seli + pm9seli .
+compute eliminatekeysinstructional=pm4seli + pm5seli + pm6seli +pmaseli + pmbseli + pmcseli .
+FREQUENCIES variables = eliminatekeysmastery eliminatekeysinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1suse pm2suse pm3suse pm4suse pm5suse pm6suse pm7suse pm8suse pm9suse pmasuse pmbsuse pmcsuse (1=1) (2=1) (else = 0).
+compute usesallnummastery=pm1suse + pm2suse + pm3suse +pm7suse + pm8suse + pm9suse .
+compute usesallnuminstructional=pm4suse + pm5suse + pm6suse +pmasuse + pmbsuse + pmcsuse .
+FREQUENCIES variables = usesallnummastery usesallnuminstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sest pm2sest pm3sest pm4sest pm5sest pm6sest pm7sest pm8sest pm9sest pmasest pmbsest pmcsest (1=1) (2=1) (else = 0).
+compute estimatemastery=pm1sest + pm2sest + pm3sest +pm7sest + pm8sest + pm9sest .
+compute estimateinstructional=pm4sest + pm5sest + pm6sest +pmasest + pmbsest + pmcsest .
+FREQUENCIES variables = estimatemastery estimateinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1srea pm2srea pm3srea pm4srea pm5srea pm6srea pm7srea pm8srea pm9srea pmasrea pmbsrea pmcsrea (1=1) (2=1) (else = 0).
+compute reasonablemastery=pm1srea + pm2srea + pm3srea +pm7srea + pm8srea + pm9srea .
+compute reasonableinstructional=pm4srea + pm5srea + pm6srea +pmasrea + pmbsrea + pmcsrea .
+FREQUENCIES variables = reasonablemastery reasonableinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1srec pm2srec pm3srec pm4srec pm5srec pm6srec pm7srec pm8srec pm9srec pmasrec pmbsrec pmcsrec (1=1) (2=1) (else = 0).
+compute rereadscompmastery=pm1srec + pm2srec + pm3srec +pm7srec + pm8srec + pm9srec .
+compute rereadscompinstructional=pm4srec + pm5srec + pm6srec +pmasrec + pmbsrec + pmcsrec .
+FREQUENCIES variables = rereadscompmastery rereadscompinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sren pm2sren pm3sren pm4sren pm5sren pm6sren pm7sren pm8sren pm9sren pmasren pmbsren pmcsren (1=1) (2=1) (else = 0).
+compute rereadsnummastery=pm1sren + pm2sren + pm3sren +pm7sren + pm8sren + pm9sren .
+compute rereadsnuminstructional=pm4sren + pm5sren + pm6sren +pmasren + pmbsren + pmcsren .
+FREQUENCIES variables = rereadsnummastery rereadsnuminstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1spara pm2spara pm3spara pm4spara pm5spara pm6spara pm7spara pm8spara pm9spara pmaspara pmbspara pmcspara (1=1) (2=1) (else = 0).
+compute paraphrasemastery=pm1spara + pm2spara + pm3spara +pm7spara + pm8spara + pm9spara .
+compute paraphraseinstructional=pm4spara + pm5spara + pm6spara +pmaspara + pmbspara + pmcspara .
+FREQUENCIES variables = paraphrasemastery paraphraseinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1svis pm2svis pm3svis pm4svis pm5svis pm6svis pm7svis pm8svis pm9svis pmasvis pmbsvis pmcsvis (1=1) (2=1) (else = 0).
+compute visualzemastery=pm1svis + pm2svis + pm3svis +pm7svis + pm8svis + pm9svis .
+compute visualzeinstructional=pm4svis + pm5svis + pm6svis +pmasvis + pmbsvis + pmcsvis .
+FREQUENCIES variables = visualzemastery visualzeinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sske pm2sske pm3sske pm4sske pm5sske pm6sske pm7sske pm8sske pm9sske pmasske pmbsske pmcsske (1=1) (2=1) (else = 0).
+compute sketchmastery=pm1sske + pm2sske + pm3sske +pm7sske + pm8sske + pm9sske .
+compute sketchinstructional=pm4sske + pm5sske + pm6sske +pmasske + pmbsske + pmcsske .
+FREQUENCIES variables = sketchmastery sketchinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sper pm2sper pm3sper pm4sper pm5sper pm6sper pm7sper pm8sper pm9sper pmasper pmbsper pmcsper (1=1) (2=1) (else = 0).
+compute personalexpmastery=pm1sper + pm2sper + pm3sper +pm7sper + pm8sper + pm9sper .
+compute personalexpinstructional=pm4sper + pm5sper + pm6sper +pmasper + pmbsper + pmcsper .
+FREQUENCIES variables = personalexpmastery personalexpinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1spri pm2spri pm3spri pm4spri pm5spri pm6spri pm7spri pm8spri pm9spri pmaspri pmbspri pmcspri (1=1) (2=1) (else = 0).
+compute priorknowmastery=pm1spri + pm2spri + pm3spri +pm7spri + pm8spri + pm9spri .
+compute priorknowinstructional=pm4spri + pm5spri + pm6spri +pmaspri + pmbspri + pmcspri .
+FREQUENCIES variables = priorknowmastery priorknowinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sre1 pm2sre1 pm3sre1 pm4sre1 pm5sre1 pm6sre1 pm7sre1 pm8sre1 pm9sre1 pmasre1 pmbsre1 pmcsre1 (1=1) (2=1) (else = 0).
+compute readthrough1stmastery=pm1sre1 + pm2sre1 + pm3sre1 +pm7sre1 + pm8sre1 + pm9sre1 .
+compute readthrough1stinstructional=pm4sre1 + pm5sre1 + pm6sre1 +pmasre1 + pmbsre1 + pmcsre1 .
+FREQUENCIES variables = readthrough1stmastery readthrough1stinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sgue pm2sgue pm3sgue pm4sgue pm5sgue pm6sgue pm7sgue pm8sgue pm9sgue pmasgue pmbsgue pmcsgue (1=1) (2=1) (else = 0).
+compute guessmastery=pm1sgue + pm2sgue + pm3sgue +pm7sgue + pm8sgue + pm9sgue .
+compute guessinstructional=pm4sgue + pm5sgue + pm6sgue +pmasgue + pmbsgue + pmcsgue .
+FREQUENCIES variables = guessmastery guessinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+FILTER OFF.
+USE ALL.
+EXECUTE.
+
+USE ALL. 
+COMPUTE filter_$=(mathspint=3). 
+VARIABLE LABELS filter_$ 'mathspint=3(FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+
+Temporary.
+recode pm1spar pm2spar pm3spar pm4spar pm5spar pm6spar pm7spar pm8spar pm9spar pmaspar pmbspar pmcspar (1=1) (2=1) (else = 0).
+compute partsmastery=pm1spar + pm2spar + pm3spar +pm7spar + pm8spar + pm9spar .
+compute partsinstructional=pm4spar + pm5spar + pm6spar +pmaspar + pmbspar + pmcspar .
+FREQUENCIES variables = partsmastery partsinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1ssen pm2ssen pm3ssen pm4ssen pm5ssen pm6ssen pm7ssen pm8ssen pm9ssen pmassen pmbssen pmcssen (1=1) (2=1) (else = 0).
+compute sentencemastery=pm1ssen + pm2ssen + pm3ssen +pm7ssen + pm8ssen + pm9ssen .
+compute sentenceinstructional=pm4ssen + pm5ssen + pm6ssen +pmassen + pmbssen + pmcssen .
+FREQUENCIES variables = sentencemastery sentenceinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1skey pm2skey pm3skey pm4skey pm5skey pm6skey pm7skey pm8skey pm9skey pmaskey pmbskey pmcskey (1=1) (2=1) (else = 0).
+compute keywordsmastery=pm1skey + pm2skey + pm3skey +pm7skey + pm8skey + pm9skey .
+compute keywordsinstructional=pm4skey + pm5skey + pm6skey +pmaskey + pmbskey + pmcskey .
+FREQUENCIES variables = keywordsmastery keywordsinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1skc pm2skc pm3skc pm4skc pm5skc pm6skc pm7skc pm8skc pm9skc pmaskc pmbskc pmcskc (1=1) (2=1) (else = 0).
+compute keywordscontextmastery=pm1skc + pm2skc + pm3skc +pm7skc + pm8skc + pm9skc .
+compute keywordscontextinstructional=pm4skc + pm5skc + pm6skc +pmaskc + pmbskc + pmcskc .
+FREQUENCIES variables = keywordscontextmastery keywordscontextinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1skn pm2skn pm3skn pm4skn pm5skn pm6skn pm7skn pm8skn pm9skn pmaskn pmbskn pmcskn (1=1) (2=1) (else = 0).
+compute keywordsnumbersmastery=pm1skn + pm2skn + pm3skn +pm7skn + pm8skn + pm9skn .
+compute keywordsnumbersinstructional=pm4skn + pm5skn + pm6skn +pmaskn + pmbskn + pmcskn .
+FREQUENCIES variables = keywordsnumbersmastery keywordsnumbersinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1snum pm2snum pm3snum pm4snum pm5snum pm6snum pm7snum pm8snum pm9snum pmasnum pmbsnum pmcsnum (1=1) (2=1) (else = 0).
+compute numbersmastery=pm1snum + pm2snum + pm3snum +pm7snum + pm8snum + pm9snum .
+compute numbersinstructional=pm4snum + pm5snum + pm6snum +pmasnum + pmbsnum + pmcsnum .
+FREQUENCIES variables = numbersmastery numbersinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1seli pm2seli pm3seli pm4seli pm5seli pm6seli pm7seli pm8seli pm9seli pmaseli pmbseli pmcseli (1=1) (2=1) (else = 0).
+compute eliminatekeysmastery=pm1seli + pm2seli + pm3seli +pm7seli + pm8seli + pm9seli .
+compute eliminatekeysinstructional=pm4seli + pm5seli + pm6seli +pmaseli + pmbseli + pmcseli .
+FREQUENCIES variables = eliminatekeysmastery eliminatekeysinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1suse pm2suse pm3suse pm4suse pm5suse pm6suse pm7suse pm8suse pm9suse pmasuse pmbsuse pmcsuse (1=1) (2=1) (else = 0).
+compute usesallnummastery=pm1suse + pm2suse + pm3suse +pm7suse + pm8suse + pm9suse .
+compute usesallnuminstructional=pm4suse + pm5suse + pm6suse +pmasuse + pmbsuse + pmcsuse .
+FREQUENCIES variables = usesallnummastery usesallnuminstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sest pm2sest pm3sest pm4sest pm5sest pm6sest pm7sest pm8sest pm9sest pmasest pmbsest pmcsest (1=1) (2=1) (else = 0).
+compute estimatemastery=pm1sest + pm2sest + pm3sest +pm7sest + pm8sest + pm9sest .
+compute estimateinstructional=pm4sest + pm5sest + pm6sest +pmasest + pmbsest + pmcsest .
+FREQUENCIES variables = estimatemastery estimateinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1srea pm2srea pm3srea pm4srea pm5srea pm6srea pm7srea pm8srea pm9srea pmasrea pmbsrea pmcsrea (1=1) (2=1) (else = 0).
+compute reasonablemastery=pm1srea + pm2srea + pm3srea +pm7srea + pm8srea + pm9srea .
+compute reasonableinstructional=pm4srea + pm5srea + pm6srea +pmasrea + pmbsrea + pmcsrea .
+FREQUENCIES variables = reasonablemastery reasonableinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1srec pm2srec pm3srec pm4srec pm5srec pm6srec pm7srec pm8srec pm9srec pmasrec pmbsrec pmcsrec (1=1) (2=1) (else = 0).
+compute rereadscompmastery=pm1srec + pm2srec + pm3srec +pm7srec + pm8srec + pm9srec .
+compute rereadscompinstructional=pm4srec + pm5srec + pm6srec +pmasrec + pmbsrec + pmcsrec .
+FREQUENCIES variables = rereadscompmastery rereadscompinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sren pm2sren pm3sren pm4sren pm5sren pm6sren pm7sren pm8sren pm9sren pmasren pmbsren pmcsren (1=1) (2=1) (else = 0).
+compute rereadsnummastery=pm1sren + pm2sren + pm3sren +pm7sren + pm8sren + pm9sren .
+compute rereadsnuminstructional=pm4sren + pm5sren + pm6sren +pmasren + pmbsren + pmcsren .
+FREQUENCIES variables = rereadsnummastery rereadsnuminstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1spara pm2spara pm3spara pm4spara pm5spara pm6spara pm7spara pm8spara pm9spara pmaspara pmbspara pmcspara (1=1) (2=1) (else = 0).
+compute paraphrasemastery=pm1spara + pm2spara + pm3spara +pm7spara + pm8spara + pm9spara .
+compute paraphraseinstructional=pm4spara + pm5spara + pm6spara +pmaspara + pmbspara + pmcspara .
+FREQUENCIES variables = paraphrasemastery paraphraseinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1svis pm2svis pm3svis pm4svis pm5svis pm6svis pm7svis pm8svis pm9svis pmasvis pmbsvis pmcsvis (1=1) (2=1) (else = 0).
+compute visualzemastery=pm1svis + pm2svis + pm3svis +pm7svis + pm8svis + pm9svis .
+compute visualzeinstructional=pm4svis + pm5svis + pm6svis +pmasvis + pmbsvis + pmcsvis .
+FREQUENCIES variables = visualzemastery visualzeinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sske pm2sske pm3sske pm4sske pm5sske pm6sske pm7sske pm8sske pm9sske pmasske pmbsske pmcsske (1=1) (2=1) (else = 0).
+compute sketchmastery=pm1sske + pm2sske + pm3sske +pm7sske + pm8sske + pm9sske .
+compute sketchinstructional=pm4sske + pm5sske + pm6sske +pmasske + pmbsske + pmcsske .
+FREQUENCIES variables = sketchmastery sketchinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sper pm2sper pm3sper pm4sper pm5sper pm6sper pm7sper pm8sper pm9sper pmasper pmbsper pmcsper (1=1) (2=1) (else = 0).
+compute personalexpmastery=pm1sper + pm2sper + pm3sper +pm7sper + pm8sper + pm9sper .
+compute personalexpinstructional=pm4sper + pm5sper + pm6sper +pmasper + pmbsper + pmcsper .
+FREQUENCIES variables = personalexpmastery personalexpinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1spri pm2spri pm3spri pm4spri pm5spri pm6spri pm7spri pm8spri pm9spri pmaspri pmbspri pmcspri (1=1) (2=1) (else = 0).
+compute priorknowmastery=pm1spri + pm2spri + pm3spri +pm7spri + pm8spri + pm9spri .
+compute priorknowinstructional=pm4spri + pm5spri + pm6spri +pmaspri + pmbspri + pmcspri .
+FREQUENCIES variables = priorknowmastery priorknowinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sre1 pm2sre1 pm3sre1 pm4sre1 pm5sre1 pm6sre1 pm7sre1 pm8sre1 pm9sre1 pmasre1 pmbsre1 pmcsre1 (1=1) (2=1) (else = 0).
+compute readthrough1stmastery=pm1sre1 + pm2sre1 + pm3sre1 +pm7sre1 + pm8sre1 + pm9sre1 .
+compute readthrough1stinstructional=pm4sre1 + pm5sre1 + pm6sre1 +pmasre1 + pmbsre1 + pmcsre1 .
+FREQUENCIES variables = readthrough1stmastery readthrough1stinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+Temporary.
+recode pm1sgue pm2sgue pm3sgue pm4sgue pm5sgue pm6sgue pm7sgue pm8sgue pm9sgue pmasgue pmbsgue pmcsgue (1=1) (2=1) (else = 0).
+compute guessmastery=pm1sgue + pm2sgue + pm3sgue +pm7sgue + pm8sgue + pm9sgue .
+compute guessinstructional=pm4sgue + pm5sgue + pm6sgue +pmasgue + pmbsgue + pmcsgue .
+FREQUENCIES variables = guessmastery guessinstructional
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+
+
+
+FILTER OFF.
+USE ALL.
+EXECUTE.
+

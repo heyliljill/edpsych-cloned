@@ -1,0 +1,47 @@
+DATASET NAME main.
+USE ALL. 
+COMPUTE filter_$=(group = 1  & int = 0). 
+VARIABLE LABELS filter_$ 'group = 1  & int = 0 (FILTER)'. 
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'. 
+FORMATS filter_$ (f1.0). 
+FILTER BY filter_$. 
+EXECUTE.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+COMPUTE mmimrw = mmim1rw + mmim2rw + mmim3rw.
+VARIABLE LABELS  mmimrw '# of correct answers from all problems in im level math'. 
+EXECUTE.
+COMPUTE mmiirw = mmii1rw + mmii2rw + mmii3rw.
+VARIABLE LABELS  mmiirw '# of correct answers from all problems in ii level math'. 
+EXECUTE.
+COMPUTE mmbmrw = mmbm1rw + mmbm2rw + mmbm3rw.
+VARIABLE LABELS  mmbmrw '# of correct answers from all problems in bm level math'. 
+EXECUTE.
+COMPUTE mmbirw = mmbi1rw + mmbi2rw + mmbi3rw.
+VARIABLE LABELS  mmbirw '# of correct answers from all problems in bi level math'. 
+EXECUTE.
+GLM mmimrw mmiirw mmbmrw mmbirw  BY mathspint sex 
+/WSFACTOR=interest 2 Polynomial difficulty 2 Polynomial 
+/METHOD=SSTYPE(3) 
+/EMMEANS=TABLES(OVERALL) 
+/EMMEANS=TABLES(mathspint) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(sex) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(interest) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(difficulty) COMPARE ADJ(LSD) 
+/EMMEANS=TABLES(mathspint*sex) 
+/EMMEANS=TABLES(mathspint*interest) 
+/EMMEANS=TABLES(mathspint*difficulty) 
+/EMMEANS=TABLES(sex*interest) 
+/EMMEANS=TABLES(sex*difficulty) 
+/EMMEANS=TABLES(interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest) 
+/EMMEANS=TABLES(mathspint*sex*difficulty) 
+/EMMEANS=TABLES(mathspint*interest*difficulty) 
+/EMMEANS=TABLES(sex*interest*difficulty) 
+/EMMEANS=TABLES(mathspint*sex*interest*difficulty)
+/PRINT=DESCRIPTIVE
+/CRITERIA=ALPHA(.05) 
+/WSDESIGN=interest difficulty interest*difficulty 
+/DESIGN=mathspint sex mathspint*sex.
+  DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.

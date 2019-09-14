@@ -1,0 +1,113 @@
+Reading interview
+
+
+1. For im, ii, bi, bm
+    how many were easy, hard, easiest, hardest?
+    
+      >> rimease, riiease, rbmease, rbiease
+       0 = no info, 1 = easiest, 2 = easy, 3 = hard, 4 = hardest, 5 = medium
+
+
+    FREQUENCIES VARIABLES=rimease riiease rbmease rbiease 
+      /ORDER=ANALYSIS.
+
+
+      
+  
+  repeat this read reading interest and reading non interest
+    
+    
+    SORT CASES BY readspint. 
+    SPLIT FILE SEPARATE BY readspint.
+    FREQUENCIES variables = rimease riiease rbmease rbiease 
+      /HISTOGRAM 
+      /ORDER=ANALYSIS.    
+    SPLIT FILE OFF.
+  
+  
+  select if (easy or easiest) or (hard or hardest), rank order reasons
+   *** FOR EACH REASON, get total for how many (easy or easiest) and how many (hard or hardest)
+    
+nameList = ['voc', 'len', 'lit', 'lot', 'writ', 'struc', 'comp', 'int', 'vis', 'ket', 'kec', 'lket', 'lkec', 'pat', 'pac', 'nat', 'nac']
+labelList = ['vocabulary', 'length', 'littleinfo', 'lotsinfo', 'writstyle', 'structure', 'comprehension', 'interestingboring', 'visualization', 'topicknowexp', 'contentknowexp','lacktopicknowexp','lackcontentknowexp', 'posaffecttopic','posaffectcontent','negaffecttopic','negaffectcontent']
+
+prefix = ['rim','rii','rbm','rbi']
+
+
+
+
+Example:
+COUNT rvocabeasy=rimvoc riivoc rbmvoc rbivoc(1) rimvoc riivoc rbmvoc rbivoc(2). 
+VARIABLE LABELS  rvocabeasy 'reading vocabulary reason - easy'. 
+EXECUTE. 
+FREQUENCIES VARIABLES=rvocabeasy 
+  /STATISTICS=STDDEV MEAN SUM 
+  /ORDER=ANALYSIS.
+  
+
+  
+for j in range(len(nameList)):
+  reasonslist = ""
+  for i in range(len(prefix)):
+    reasons = prefix[i]+nameList[j]
+    reasonslist = reasonslist + reasons + " "
+  reason = nameList[j]
+  label = "r"+labelList[j]+"easy"
+  
+
+  text = """
+  COUNT """ + label + "=" + reasons + "(1)" + reasons + """(2). 
+  VARIABLE LABELS """ +  label + " 'reading " + reason + """ reason - easy'. 
+  EXECUTE. 
+  FREQUENCIES VARIABLES=""" + label + """ 
+    /STATISTICS=STDDEV MEAN SUM 
+    /ORDER=ANALYSIS."""
+  
+  print text
+
+
+  repeat with groups (grouped reasons?)
+    YES group reasons at some point
+    
+
+    
+
+2.  a. rank order strategies
+   
+    b. 
+      interest, non interest
+      
+    c. probed vs. not probed responses
+
+
+
+3.a. reading interest vs reading non interest on read thoroughly/skim/topic
+  
+  b. what was easy hard (reading interest vs reading non interest)
+      - what was easy/hard based on interesting or boring problem
+  
+  c. rank order
+  
+  d. rank order broken by thoroughly/skim/topic'
+  
+  e. rank order broken by reported easy/hard
+  
+  
+  
+  
+  
+  
+  
+  
+4. vocab (yes/no)
+   topic (yes/no)
+   content (yes/no)
+   understanding (yes/no)
+   
+  
+   
+      FREQUENCIES VARIABLES=r4voc r4tnoe r4tint r4tke r4tlke r4tpa r4tna r4cnoe r4cint r4cke r4clke r4cpa r4cna r4und
+      /HISTOGRAM 
+      /ORDER=ANALYSIS. 
+   
+   

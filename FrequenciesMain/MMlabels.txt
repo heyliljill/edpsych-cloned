@@ -1,0 +1,149 @@
+USE ALL.
+COMPUTE filter_$=(pro = 0).
+VARIABLE LABELS filter_$ 'pro = 0 (FILTER)'.
+VALUE LABELS filter_$ 0 'Not Selected' 1 'Selected'.
+FORMATS filter_$ (f1.0).
+FILTER BY filter_$.
+EXECUTE.DATASET NAME main.
+DATASET COPY  mainCopy0 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy0.
+recode mmim1lb1 mmim2lb1 mmim3lb1 mmii1lb1 mmii2lb1 mmii3lb1 mmbm1lb1 mmbm2lb1 mmbm3lb1 mmbi1lb1 mmbi2lb1 mmbi3lb1 (0=1) (else = 0).
+COMPUTE mmlb1 = mmim1lb1 + mmim2lb1 + mmim3lb1 + mmii1lb1 + mmii2lb1 + mmii3lb1 + mmbm1lb1 + mmbm2lb1 + mmbm3lb1 + mmbi1lb1 + mmbi2lb1 + mmbi3lb1.
+VARIABLE LABELS  mmlb1 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb1
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy0.
+
+DATASET NAME main.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+recode mmim1lb1 mmim2lb1 mmim3lb1 mmii1lb1 mmii2lb1 mmii3lb1 mmbm1lb1 mmbm2lb1 mmbm3lb1 mmbi1lb1 mmbi2lb1 mmbi3lb1 (1=1) (else = 0).
+COMPUTE mmlb1 = mmim1lb1 + mmim2lb1 + mmim3lb1 + mmii1lb1 + mmii2lb1 + mmii3lb1 + mmbm1lb1 + mmbm2lb1 + mmbm3lb1 + mmbi1lb1 + mmbi2lb1 + mmbi3lb1.
+VARIABLE LABELS  mmlb1 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb1
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+
+DATASET NAME main.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+recode mmim1lb1 mmim2lb1 mmim3lb1 mmii1lb1 mmii2lb1 mmii3lb1 mmbm1lb1 mmbm2lb1 mmbm3lb1 mmbi1lb1 mmbi2lb1 mmbi3lb1 (2=1) (else = 0).
+COMPUTE mmlb1 = mmim1lb1 + mmim2lb1 + mmim3lb1 + mmii1lb1 + mmii2lb1 + mmii3lb1 + mmbm1lb1 + mmbm2lb1 + mmbm3lb1 + mmbi1lb1 + mmbi2lb1 + mmbi3lb1.
+VARIABLE LABELS  mmlb1 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb1
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy2.
+
+DATASET NAME main.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+recode mmim1lb1 mmim2lb1 mmim3lb1 mmii1lb1 mmii2lb1 mmii3lb1 mmbm1lb1 mmbm2lb1 mmbm3lb1 mmbi1lb1 mmbi2lb1 mmbi3lb1 (3=1) (else = 0).
+COMPUTE mmlb1 = mmim1lb1 + mmim2lb1 + mmim3lb1 + mmii1lb1 + mmii2lb1 + mmii3lb1 + mmbm1lb1 + mmbm2lb1 + mmbm3lb1 + mmbi1lb1 + mmbi2lb1 + mmbi3lb1.
+VARIABLE LABELS  mmlb1 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb1
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy3.
+
+DATASET NAME main.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+recode mmim1lb1 mmim2lb1 mmim3lb1 mmii1lb1 mmii2lb1 mmii3lb1 mmbm1lb1 mmbm2lb1 mmbm3lb1 mmbi1lb1 mmbi2lb1 mmbi3lb1 (4=1) (else = 0).
+COMPUTE mmlb1 = mmim1lb1 + mmim2lb1 + mmim3lb1 + mmii1lb1 + mmii2lb1 + mmii3lb1 + mmbm1lb1 + mmbm2lb1 + mmbm3lb1 + mmbi1lb1 + mmbi2lb1 + mmbi3lb1.
+VARIABLE LABELS  mmlb1 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb1
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy4.
+
+DATASET NAME main.
+DATASET COPY  mainCopy0 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy0.
+recode mmim1lb2 mmim2lb2 mmim3lb2 mmii1lb2 mmii2lb2 mmii3lb2 mmbm1lb2 mmbm2lb2 mmbm3lb2 mmbi1lb2 mmbi2lb2 mmbi3lb2 (0=1) (else = 0).
+COMPUTE mmlb2 = mmim1lb2 + mmim2lb2 + mmim3lb2 + mmii1lb2 + mmii2lb2 + mmii3lb2 + mmbm1lb2 + mmbm2lb2 + mmbm3lb2 + mmbi1lb2 + mmbi2lb2 + mmbi3lb2.
+VARIABLE LABELS  mmlb2 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb2
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy0.
+
+DATASET NAME main.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+recode mmim1lb2 mmim2lb2 mmim3lb2 mmii1lb2 mmii2lb2 mmii3lb2 mmbm1lb2 mmbm2lb2 mmbm3lb2 mmbi1lb2 mmbi2lb2 mmbi3lb2 (1=1) (else = 0).
+COMPUTE mmlb2 = mmim1lb2 + mmim2lb2 + mmim3lb2 + mmii1lb2 + mmii2lb2 + mmii3lb2 + mmbm1lb2 + mmbm2lb2 + mmbm3lb2 + mmbi1lb2 + mmbi2lb2 + mmbi3lb2.
+VARIABLE LABELS  mmlb2 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb2
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+
+DATASET NAME main.
+DATASET COPY  mainCopy2 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy2.
+recode mmim1lb2 mmim2lb2 mmim3lb2 mmii1lb2 mmii2lb2 mmii3lb2 mmbm1lb2 mmbm2lb2 mmbm3lb2 mmbi1lb2 mmbi2lb2 mmbi3lb2 (2=1) (else = 0).
+COMPUTE mmlb2 = mmim1lb2 + mmim2lb2 + mmim3lb2 + mmii1lb2 + mmii2lb2 + mmii3lb2 + mmbm1lb2 + mmbm2lb2 + mmbm3lb2 + mmbi1lb2 + mmbi2lb2 + mmbi3lb2.
+VARIABLE LABELS  mmlb2 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb2
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy2.
+
+DATASET NAME main.
+DATASET COPY  mainCopy3 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy3.
+recode mmim1lb2 mmim2lb2 mmim3lb2 mmii1lb2 mmii2lb2 mmii3lb2 mmbm1lb2 mmbm2lb2 mmbm3lb2 mmbi1lb2 mmbi2lb2 mmbi3lb2 (3=1) (else = 0).
+COMPUTE mmlb2 = mmim1lb2 + mmim2lb2 + mmim3lb2 + mmii1lb2 + mmii2lb2 + mmii3lb2 + mmbm1lb2 + mmbm2lb2 + mmbm3lb2 + mmbi1lb2 + mmbi2lb2 + mmbi3lb2.
+VARIABLE LABELS  mmlb2 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb2
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy3.
+
+DATASET NAME main.
+DATASET COPY  mainCopy4 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy4.
+recode mmim1lb2 mmim2lb2 mmim3lb2 mmii1lb2 mmii2lb2 mmii3lb2 mmbm1lb2 mmbm2lb2 mmbm3lb2 mmbi1lb2 mmbi2lb2 mmbi3lb2 (4=1) (else = 0).
+COMPUTE mmlb2 = mmim1lb2 + mmim2lb2 + mmim3lb2 + mmii1lb2 + mmii2lb2 + mmii3lb2 + mmbm1lb2 + mmbm2lb2 + mmbm3lb2 + mmbi1lb2 + mmbi2lb2 + mmbi3lb2.
+VARIABLE LABELS  mmlb2 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb2
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy4.
+
+DATASET NAME main.
+DATASET COPY  mainCopy1 WINDOW=FRONT.
+DATASET ACTIVATE mainCopy1.
+recode mmim1lb3 mmim2lb3 mmim3lb3 mmii1lb3 mmii2lb3 mmii3lb3 mmbm1lb3 mmbm2lb3 mmbm3lb3 mmbi1lb3 mmbi2lb3 mmbi3lb3 (1=1) (else = 0).
+COMPUTE mmlb3 = mmim1lb3 + mmim2lb3 + mmim3lb3 + mmii1lb3 + mmii2lb3 + mmii3lb3 + mmbm1lb3 + mmbm2lb3 + mmbm3lb3 + mmbi1lb3 + mmbi2lb3 + mmbi3lb3.
+VARIABLE LABELS  mmlb3 '# of mistake types from all problems'.
+EXECUTE.
+FREQUENCIES variables = mmlb3
+/STATISTICS = mean sum
+/ORDER=ANALYSIS.
+DATASET ACTIVATE main.
+DATASET CLOSE mainCopy1.
+
